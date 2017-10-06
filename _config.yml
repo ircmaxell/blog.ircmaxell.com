@@ -87,3 +87,12 @@ deploy:
 
 
 disqus_shortname: blog-ircmaxell
+
+robotstxt:
+  useragent: "*"
+  disallow:
+    - "/"
+
+sitemap:
+    path: sitemap.xml
+    template: ./themes/sitemap_template.xml
