@@ -12,7 +12,7 @@ timezone: America/New_York
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blog.ircmaxell.com
+url: https://blog.ircmaxell.com
 root: /
 permalink: :year/:month/:title.html
 permalink_defaults:
@@ -92,7 +92,15 @@ robotstxt:
   useragent: "*"
   disallow:
     - "/"
+  sitemap: sitemap.xml
 
 sitemap:
-    path: sitemap.xml
-    template: ./themes/sitemap_template.xml
+  path: sitemap.xml
+  template: ./themes/sitemap_template.xml
+
+tagFeed:
+  type: atom
+  path:
+    pre: "feeds/posts/default/-"
+    post: "index.xml"
+  limit: 10

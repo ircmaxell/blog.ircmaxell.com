@@ -3,6 +3,8 @@ layout: post
 title: Ponderings on Odoriferous Syntactical Constructifications
 date: 2017-07-31
 comments: true
+categories:
+- Programming
 tags:
 - Anti-Pattern
 - Architecture

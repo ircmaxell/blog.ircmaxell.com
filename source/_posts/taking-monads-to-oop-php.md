@@ -3,6 +3,8 @@ layout: post
 title: Taking Monads to OOP PHP
 date: 2013-07-12
 comments: true
+categories:
+- Programming
 tags:
 - Design Patterns
 - Functional Programming

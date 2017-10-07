@@ -2,6 +2,8 @@ layout: post
 title: Why We Do What We Do
 date: 2013-07-24
 comments: false
+categories:
+- Meta
 tags:
 - Education
 - Learning
