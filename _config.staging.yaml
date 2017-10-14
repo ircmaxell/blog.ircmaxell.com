@@ -85,7 +85,7 @@ deploy:
   type: s3
   bucket: in.bucket.beta.blog.ircmaxell.com
   region: us-east-1
-
+  
 
 
 disqus_shortname: blog-ircmaxell

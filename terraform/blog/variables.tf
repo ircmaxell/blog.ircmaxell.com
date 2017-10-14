@@ -1,0 +1,5 @@
+
+
+variable "domain" {}
+
+variable "env" {}
