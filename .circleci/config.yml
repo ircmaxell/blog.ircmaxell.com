@@ -9,7 +9,7 @@ jobs:
       - checkout
 
       - run:
-        name: Install dependencies
+          name: Install dependencies
           working_directory: /
           command: |
             apt-get -y -qq install awscli
