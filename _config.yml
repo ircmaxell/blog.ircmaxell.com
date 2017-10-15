@@ -79,15 +79,6 @@ prism_plugin:
   theme: 'xonokai'
   line_number: true
 
-# Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy: 
-  type: s3
-  bucket: in.bucket.beta.blog.ircmaxell.com
-  region: us-east-1
-
-
-
 disqus_shortname: blog-ircmaxell
 
 robotstxt:
@@ -106,3 +97,10 @@ tagFeed:
     pre: "feeds/posts/default/-"
     post: "index.xml"
   limit: 10
+
+feed:
+  type: atom
+  path: feeds/posts/default/index.xml
+  limit: 10
+
+alias:

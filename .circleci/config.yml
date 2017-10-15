@@ -21,7 +21,21 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
+      - run: 
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              cp _config.prod.yaml _config.yaml
+            else 
+              cp _config.staging.yaml _config.yaml
+            fi
       - run: yarn run hexo generate
       - store_artifacts:
           path: ~/tmp/public
+      - deploy:
+          name: Deploy to s3
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              .circleci/deploy.sh "./public" "in.bucket.blog.ircmaxell.com"
+            elif [ "${CIRCLE_BRANCH}" == "blog_v2" ]; then
+              .circleci/deploy.sh "./public" "in.bucket.beta.blog.ircmaxell.com"
+            fi

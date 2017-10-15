@@ -83,7 +83,7 @@ prism_plugin:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy: 
   type: s3
-  bucket: in.bucket.beta.blog.ircmaxell.com
+  bucket: in.bucket.blog.ircmaxell.com
   region: us-east-1
   
 
@@ -93,6 +93,8 @@ disqus_shortname: blog-ircmaxell
 robotstxt:
   useragent: "*"
   disallow:
+    - "/search"
+  allow:
     - "/"
   sitemap: sitemap.xml
 
@@ -106,9 +108,3 @@ tagFeed:
     pre: "feeds/posts/default/-"
     post: "index.xml"
   limit: 10
-
-feed:
-  type: rss
-  path: rss.xml
-  limit: 10
-  content_limit_delim: "<!--more-->"
