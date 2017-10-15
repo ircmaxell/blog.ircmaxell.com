@@ -8,6 +8,12 @@ jobs:
     steps:
       - checkout
 
+      - run:
+        name: Install dependencies
+          working_directory: /
+          command: |
+            apt-get -y -qq install awscli
+
       # Download and cache dependencies
       - restore_cache:
           keys:
