@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: All About Middleware
@@ -6,6 +5,7 @@ permalink: all-about-middleware
 date: 2016-05-20
 comments: true
 categories:
+- Architecture
 tags:
 - Design Patterns
 - Middleware

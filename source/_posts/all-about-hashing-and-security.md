@@ -5,6 +5,7 @@ permalink: all-about-hashing-and-security
 date: 2011-03-15
 comments: true
 categories:
+- Security
 tags:
 - Password-Hashing
 - PHP

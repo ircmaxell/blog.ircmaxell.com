@@ -5,6 +5,7 @@ permalink: 2013-year-in-review
 date: 2013-12-31
 comments: true
 categories:
+- Meta
 tags:
 - Meta
 - PHP

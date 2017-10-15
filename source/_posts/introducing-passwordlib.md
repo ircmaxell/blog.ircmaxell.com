@@ -5,6 +5,7 @@ permalink: introducing-passwordlib
 date: 2012-04-14
 comments: true
 categories:
+- Security
 tags:
 - Library
 - Password-Hashing
@@ -14,6 +15,7 @@ tags:
 ---
 
 Today, I'm proud to announce the immediate availability of a new password hashing library for PHP: [PasswordLib](https://github.com/ircmaxell/PHP-PasswordLib). The project is a spin-off of another that I started about a year ago, [CryptLib](https://github.com/ircmaxell/PHP-CryptLib). I was unable to find a clean solution to a few problems in CryptLib, so dev work stalled for a while. I realized recently that the password hashing functionality was complete, so if I stripped out the incomplete parts, it would still be a very useful library. And so PasswordLib was born.<!--more-->
+
 ## What Is PasswordLib
 
 
@@ -33,7 +35,9 @@ There are two basic ways to install PasswordLib for your use. If you use [Compos
 
 If you don't use Composer, just download the latest [PasswordLib PHAR archive](https://github.com/ircmaxell/PHP-PasswordLib/downloads). Then, all you need to do is require that phar file, and it will configure and bootstrap itself for you, no other autoloader required.
 
-From there, the base API is really simple to use. Just create a new instance of `[PasswordLib\PasswordLib()](https://github.com/ircmaxell/PHP-PasswordLib/blob/master/lib/PasswordLib/PasswordLib.php)`, and use its methods. Here's a quick example:```php
+From there, the base API is really simple to use. Just create a new instance of `[PasswordLib\PasswordLib()](https://github.com/ircmaxell/PHP-PasswordLib/blob/master/lib/PasswordLib/PasswordLib.php)`, and use its methods. Here's a quick example:
+
+```php
 $lib = new PasswordLib\PasswordLib;
 $password = "foo";
 $hash = $lib->createPasswordHash($password);

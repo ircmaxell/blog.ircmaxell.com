@@ -5,6 +5,7 @@ permalink: google-glass-first-impression
 date: 2013-06-16
 comments: true
 categories:
+- Other
 tags:
 - Change
 - Google Glass

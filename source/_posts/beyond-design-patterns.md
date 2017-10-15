@@ -5,6 +5,7 @@ permalink: beyond-design-patterns
 date: 2013-09-18
 comments: true
 categories:
+- Architecture
 tags:
 - Architecture
 - Beyond

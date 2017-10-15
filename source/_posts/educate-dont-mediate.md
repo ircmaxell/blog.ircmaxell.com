@@ -5,6 +5,7 @@ permalink: educate-dont-mediate
 date: 2014-10-20
 comments: true
 categories:
+- Rant
 tags:
 - Best Practice
 - Education

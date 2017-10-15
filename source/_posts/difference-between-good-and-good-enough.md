@@ -5,6 +5,7 @@ permalink: difference-between-good-and-good-enough
 date: 2011-03-18
 comments: true
 categories:
+- Meta
 tags:
 - Best Practice
 - Good Enough

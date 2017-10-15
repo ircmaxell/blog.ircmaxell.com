@@ -5,6 +5,7 @@ permalink: iteratoriterator-php-inconsistencies
 date: 2011-10-31
 comments: true
 categories:
+- PHP
 tags:
 - Inconsistencies
 - PHP
@@ -53,8 +54,6 @@ Here's where it starts to get interesting.  The next if statement has three par
 If all three of parts pass, something very interesting happens.  The original object is cast down to the specified class.  Now I know what you're thinking: Cast down?  PHP has no concept of casting...?  Well, in this case, it appears it does.
 
 ## What it means
-
-
 
 So basically, the second parameter to IteratorIterator controls which method is used to get the iterator.  To best understand it, let's use it in an example...  First, let's define a few classes.
 ```php
@@ -132,11 +131,9 @@ new IteratorIterator(new Baz, "StdClass");
 
 ```
 
-
 It's quite interesting that we can downcast like this.  I did some quick searches in core, and this appears to be the only place that does this.
+
 ## Finally
-
-
 
 Personally, I can't see any use-case for this.  Doing anything with it requires explicit knowledge of the class tree when creating an IteratorIterator object.  So I'm not even sure what in practice it would be useful for.  So I don't know whether it being there classifies as a bug, or if it is just another "weird quirk" of PHP.  
 

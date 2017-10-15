@@ -5,6 +5,7 @@ permalink: beyond-clean-code
 date: 2013-11-25
 comments: true
 categories:
+- Programming
 tags:
 - Beyond
 - Good Enough

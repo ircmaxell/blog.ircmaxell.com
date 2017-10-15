@@ -5,6 +5,7 @@ permalink: dont-be-stupid-grasp-solid-slides
 date: 2012-05-22
 comments: true
 categories:
+- Slides
 tags:
 - Best Practice
 - Good Enough

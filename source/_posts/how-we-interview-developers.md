@@ -5,6 +5,7 @@ permalink: how-we-interview-developers
 date: 2012-01-06
 comments: true
 categories:
+- Meta
 tags:
 - Interviews
 - Language Agnostic

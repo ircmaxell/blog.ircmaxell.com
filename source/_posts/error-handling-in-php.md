@@ -5,6 +5,7 @@ permalink: error-handling-in-php
 date: 2011-08-04
 comments: true
 categories:
+- Programming
 tags:
 - Best Practice
 - Exceptions

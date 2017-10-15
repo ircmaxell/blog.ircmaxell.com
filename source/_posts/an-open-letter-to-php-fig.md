@@ -5,6 +5,7 @@ permalink: an-open-letter-to-php-fig
 date: 2014-10-15
 comments: true
 categories:
+- Rant
 tags:
 - Best Practice
 - Community

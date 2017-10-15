@@ -5,6 +5,7 @@ permalink: disclosure-wordpress-wpdb-sql-injection
 date: 2013-07-16
 comments: true
 categories:
+- Security
 tags:
 - Disclosure
 - Open Source

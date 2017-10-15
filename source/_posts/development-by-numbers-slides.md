@@ -5,6 +5,7 @@ permalink: development-by-numbers-slides
 date: 2013-05-21
 comments: true
 categories:
+- Slides
 tags:
 - Best Practice
 - Code Review

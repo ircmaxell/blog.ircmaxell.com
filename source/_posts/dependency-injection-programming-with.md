@@ -5,6 +5,7 @@ permalink: dependency-injection-programming-with
 date: 2013-01-09
 comments: true
 categories:
+- Video
 tags:
 - Architecture
 - Best Practice

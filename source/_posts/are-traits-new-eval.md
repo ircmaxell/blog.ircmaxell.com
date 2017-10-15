@@ -5,6 +5,7 @@ permalink: are-traits-new-eval
 date: 2011-07-22
 comments: true
 categories:
+- Programming
 tags:
 - Best Practice
 - PHP

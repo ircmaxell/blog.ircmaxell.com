@@ -5,6 +5,7 @@ permalink: contribute-to-contributors
 date: 2012-12-14
 comments: true
 categories:
+- Open Source
 tags:
 - Open Source
 - PHP

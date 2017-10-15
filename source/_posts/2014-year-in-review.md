@@ -5,6 +5,7 @@ permalink: 2014-year-in-review
 date: 2014-12-31
 comments: true
 categories:
+- Meta
 tags:
 - Meta
 - Year In Review
@@ -111,6 +112,6 @@ Wow, another year gone by. Where does the time go? Well, considering I've writte
  * *Managers:* 3
  * *StackOverflow Rep Gained:* 18,378
  * *StackOverflow Answers Written:* 51
- 
+
 See you all next year!
 

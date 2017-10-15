@@ -5,6 +5,7 @@ permalink: an-opinion-on-future-of-php
 date: 2014-03-10
 comments: true
 categories:
+- Rant
 tags:
 - HHVM
 - Open Source

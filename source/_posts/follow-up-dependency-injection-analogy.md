@@ -5,6 +5,7 @@ permalink: follow-up-dependency-injection-analogy
 date: 2011-03-22
 comments: true
 categories:
+- Architecture
 tags:
 - Best Practice
 - Dependency Injection

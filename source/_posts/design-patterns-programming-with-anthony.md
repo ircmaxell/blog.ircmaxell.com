@@ -5,6 +5,7 @@ permalink: design-patterns-programming-with-anthony
 date: 2013-02-20
 comments: true
 categories:
+- Video
 tags:
 - Design Patterns
 - Object Oriented Programming

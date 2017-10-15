@@ -5,6 +5,7 @@ permalink: designing-api-simplified-password
 date: 2012-11-16
 comments: true
 categories:
+- Architecture
 tags:
 - Answers
 - Architecture

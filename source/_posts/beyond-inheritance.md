@@ -5,6 +5,7 @@ permalink: beyond-inheritance
 date: 2013-11-04
 comments: true
 categories:
+- Programming
 tags:
 - Beyond
 - Language Agnostic

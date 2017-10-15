@@ -5,6 +5,7 @@ permalink: its-all-about-time
 date: 2014-11-28
 comments: true
 categories:
+- Security
 tags:
 - PHP
 - PHP-Internals
@@ -52,6 +53,7 @@ if ($_GET['secret'] !== $secret) {
 }
 
 ```
+
 To understand what's going on, we need to look at [`is_identical_function` from PHP's source code](http://lxr.php.net/xref/PHP_TRUNK/Zend/zend_operators.c#is_identical_function). If you look at that function, you'll see that the result is defined by the following case:
 
 ```php
@@ -65,55 +67,23 @@ case IS_STRING:
     break;
 
 ```
+
 The `if` basically is asking if both variables are the same variable (like `$secret === $secret`). In our case, that's not possible, so we only need to look at the `else` block.
 
 ```php
 Z_STRLEN_P(op1) == Z_STRLEN_P(op2)
 
 ```
+
 So we immediately return if the string lengths don't match.
 
 That means that more work is done if the strings are the same length!
 
 If we time how long it takes to execute different lengths, we would see something like this:
 
-<table><thead><tr><th align="center">length</th>
-  <th align="center">time run 1</th>
-  <th align="center">time run 2</th>
-  <th align="center">time run 3</th>
-  <th align="center">average time</th></tr></thead><tbody><tr><td align="center">7</td>
-  <td align="center">0.01241</td>
-  <td align="center">0.01152</td>
-  <td align="center">0.01191</td>
-  <td align="center">0.01194</td></tr><tr><td align="center">8</td>
-  <td align="center">0.01151</td>
-  <td align="center">0.01212</td>
-  <td align="center">0.01189</td>
-  <td align="center">0.01184</td></tr><tr><td align="center">9</td>
-  <td align="center">0.01114</td>
-  <td align="center">0.01251</td>
-  <td align="center">0.01175</td>
-  <td align="center">0.01180</td></tr><tr><td align="center">10</td>
-  <td align="center">0.01212</td>
-  <td align="center">0.01171</td>
-  <td align="center">0.01120</td>
-  <td align="center">0.01197</td></tr><tr><td align="center">11</td>
-  <td align="center">0.01210</td>
-  <td align="center">0.01231</td>
-  <td align="center">0.01216</td>
-  <td align="center">0.01219</td></tr><tr><td align="center">12</td>
-  <td align="center">0.01121</td>
-  <td align="center">0.01211</td>
-  <td align="center">0.01194</td>
-  <td align="center">0.01175</td></tr><tr><td align="center">13</td>
-  <td align="center">0.01142</td>
-  <td align="center">0.01174</td>
-  <td align="center">0.01251</td>
-  <td align="center">0.01189</td></tr><tr><td align="center">14</td>
-  <td align="center">0.01251</td>
-  <td align="center">0.01121</td>
-  <td align="center">0.01141</td>
-  <td align="center">0.01171</td></tr></tbody></table>If you ignore the average column, you'll notice that there doesn't appear to be much of a pattern. The numbers are all within reason of each other.
+<table><thead><tr><th align="center">length</th><th align="center">time run 1</th><th align="center">time run 2</th><th align="center">time run 3</th><th align="center">average time</th></tr></thead><tbody><tr><td align="center">7</td><td align="center">0.01241</td><td align="center">0.01152</td><td align="center">0.01191</td><td align="center">0.01194</td></tr><tr><td align="center">8</td><td align="center">0.01151</td><td align="center">0.01212</td><td align="center">0.01189</td><td align="center">0.01184</td></tr><tr><td align="center">9</td><td align="center">0.01114</td><td align="center">0.01251</td><td align="center">0.01175</td><td align="center">0.01180</td></tr><tr><td align="center">10</td><td align="center">0.01212</td><td align="center">0.01171</td><td align="center">0.01120</td><td align="center">0.01197</td></tr><tr><td align="center">11</td><td align="center">0.01210</td><td align="center">0.01231</td><td align="center">0.01216</td><td align="center">0.01219</td></tr><tr><td align="center">12</td><td align="center">0.01121</td><td align="center">0.01211</td><td align="center">0.01194</td><td align="center">0.01175</td></tr><tr><td align="center">13</td><td align="center">0.01142</td><td align="center">0.01174</td><td align="center">0.01251</td><td align="center">0.01189</td></tr><tr><td align="center">14</td><td align="center">0.01251</td><td align="center">0.01121</td><td align="center">0.01141</td><td align="center">0.01171</td></tr></tbody></table>
+
+If you ignore the average column, you'll notice that there doesn't appear to be much of a pattern. The numbers are all within reason of each other.
 
 But if you average a number of runs, you start to notice a pattern. You'll notice that length 11 takes longer (slightly) then the other lengths.
 
@@ -137,8 +107,8 @@ int memcmp(const void *s1, const void *s2, size_t n)
     }
     return 0;
 }
-
 ```
+
 Wait a tick! That returns *at the first difference* between two strings!
 
 So once we've identified the length of the string, we can try different strings to start detecting a difference:
@@ -151,8 +121,8 @@ dxxxxxxxxxx
 ...
 yxxxxxxxxxx
 zxxxxxxxxxx
-
 ```
+
 And through the same technique, wind up noticing a difference with "txxxxxxxxxx" taking **ever so slightly longer** than the rest.
 
 Why?
@@ -166,6 +136,7 @@ Let's look at what happens step by step in memcmp.
     
     If they are different, return immediately.
  3. And so on.
+
 So with `"axxxxxxxxxx"`, it only executes the first step (since the string we're comparing is `"thisismykey"`). But with `"txxxxxxxxxx"`, the first *and second* steps match. So it does more work, hence takes longer.
 
 So once you see that, you know `t` is the first character.
@@ -182,6 +153,7 @@ tyxxxxxxxxx
 tzxxxxxxxxx
 
 ```
+
 Do that for each character, and you're done. You've successfully deduced a secret!
 
 ### Protecting Against Comparison Attacks
@@ -218,8 +190,8 @@ function timingSafeEquals($safe, $user) {
     // They are only identical strings if $result is exactly 0...
     return $result === 0;
 }
-
 ```
+
 The second is to use PHP's built in [`hash_equals() function`](http://php.net/manual/en/function.hash-equals.php). This was added in 5.6 to do the same thing as our above code.
 
 **NOTE** In general, it's **not** possible to [prevent length leaks](http://security.stackexchange.com/questions/49849/timing-safe-string-comparison-avoiding-length-leak). So it's OK to leak the length. The important part is that it doesn't leak information about the difference of the two strings.
@@ -242,25 +214,17 @@ So that means that it needs to fetch the rest of the string from somewhere. This
 
 And since main memory is so slow, CPUs have little bits of memory on the CPU itself to act as a cache. In fact, they typically have 2 types of cache. They have L1 cache, which is specific to each core (each core gets its own L1 cache), a L2 cache, which is also specific to a core, and a L3 cache which is often shared across all cores on a single chip. Why 3 tiers? Because of speed:
 
-<table><thead><tr><th align="left">Memory Type</th>
-  <th align="left">Size</th>
-  <th align="left">Latency</th></tr></thead><tbody><tr><td align="left">L1 Cache</td>
-  <td align="left">32kb</td>
-  <td align="left">0.5 ns</td></tr><tr><td align="left">L2 Cache</td>
-  <td align="left">256kb</td>
-  <td align="left">2.5 ns</td></tr><tr><td align="left">L3 Cache</td>
-  <td align="left">4-16MB</td>
-  <td align="left">10-20 ns</td></tr><tr><td align="left">RAM</td>
-  <td align="left">LOTS</td>
-  <td align="left">60 - 100 ns</td></tr></tbody></table>So let's look at what happens when you do `string[index]` on a C string (`char \*`, a character array). Imagine you have this code:
+<table><thead><tr><th align="left">Memory Type</th><th align="left">Size</th><th align="left">Latency</th></tr></thead><tbody><tr><td align="left">L1 Cache</td><td align="left">32kb</td><td align="left">0.5 ns</td></tr><tr><td align="left">L2 Cache</td><td align="left">256kb</td><td align="left">2.5 ns</td></tr><tr><td align="left">L3 Cache</td><td align="left">4-16MB</td><td align="left">10-20 ns</td></tr><tr><td align="left">RAM</td><td align="left">LOTS</td><td align="left">60 - 100 ns</td></tr></tbody></table>
+
+So let's look at what happens when you do `string[index]` on a C string (`char \*`, a character array). Imagine you have this code:
 
 ```php
 char character_at_offset(const char *string, size_t offset) 
 {
     return string[offset]
 }
-
 ```
+
 The compiler will compile that as:
 
 ```php
@@ -280,8 +244,8 @@ character_at_offset:
     .cfi_def_cfa 7, 8
     ret
     .cfi_endproc
-
 ```
+
 There's a lot of noise in there though. Let's trim it down to a non-functional, but more appropriate size:
 
 ```php
@@ -290,8 +254,8 @@ character_at_offset:
     movzbl  (%rax), %eax
     popq    %rbp
     ret
-
 ```
+
 The function takes two arguments, one of which is a pointer (the first element of the string), the second is an integer offset. It adds the two together to get the memory address of the character we want. Then, `movzbl` moves a single byte from that address and store it in `%eax` (it also zero's out the rest).
 
 So, how does the CPU know where to find that memory address?
@@ -316,6 +280,7 @@ Let's imagine we fetch the following offsets:
 
  * `offset 10`
  * `offset 1`
+
 The first fetch will cause a cache miss, which will load from main memory into the caches.
 
 But the second fetch (`offset 1`) will fetch from L1 cache, since it's likely to be on the same cache line (memory block) as `offset 10` was. So it's likely to be a cache hit.
@@ -333,6 +298,7 @@ Now that seems really far fetched, right? I mean, how often do you fetch informa
 There is only one practical way of defending against this style attack:
 
  1. Don't index arrays (or strings) by secrets.
+
 It's really that simple.
 
 ## Branching Based Timing Attacks
@@ -349,8 +315,8 @@ if ($user && password_verify($_POST['password'], $user->password)) {
     return true;
 }
 return false;
-
 ```
+
 Surely that's secure?
 
 Well, there is information leak there.
@@ -379,8 +345,8 @@ if ($user) {
     password_verify("", DUMMY_HASH);
 }
 return false;
-
 ```
+
 Which means that you run `password_verify` on both cases. This cuts out the `0.1` second difference.
 
 But the core timing attack still exists. The reason is that the database will take a slightly different amount of time to return the query for one where it found the user, and one where it didn't. This is because internally, it's doing a lot of branching and conditional logic, and it eventually needs to transmit the data over the wire back to the program.
@@ -415,11 +381,12 @@ Random delays don't work. But we can effectively use delays in two ways. The fir
         // make it take a maximum of 0.1 milliseconds
         time_nanosleep(0, abs($hash % 100000));
     }
-    
     ```
+
     Then just pass the user input used into the delay function. That way, as the user changes thier input, the delay will change as well. But it will change in the same way, such that they won't be able to average it out with statistical techniques.
     
     Note that I used `crc32()`. This doesn't need to be a cryptographic hash function. Since we're just deriving an integer, we shouldn't need to worry about collisions. If you wanted to be safer, you could replace it with a SHA-2 function, but I'm not sure it's worth the speed loss.
+
  2. **Make the operation take a minimum time (clamping)**
     
     So, one idea that many have floated is to "clamp" an operation to a specific runtime (or more accurately, make it take *at least* a certain runtime).
@@ -437,8 +404,8 @@ Random delays don't work. But we can effectively use delays in two ways. The fir
         }
         return $return;
     }
-    
     ```
+
     So you could then say that comparison must take a minimum amount of time. So instead of trying to make comparison take constant time, you simply make it take constant time.
     
     So, you could clamp equals to say 100 nano seconds (`clamp("strcmp", [$secret, $user], 100)`).
@@ -450,6 +417,7 @@ Random delays don't work. But we can effectively use delays in two ways. The fir
      * It's exceedingly fragile. If you make the time too short, you lose all of your protection. If you make it too long, you risk adding un-necessary delay into your application (which can then expose DOS risks if you're not careful).
      * It doesn't actually protect anything. It just masks the problem. I consider this a form of security through obscurity. That doesn't mean it isn't useful or effective. It just means it's risky. It's hard to know if it's actually effectively making you more secure or just letting you sleep better at night. When used in layers, it may be OK.
      * It doesn't protect against local attackers. If an attacker can get code on the server (even unprivileged, on a different user account, such as a shared server), then they can view CPU usage and hence potentially see past the sleep. This is a stretch, and there are likely far more effective attacks in that situation, but it's worth noting at least.
+
 ## Defend Against DOS Attacks
 
 All of these techniques take a lot of requests. They are based on statistical techniques that rely on large amounts of data to effectively "average out" noise.
@@ -472,6 +440,7 @@ There's currently a thread on PHP internals about whether to make certain core f
  * `base64_decode`
  * `mcrypt_encrypt`
  * `mcrypt_decrypt`
+
 Now, why those functions? Well, `bin2hex` and `base64_encode` are quite often used when encoding output to browsers (encoding session parameters for example). The more important ones however are the `hex2bin` and `base64_decode`, as they can be used for decoding secret information (like a key prior to using it for encryption).
 
 The consensus among most of the respondents *so far* has been that it's not worth making them all slower just to get more safety. And I agree with that.
@@ -494,6 +463,7 @@ However, there are a few functions that I believe **must** be continuously audit
  * `sha1()`
  * `strlen()`
  * `substr()`
+
 Basically, anything we *know* will be used with sensitive information, or will be used as a primitive in sensitive operations.
 
 As far as the rest of the string functions, either there's no need for them to be made timing safe (like `lcfirst` or `strpos`) or it's impossible (like `trim`) or it's already done (like `strlen`) or it has no business being in PHP (like `hebrev`)...
@@ -512,8 +482,8 @@ It's the difference between:
 for ($i = 0; $i < strlen($_GET['input']); $i++) {
     $input .= $_GET['input'][$i];
 }
-
 ```
+
 Which is variable time but leaks nothing that's secret,
 
 And
@@ -524,8 +494,8 @@ for ($i = 0; $i < strlen($_GET['input']); $i++) {
     $time += abs(ord($_GET['input'][$i]) - ord($secret[$i]));
 }
 sleep($time);
-
 ```
+
 Now, that's an absurd example. But it demonstrates that both will vary time based upon the input, but one also varies based upon the secret we're trying to protect. That's what we mean when we say "constant time", not varying based on the **value** of the secret.
 
 ### What About Clamping To A Specific Runtime?

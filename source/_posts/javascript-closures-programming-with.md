@@ -5,6 +5,7 @@ permalink: javascript-closures-programming-with
 date: 2013-01-02
 comments: true
 categories:
+- Video
 tags:
 - Closures
 - PHP

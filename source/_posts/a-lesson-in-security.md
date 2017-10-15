@@ -5,6 +5,7 @@ permalink: a-lesson-in-security
 date: 2014-10-31
 comments: true
 categories:
+- Security
 tags:
 - Anatomy of an Attack
 - Drupal
@@ -106,7 +107,7 @@ There are a few compounding problems that made this vulnerability far worse than
     
      1. On old versions of MySQL (before 5.1), real prepared statements skipped query cache
      2. Real prepared statements are marginally slower (due to a second network round trip for the data)
-     
+
     Normally, this is only a theoretical risk. In fact, prior to this attack, I was OK with them using emulated prepares. But there's one killer problem with emulated prepares that turned the primary vulnerability from "Huge" to downright MASSIVE.
     
     MySQL prepared statements are limited to a single query. So

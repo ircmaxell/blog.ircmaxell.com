@@ -5,6 +5,7 @@ permalink: framework-fixation-anti-pattern
 date: 2012-07-27
 comments: true
 categories:
+- Rant
 tags:
 - Anti-Paradigm
 - Anti-Pattern
@@ -19,7 +20,7 @@ tags:
 - Programming
 ---
 
-In this day in age, it seems that the community trend is completely and unequivocally trending towards the use of web application frameworks. So much so that the defacto first comment to someone asking how to do something seems to be `"Just use a framework, and it'll solve the problem for you." `While I completely understand why this is the case, I can't say that I agree with it. And while I do believe that frameworks serve a purpose, I think that they are vastly over-used. Let me explain why...<!--more-->
+In this day in age, it seems that the community trend is completely and unequivocally trending towards the use of web application frameworks. So much so that the defacto first comment to someone asking how to do something seems to be *"Just use a framework, and it'll solve the problem for you."* While I completely understand why this is the case, I can't say that I agree with it. And while I do believe that frameworks serve a purpose, I think that they are vastly over-used. Let me explain why...<!--more-->
 
 ## What Is A Framework
 

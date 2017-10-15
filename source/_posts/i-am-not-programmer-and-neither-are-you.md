@@ -5,6 +5,7 @@ permalink: i-am-not-programmer-and-neither-are-you
 date: 2012-11-09
 comments: true
 categories:
+- Meta
 tags:
 - Good Enough
 - Learning

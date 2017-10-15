@@ -5,6 +5,7 @@ permalink: a-followup-to-open-letter-to-php-fig
 date: 2014-10-17
 comments: true
 categories:
+- Architecture
 tags:
 - Architecture
 - Composition

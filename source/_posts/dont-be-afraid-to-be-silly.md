@@ -5,6 +5,7 @@ permalink: dont-be-afraid-to-be-silly
 date: 2013-01-07
 comments: true
 categories:
+- Meta
 tags:
 - Architecture
 - Best Practice

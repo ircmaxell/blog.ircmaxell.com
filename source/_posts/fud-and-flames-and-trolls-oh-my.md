@@ -5,6 +5,7 @@ permalink: fud-and-flames-and-trolls-oh-my
 date: 2014-10-13
 comments: true
 categories:
+- Rant
 tags:
 - Community
 - Conference

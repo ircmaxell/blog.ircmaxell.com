@@ -5,6 +5,7 @@ permalink: a-beginners-guide-to-mvc-for-web
 date: 2014-11-21
 comments: true
 categories:
+- Programming
 tags:
 - Anti-Pattern
 - Architecture

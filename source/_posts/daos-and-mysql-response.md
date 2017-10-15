@@ -5,6 +5,7 @@ permalink: daos-and-mysql-response
 date: 2012-07-25
 comments: true
 categories:
+- Programming
 tags:
 - Answers
 - Database
@@ -16,7 +17,9 @@ tags:
 - Programming
 ---
 
-In response to last week's ask for questions, I received a number of questions that I'd like to address. Since it would only do the question justice to have a dedicated post for each question. So I'm going to try to do one post per week on a user-submitted question (probably on Wednesday, but no promises). This week's question is a rather abstract one:> `I've been learning a lot about service layers and managers and domain objects and one thing really confuses me. Why is MySQL being turned into a non-relational database? It has so much power, so much flexibility, but it seems like many programmers want to abstract it to the point of near uselessness.`
+In response to last week's ask for questions, I received a number of questions that I'd like to address. Since it would only do the question justice to have a dedicated post for each question. So I'm going to try to do one post per week on a user-submitted question (probably on Wednesday, but no promises). This week's question is a rather abstract one: 
+
+> I've been learning a lot about service layers and managers and domain objects and one thing really confuses me. Why is MySQL being turned into a non-relational database? It has so much power, so much flexibility, but it seems like many programmers want to abstract it to the point of near uselessness.
 
 
 Now, there are so many facets to that question that it's hard to find a starting point. But let's try:<!--more-->

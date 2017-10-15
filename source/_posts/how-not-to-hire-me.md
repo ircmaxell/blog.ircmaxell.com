@@ -5,6 +5,7 @@ permalink: how-not-to-hire-me
 date: 2011-07-28
 comments: true
 categories:
+- Rant
 tags:
 - Rant
 - WTF

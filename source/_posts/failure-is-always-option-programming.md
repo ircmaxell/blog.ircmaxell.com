@@ -5,6 +5,7 @@ permalink: failure-is-always-option-programming
 date: 2013-03-29
 comments: true
 categories:
+- Video
 tags:
 - Education
 - Language Agnostic

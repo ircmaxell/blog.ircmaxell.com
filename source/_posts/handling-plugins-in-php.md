@@ -5,6 +5,7 @@ permalink: handling-plugins-in-php
 date: 2012-03-09
 comments: true
 categories:
+- Architecture
 tags:
 - Design Patterns
 - Events
@@ -29,7 +30,9 @@ These patterns are designed to handle communication between disjoint objects.
 
 
 
-So a quick simple example would be:```php
+So a quick simple example would be:
+
+```php
 class Subject implements SplSubject{
     protected $observers = array();
     public function attach(SplObserver $observer) {
@@ -76,6 +79,7 @@ The other communication pattern is the [Mediator Pattern](http://sourcemaking.co
 
 
 A quick example:
+
 ```php
 class Mediator {
     protected $events = array();
@@ -121,6 +125,7 @@ The [Strategy Pattern](http://sourcemaking.com/design_patterns/strategy) is used
 
 
 If you use Dependency Injection, then a strategy pattern would flow right from that, in that to switch the strategy for an object, you just pass in a different dependency:
+
 ```php
 interface CallHomeStrategy {
     public function sendMessage($message);
@@ -158,6 +163,7 @@ The [Decorator Pattern](http://sourcemaking.com/design_patterns) is used to add 
 
 
 An example:
+
 ```php
 class BlogPost {
     public function getTitle() {}
@@ -222,6 +228,7 @@ The [Chain of Responsibility](http://sourcemaking.com/design_patterns/chain_of_r
 
 
 The example is pretty easy:
+
 ```php
 class Chain {
     protected $chain = array();

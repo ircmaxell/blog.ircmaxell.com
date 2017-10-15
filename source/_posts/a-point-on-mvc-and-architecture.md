@@ -5,6 +5,7 @@ permalink: a-point-on-mvc-and-architecture
 date: 2014-12-02
 comments: true
 categories:
+- Architecture
 tags:
 - Anti-Pattern
 - Architecture

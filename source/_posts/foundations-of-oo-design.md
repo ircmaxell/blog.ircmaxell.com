@@ -5,6 +5,7 @@ permalink: foundations-of-oo-design
 date: 2014-10-29
 comments: true
 categories:
+- Architecture
 tags:
 - Architecture
 - Best Practice

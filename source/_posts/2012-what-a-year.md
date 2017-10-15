@@ -5,6 +5,7 @@ permalink: 2012-what-a-year
 date: 2012-12-30
 comments: true
 categories:
+- Meta
 tags:
 - Meta
 - PHP
@@ -99,7 +100,7 @@ Well, 2012 is wrapping up. What a year it has been! Here's a partial recap of so
  * `Unique Video Views on YouTube:` 7,200
  * `Estimated Total Time Producing:` Over 30 Hours
  * `Total Ad Revenue:` $11
- 
+
 ## Some Interesting Numbers (Me):
 
  * `New Twitter Followers:` About 800

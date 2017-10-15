@@ -5,6 +5,7 @@ permalink: anatomy-of-attack-how-i-hacked
 date: 2012-11-12
 comments: true
 categories:
+- Security
 tags:
 - Anatomy of an Attack
 - PHP

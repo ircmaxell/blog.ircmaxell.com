@@ -5,6 +5,7 @@ permalink: beyond-object-oriented-programming
 date: 2013-11-11
 comments: true
 categories:
+- Programming
 tags:
 - Beyond
 - Functional Programming

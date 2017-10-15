@@ -5,6 +5,7 @@ permalink: dimensional-analysis
 date: 2015-03-16
 comments: true
 categories:
+- Programming
 tags:
 - Analysis
 - Engineering

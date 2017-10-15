@@ -5,6 +5,7 @@ permalink: alternatives-to-mvc
 date: 2014-11-24
 comments: true
 categories:
+- Architecture
 tags:
 - Architecture
 - Design Patterns

@@ -5,6 +5,7 @@ permalink: backwards-compatibility-is-for-suckers
 date: 2013-06-25
 comments: true
 categories:
+- Programming
 tags:
 - Anti-Pattern
 - Best Practice

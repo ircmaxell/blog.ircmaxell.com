@@ -5,7 +5,7 @@ permalink: building-8-bit-computer
 date: 2017-02-08
 comments: true
 categories:
-- Programming
+- Hobby
 tags:
 - 8-bit Computer
 - Arduino

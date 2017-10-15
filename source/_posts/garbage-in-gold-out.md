@@ -5,6 +5,7 @@ permalink: garbage-in-gold-out
 date: 2012-08-06
 comments: true
 categories:
+- Programming
 tags:
 - Anti-Paradigm
 - Best Practice

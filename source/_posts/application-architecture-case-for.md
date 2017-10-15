@@ -5,6 +5,7 @@ permalink: application-architecture-case-for
 date: 2012-06-07
 comments: true
 categories:
+- Architecture
 tags:
 - Architecture
 - Design Patterns
