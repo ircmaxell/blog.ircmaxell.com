@@ -22,7 +22,6 @@ hexo.extend.generator.register('feed', function(locals) {
   let config = this.config;
 
   let posts = locals.posts.sort('-date').filter(function(post) {
-    console.log(post.tags)
     return post.draft !== true;
   }).limit(10);
   
