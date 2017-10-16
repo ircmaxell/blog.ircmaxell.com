@@ -5,6 +5,7 @@ permalink: upcoming-appearances-winter-20122013
 date: 2012-12-13
 comments: true
 categories:
+- Slides
 tags:
 - Community
 - Conference
@@ -17,8 +18,6 @@ tags:
 I've got a few talks coming up in the near future, so if you can make one of these events, be sure to come say hi to me!
 
 <!--more-->
-
-## 
 
 ## [PHP Master Series Volume 1](http://blog.calevans.com/2012/11/19/php-master-series-vol-1/)
 
@@ -43,10 +42,8 @@ Where: Antwerp, Belgium
 Topic(s): Password Storage (and Hacking) in PHP
 
 Tickets: [http://shop.phpbenelux.eu/](http://shop.phpbenelux.eu/)
-## 
 
 ## [SunShine PHP](http://sunshinephp.com/)
-
 
 This first year conference is going to be a blast. The organizers have been really doing a great job promoting the conference and it's been getting some good buz the community. I've been selected to give my Cryptography talk there.
 
@@ -58,7 +55,6 @@ Where: Miami, Florida, USA
 Topic(s): Cryptography For The Average Developer
 
 Tickets: [http://sunshinephp.com/register/](http://sunshinephp.com/register/)
-## 
 
 ## [MidWest PHP](http://www.midwestphp.com/)
 

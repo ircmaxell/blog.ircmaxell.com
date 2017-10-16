@@ -5,6 +5,7 @@ permalink: thoughts-on-design-of-apis
 date: 2015-03-24
 comments: true
 categories:
+- Architecture
 tags:
 - API
 - Architecture
@@ -48,7 +49,7 @@ In reality however, we're not often the ones using our own APIs. Often, it's an 
 
 Security APIs are some of the worst offenders of this. Take [`scrypt()`](https://en.wikipedia.org/wiki/Scrypt). The function signature is (at a high level):
 
-```php
+```c
 string scrypt(
     string password, 
     string salt, 
@@ -57,8 +58,8 @@ string scrypt(
     int p, 
     int resultLength
 )
-
 ```
+
 To someone who has read [the academic paper about scrypt](http://www.tarsnap.com/scrypt/scrypt.pdf), that makes sense. To everyone else, "*what???*". Heck, I've read the paper (a few times) and still would have trouble reciting from memory the precise relationships between the parameters.
 
 But that's not really fair. `scrypt()` as a function wasn't really designed for the every day developer. It was designed as a cryptographic primitive to be implemented by security experts. And in that sense, it works pretty well (though we could talk about the naming of `N`, `r` and `p`).
@@ -67,7 +68,7 @@ What's missing here though is an API for normal developers to implement. There a
 
 Let's say that again, because it's important.
 
-> **Normal users are forced to make a bad tradeoff between implementing something they don't understand and implementing a worse alternative.**
+> Normal users are forced to make a bad tradeoff between implementing something they don't understand and implementing a worse alternative.
 
 ## Limiting Tradeoffs Developers Need To Make
 
@@ -77,8 +78,8 @@ This is what I tried to do with [`password_hash()`](http://php.net/password_hash
 
 ```php
 string password_hash(string password, int algorithm, array options)
-
 ```
+
 I made some assumptions (you wanted to use bcrypt with `$2y`, you wanted a generated salt, etc). Then I implemented a simple API that matched those assumptions. If those assumptions failed, you have other alternatives (you can use `crypt()` directly, or another API). But for the average developer, they don't need to make the tradeoffs because they were already made.
 
 This technique is definitely not perfect. It's quite hard to get the tradeoff line right. For example, I think I made a big mistake with `password_hash()` allowing the user to specify a salt manually. In all (literally *all*) the cases I've seen users specifying a salt manually, it's either of a lower quality than would be generated automatically, or it's worse than that.
@@ -104,8 +105,8 @@ interface ShoppingTransaction {
     public function __construct(ServiceLocator $locator);
     public function pay(string $creditcard);
 }
-
 ```
+
 In this case, we can see that creating a new `ShoppingTransaction` requires passing in a `ServiceLocator` instance. This is a Law of Demeter violation. In the classic sense, it means that `ShoppingTransaction` must know internal details about `ServiceLocator` and how it can get a `PaymentGateway` instance to process the credit card transaction.
 
 In our new way of looking at it though, it tells an entirely different story. We look at the interface, and we have no idea how it works. We know that it works, but we don't know why. If we were familiar with the architecture of the application, we *might* say something like *"Well, I know that there's a PaymentGateway somewhere in the application, the ShoppingTransaction is probably fetching that from the ServiceLocator and using that to process the payment"*. But even that's a guess. You really don't know what's going on because you need intimate knowledge of the application and the implementation to understand it.
@@ -117,8 +118,8 @@ interface ShoppingTransaction {
     public function __construct(PaymentGateway $gateway);
     public function pay(string $creditcard);
 }
-
 ```
+
 Now this is far easier to understand from a high level. We can fairly safely assume that *"ShoppingTransaction uses a PaymentGateway to process the payment"*. You know what the API does with as little knowledge of the rest of the system as possible. Yes, we reduced the code's coupling. Yes, we've followed LoD. But really, we've made it easier for the *user* to understand and use the API. And that's the key thing people miss about LoD. It's not about some magical constraint of the code. It's about the person using the code.
 
 ## Wrapping up
@@ -127,6 +128,7 @@ So far, we have two very simple rules of thumb:
 
  * Design your APIs specifically for your target user
  * Design your APIs to require the least amount of target-user knowledge as possible
+ 
 It's really easy to go overboard on both accounts. It's easy to design 20 different versions of the same API to target slightly different users. It's also easy to try to build APIs that have 50 parameters to avoid having another class to know about.
 
 The key here is moderation. Try to keep your *target* user in mind when designing APIs (even functions/methods).

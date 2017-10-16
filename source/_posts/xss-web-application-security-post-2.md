@@ -5,6 +5,7 @@ permalink: xss-web-application-security-post-2
 date: 2011-04-01
 comments: true
 categories:
+- Security
 tags:
 - PHP
 - Security
@@ -12,7 +13,7 @@ tags:
 - XSS
 ---
 
-In the [first post of this series](http://blog.ircmaxell.com/2011/03/what-is-security-web-application.html), we looked at some fundamental concepts of Web Application Security, and introduced the concept of `Filter In, Escape Out`.  In today's post, we will be examining the single most prolific vulnerability plaguing web applications today: Cross-Site Scripting (otherwise known as XSS).  Not only is it prolific, it's also commonly under-estimated and is often just a low priority after-thought.  In reality, XSS is a formidable threat and needs to be treated as such.
+In the [first post of this series](http://blog.ircmaxell.com/2011/03/what-is-security-web-application.html), we looked at some fundamental concepts of Web Application Security, and introduced the concept of *Filter In, Escape Out*.  In today's post, we will be examining the single most prolific vulnerability plaguing web applications today: Cross-Site Scripting (otherwise known as XSS).  Not only is it prolific, it's also commonly under-estimated and is often just a low priority after-thought.  In reality, XSS is a formidable threat and needs to be treated as such.
 
 <!--more-->
 ## What Is Cross-Site Scripting?
@@ -20,14 +21,13 @@ In the [first post of this series](http://blog.ircmaxell.com/2011/03/what-is-sec
 In one sentence, we could summarize XSS as: A user having the ability to inject a client-side script into a web page to be executed by other uses.  Now, what does that mean exactly?  Well, client-side scripts include any programming language that's designed to run in the browser or on the client's computer.  This can be JavaScript, but it also can be Flash, SilverLight, Java Applets, ActiveX Controls or VBScript.  Let's take an example to demonstrate the concept.  Let's say you have the following code:
 
 ```php
-<input type="text" value="" />
-
+<input type="text" value="<?= $_GET['user']; ?>" />
 ```
 
 
 What happens if a user passes in the following for $_GET['user']:
 
-```php
+```html
 foo"/><script type="javascript">alert("hi");</script><br class="
 
 ```
@@ -35,13 +35,12 @@ foo"/><script type="javascript">alert("hi");</script><br class="
 
 The following will be the generated HTML (whitespace added for clarity):
 
-```php
+```html
 <input type="text" value="foo"/>
   <script type="text/javascript">alert("hi");</script>
 <br class="" />
 
 ```
-
 
 As you should be able to see, we've now just performed an XSS attack!  In practice, the injected content will not be a simple alert, but something far worse...
 
@@ -62,14 +61,15 @@ There are two main types of XSS attacks.  The difference is actually rather sim
  1. Drive By XSS:
     ```php
     <b><?php echo $_GET['foo']; ?></b>
-    
     ```
+
     - This is a drive by XSS vulnerability since the compromised data is not stored.
+
  2. Persistent XSS ($row comes from the database):
     ```php
     <b><?php echo $data['username']; ?></b>
-    
     ```
+
     - This is a persistent XSS vulnerability since the compromised data was stored in the database prior to display.
 
 
@@ -92,7 +92,6 @@ So, how do we protect Unformatted Content from XSS vulnerabilities?  Using a sin
 **Unsafe Code**
 ```php
 <b><?php echo $data['username']; ?></b>
-
 ```
 
 **Safe Code** (Split out onto multiple lines for readability)
@@ -104,12 +103,9 @@ So, how do we protect Unformatted Content from XSS vulnerabilities?  Using a sin
         'UTF-8'
     ); 
 ?></b>
-
 ```
 
-
 Note the usage of the character set parameter.  This is extremely important both for preventing additional attacks, and for preserving your content.  Make sure that you populate it correctly for the content you are displaying!
-
 
 If you're using a templating engine such as [Twig](http://www.twig-project.org/) or [Smarty](http://www.smarty.net/), this should be done for you automatically.  However you still need to consult the documentation for the library that you are using to make sure that you are using it properly.  Each engine has the ability to be bypassed, so don't fall into the trap where you assume that you're safe just because you're using a templating engine.
 
@@ -117,9 +113,7 @@ If you're using a templating engine such as [Twig](http://www.twig-project.org/)
 
 This is a special type of content that uses non-HTML markup to introduce formatting into the data.  There are actually several methods of formatting that can be used for Formatted Content including BBCode, MarkDown, Wiki Syntax, Textile and Plain Text Formatting (using <pre>).
 
-
 Unfortunately, protecting Formatted Content is really dependent upon the formatting and the formatter that you use.  My suggestion would be to be very careful about using third party libraries unless they are reasonably popular and well maintained.  There are a lot of implementations out there that were designed to function well, but were not designed with any thought of security and XSS prevention. 
-
 
 As far as how to prevent XSS when writing a formatting library, I would suggest a good place to start is by being merciless and stripping out all unnecessary HTML right from the start.  When I say unnecessary, I mean that you should come up with a white-list of allowed HTML tags for the formatter, and strip everything else.  Then render the formatting into HTML.  Then, pass it back into a filter and strip out any attributes that may be dangerous while at the same time filtering those that exist to a white-list of known and acceptable values.  We'll cover that more when we discuss HTML Content.
 
@@ -131,12 +125,9 @@ This content type uses HTML markup to format data.  That poses a very unique pr
 
 Well, we know that we should filter input and escape output.  But when should we do that?  Should we do that when the data is stored?  Should we do it when the data is outputted?  Well, the best solution is to filter it when it comes in, and escape it when it goes out (Big surprise, I know).  So what does that mean from a practical standpoint? 
 
-
 When filtering input, you should figure out what acceptable values for the particular content item are first.  Then, you should filter the input to those acceptable values.  So if you only want to allow alpha-numeric characters in a username, then when receiving input you should filter appropriately and reject any usernames that do not match appropriately.  By doing this diligently, only acceptable values should ever enter the database.
 
-
 When escaping output, you should always escape just prior to output.  Never store an escaped string!  The reason for that is twofold.  First, you can never be 100% sure your escaping works perfectly.  So if you escape when you display, any fixes that you apply will work for all content rather than just new content.  Second, you can never be sure of the context with which you will be displaying the data when you store it.  Sure, you may only support HTML output now,  but what if requirements in the future change and you need to support another output format?  By escaping it only when you are finally going to display the data, you're making yourself flexible and safe at the same time.
-
 
 When we introduce the concept of formatted content, we're also introducing a rather interesting question: "When do you render formatted content into HTML?".  I would also suggest that you render the formatted content when you output the content.  It does add a slight performance penalty, but it's worth while for the same reasons you shouldn't escape prior to storing the data.  The same should also be said for sanitization of user-submitted HTML content.  In short, you should always take care of any XSS cleaning methods you will apply right before you finally output the data.
 
@@ -150,5 +141,6 @@ When we introduce the concept of formatted content, we're also introducing a rat
 ## Conclusion
 
 Now we've covered the single biggest vulnerability plaguing websites today.  It's not that hard of a concept to understand.  And it's not that hard of a vulnerability to circumvent.  We will be referencing this concept of Cross Site Scripting again in later articles, so be sure that you understand the concepts here as well as those we talked about in the first post of the series!  And as usual, feel free to leave a comment if there's anything that's not clear.
+
  1. [What Is Security - Web Application Security Series - Post 1](http://blog.ircmaxell.com/2011/03/what-is-security-web-application.html)
  2. XSS - Web Application Security Series - Post 2

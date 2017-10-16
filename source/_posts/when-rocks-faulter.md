@@ -5,6 +5,7 @@ permalink: when-rocks-faulter
 date: 2014-10-22
 comments: true
 categories:
+- Rant
 tags:
 - Philosophy
 - PHP

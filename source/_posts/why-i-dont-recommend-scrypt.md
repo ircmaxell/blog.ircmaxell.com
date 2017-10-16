@@ -5,6 +5,7 @@ permalink: why-i-dont-recommend-scrypt
 date: 2014-03-12
 comments: true
 categories:
+- Security
 tags:
 - Cryptography
 - Language Agnostic
@@ -15,7 +16,6 @@ tags:
 ---
 As many of you likely know, I have a "thing" for password storage. I don't know what it is about it, but it fascinates me. So I try to keep up as best as I can on the latest trends. In the past few years, we've seen the rise of a new algorithm called scrypt (it's 5 years old actually). It's gaining more and more adoption. But I don't recommend its use in production systems **for password storage**. Let me explain why:
 <!--more-->
-
 
 ## Scrypt Design Criteria
 
@@ -41,27 +41,27 @@ Scrypt is basically composed of a chain of 4 operations (with Java-style pseudo-
     
     The input is expanded from the raw password and salt to a value that's 128 \* p \* r bytes long.
     
-    ```php
+    ```c
     byte[] blocks = new byte[128 * r * p];
     // Expand the password and salt to the full buffer length using a single iteration
     blocks = pbkdf2_sha256.hash(password, salt, 1, 128 * r * p);
-    
     ```
+
  2. Block Mixing
     
     The block array is then mixed (in block sizes of `128 \* r bytes`).
     
-    ```php
+    ```c
     for (int i = 0; i < p; i++) {
         blocks[128 * r * i : 128 * r] = roMix(r, blocks[128 * r * i : 128 * r], N);
     }
-    
     ```
+
     Note that this can be parallelized, since each iteration works on a separate chunk of data (they can be done in separate threads for example).
     
     The mixing algorithm:
     
-    ```php
+    ```c
     byte[128 * r] roMix(int r, byte[128 * r] block, int n) {
         byte[] X = block;
         byte[] V = new byte[128 * r * N];
@@ -76,7 +76,6 @@ Scrypt is basically composed of a chain of 4 operations (with Java-style pseudo-
         }
         return X;
     }
-    
     ```
     The blockmix function is pretty simple, just an implementation of the Salsa20/8 algorithm in a loop (not worth typing out).
     
@@ -85,11 +84,11 @@ Scrypt is basically composed of a chain of 4 operations (with Java-style pseudo-
     
     The block array is used as the salt in a single iteration of PBKDF2+SHA256 to compress the password again
     
-    ```php
+    ```c
     byte[] derivedKey = new byte[dkLen];
     derivedKey = pbkdf2_sha256.hash(password, blocks, 1, dkLen);
-    
     ```
+
 ## The First Limitation, Loop Unrolling
 
 So, one of the benefits of scrypt is that it uses a lot of memory to compute a hash. This means that, when used with appropriate settings, it should be extremely hard to parallelize scrypt. The reason for this is that existing commodity hardware (CPU and GPUs) are typically more memory constrained than they are computation constrained. So while a GPU can compute a small amount of memory in extreme parallel (upwards of 7,000 concurrent calculations), the added memory constraints of scrypt basically make ASIC attacks impractical (and, by chance, GPU attacks). Or at least that's the theory.
@@ -100,7 +99,7 @@ What that means for us, is that we can avoid pre-computing that original large a
 
 So, we can modify the mixing function above to the following:
 
-```php
+```c
 byte[128 * r] roMix(int r, byte[128 * r] block, int n) {
     byte[] X = block;
     // Create array
@@ -117,16 +116,16 @@ byte[128 * r] roMix(int r, byte[128 * r] block, int n) {
     }
     return X;
 }
-
 ```
+
 Let's check out an example using numbers. Using the recommended interactive parameters of:
 
-```php
+```c
 int N = 16384; // 2^14
 int r = 8;
 int p = 1;
-
 ```
+
 Using those values, we can compute the total amount of memory required as `128 \* r \* N + 128 \* r \* p`, which in this case be approximately 16mb.
 
 Using the attack described above, we could reduce that total amount to a little bit over `128 \* r \* p`, which would be in this case **1kb**.
@@ -141,13 +140,11 @@ And as it turns out, that is true. When we do the math on the above attack, it t
 
 I was the first person to identify and disclose this issue publicly [on this thread](https://drupal.org/comment/4675994#comment-4675994).
 
-
-            ]
 ## Tune-able Reduced Memory Usages
 
 The above loop traded off the entire large array for re-computation. We can actually take it a step futher tune the above attack to use the exact amount of memory we want. We can do this by storing only a portion of the values. If we want to half the memory usage, we'd store every other value, and then when requesting a value that's not there, re-compute it. For example:
 
-```php
+```c
 byte[128 * r] roMixHalf(int r, byte[128 * r] block, int n) {
     byte[] X = block;
     byte[] V = new byte[128 * r * N / 2];
@@ -167,8 +164,8 @@ byte[128 * r] roMixHalf(int r, byte[128 * r] block, int n) {
     }
     return X;
 }
-
 ```
+
 Using this method, you can reduce the memory by any integer factor you choose (powers of 2 are going to be easier). This allows you to tune to the system you're building or working with (less memory, more CPU).
 
 ## Further Proof

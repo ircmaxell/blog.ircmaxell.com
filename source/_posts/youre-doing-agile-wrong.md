@@ -5,6 +5,7 @@ permalink: youre-doing-agile-wrong
 date: 2014-10-27
 comments: true
 categories:
+- Process
 tags:
 - Agile
 - Best Practice
@@ -15,7 +16,6 @@ tags:
 - Scrum
 ---
 To some of you, this may not be new. But to many of the people preaching "Agile Software Development", Agile is not what you think it is. Let me say that again, because it's important: You're Doing Agile Wrong.
-
 
 <!--more-->
 ## What Is Agile
@@ -47,12 +47,15 @@ Well, to put it bluntly, everyone.
  * Do your developers *understand* the business impact of the feature they are working on?
     
     And **far** more importantly, do they believe it?
+
  * Do the executives *understand* the costs and challenges of development?
     
     And **far** more importantly, do they trust that information?
+
  * Do the business owners *understand* the technical architecture?
     
     And **far** more importantly, do they understand its limitations?
+
 ## How do you communicate?
 
 An iterative development model is fine. There's nothing wrong with it. But if you're only communicating (or allowing communication to happen) in the iterative cycles, you're doing something **incredibly** wrong.
@@ -95,7 +98,7 @@ You do a backlog review meeting, where you decide what you can actually build in
 
 Really, it feels like "agile", but really all it does is make the people who have process fetishes feel good inside.
 
-That's not to say it can't work. You can be \*\*extremely\* successful using Scrum. But not because of its process. Because you're communicating effectively.
+That's not to say it can't work. You can be **extremely** successful using Scrum. But not because of its process. Because you're communicating effectively.
 
 ## Effective Communication
 
@@ -108,16 +111,19 @@ I don't pretend to be an expert on communication. But here are a few things that
     It's really easy to think you're communicating effectively, but have both sides of the conversation take away completely different points.
     
     Instead, realize that sometimes that definition that you think is implied isn't, and you need to take an extra few seconds to explain what you really mean.
+
  * *Trust*
     
     The single most important factor in effective communication is trust. If you don't trust the person you're communicating with, you're not going to believe what they tell you.
     
     If you can't trust your team, you can't be effective. Bottom line.
+
  * *A Level Playing Field*
     
     Communication can only be effective if the people communicating are doing so on a level playing field. If an engineer is talking to a VP, the communication is going to be skewed unless they are talking on the same level. With equal weights as contributors to the conversation.
     
     That doesn't mean that everyone needs to be involved in every decision made, it just means that when you are communicating, you need to communicate as equals, no matter the role.
+
  * *A Safe Environment*
     
     There needs to be an absolute lack of fear around punishment or reprisal for negative information.
@@ -125,6 +131,7 @@ I don't pretend to be an expert on communication. But here are a few things that
     Someone who fears reprisal will withhold information. This is especially significant on under-performing or troubled teams.
     
     Look at teams that are behind schedule (and not by a small amount), and you'll tend to find that people usually know what the problem is. Yet if they're not able to communicate that, well, things go south quick.
+
  * *Chemistry*
     
     The most effective teams that I've ever seen have a sort of chemistry between each other. They "get" each other. They know when someone has a concern just by looking at them. They can communicate without words.
@@ -134,6 +141,7 @@ I don't pretend to be an expert on communication. But here are a few things that
     It takes time to build that sort of chemistry.
     
     That's not to say you can't be effective without chemistry, but that it can be a significant multiplier to it.
+    
 ## Naturally
 
 Naturally, it's not constructive to have an entire team involved in every decision. it's not constructive to have an entire company attend every meeting. There needs to be some line.

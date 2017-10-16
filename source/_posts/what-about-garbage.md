@@ -5,6 +5,7 @@ permalink: what-about-garbage
 date: 2014-12-03
 comments: true
 categories:
+- PHP
 tags:
 - Object Oriented Programming
 - Performance
@@ -22,7 +23,6 @@ The change was adding single line of code:
     public function run()
     {   
 +       gc_disable();
-
 ```
 That single line of code added caused literally a 90% reduction in runtime. Why?
 
@@ -43,21 +43,21 @@ PHP uses reference counted variables. That means that copying a variable doesn't
 ```php
 $a = "this is a long string";
 $b = $a;
-
 ```
+
 That results in two "pointers" to the same value. Let's go into C to look at the representation of this.
 
 It's called internally a [`zval`](http://lxr.php.net/xref/PHP_5_6/Zend/zend.h#334) (**Z**end **Val**ue). And it looks like this:
 
-```php
+```c
 struct _zval_struct {
     zvalue_value value;
     zend_uint refcount__gc;
     zend_uchar type;
     zend_uchar is_ref__gc;
 };
-
 ```
+
 Let's imagine that this is a PHP class:
 
 ```php
@@ -67,8 +67,8 @@ class Zval {
     public $refcount = 1;
     public $is_ref = false;
 }
-
 ```
+
 Value is just another data structure that can hold all of the possible values that can be stored. Type indicates which type the value is (defined by the [`IS_\*` definitions](http://lxr.php.net/xref/PHP_5_6/Zend/zend.h#581). The two interesting values are `refcount` and `is_ref`. Let's talk about them...
 
 So because values aren't copied internally when you copy a variable, there needs to be a mechanism to make sure that changes go to the correct variable. This mechanism is called [Copy-On-Write](http://en.wikipedia.org/wiki/Copy-on-write).
@@ -77,32 +77,32 @@ Basically, if you edit a variable who's value is referenced by more than one var
 
 ```php
 $a = "this is a long string";
-
 ```
+
 Will result in a variable `a` in a hash table, pointing to a `zval` instance with a value of string. We can imagine this:
 
 ```php
 $scope['a'] = new Zval();
 $scope['a']->type = IS_STRING;
 $scope['a']->value = "this is a long string";
-
 ```
+
 Right now, we don't need any of those other variables. So far, everything is happy.
 
 But what happens when we copy it?
 
 ```php
 $b = $a;
-
 ```
+
 Now what? Well, we "point" to the same value:
 
 ```php
 function copy($scope, $from, $to) {
     $scope[$to] = $scope[$from];
 }
-
 ```
+
 And thanks to object references, we aren't duplicating anything! Awesome!
 
 But what happens if we now change one of them? Well, we change both. And we have no way of detecting those changes. So we need to add one.
@@ -114,8 +114,8 @@ function copy($scope, $from, $to) {
     $scope[$to] = $scope[$from];
     $scope[$to]->refcount++;
 }
-
 ```
+
 Great! Now we can detect how many references there are!
 
 Now what?
@@ -124,8 +124,8 @@ Let's now modify one of them. Let's change `$a` to another value:
 
 ```php
 $a = "something else";
-
 ```
+
 Internally, we'd have a check like this:
 
 ```php
@@ -140,16 +140,16 @@ function write($scope, $var, $value) {
     }
     $scope[$var]->value = $value;
 }
-
 ```
+
 So far so good.
 
 There are two more things we need to talk about. The first is references:
 
 ```php
 $b = &$a;
-
 ```
+
 What happens here, is that we *want* them to share the same value. So instead of just increasing refcount, we also need to set `is_ref` to true:
 
 ```php
@@ -167,8 +167,8 @@ function makeRef($scope, $from, $to) {
     $scope[$from]->refcount++;
     $scope[$to] = $scope[$from];
 }
-
 ```
+
 Now, we need to change our write function to not copy if the variable is a reference:
 
 ```php
@@ -186,8 +186,8 @@ function write($scope, $var, $value) {
     }
     $scope[$var]->value = $value;
 }
-
 ```
+
 Now, any writes will be directed to the correct variable. But we still have a problem. We need to fix our `copy` function, becuase we may accidentally copy a reference!
 
 ```php
@@ -205,8 +205,8 @@ function copy($scope, $from, $to) {
         $scope[$to]->refcount++;
     }
 }
-
 ```
+
 If you notice, there's a fair bit of duplication in there.
 
 Internally, PHP represents these operations as:
@@ -220,6 +220,7 @@ Internally, PHP represents these operations as:
  * [`SEPARATE_ZVAL_TO_MAKE_IS_REF(zval)`](http://lxr.php.net/xref/PHP_5_6/Zend/zend.h#796)
     
     Copy the value if it's not a reference. This is what you would call to make a variable a reference.
+
 ## The Point
 
 So variables are disconnected from values. This means that deleting a variable (via `unset()` or falling out of scope) doesn't delete its value.
@@ -230,7 +231,7 @@ Then, it checks to see if the current refcount is `0`. If it is, it can safely d
 
 This happens internally in `zval_ptr_dtor()`, which is implemented via [`i_zval_ptr_dtor`](http://lxr.php.net/xref/PHP_5_6/Zend/zend_execute.h#74):
 
-```php
+```c
 static zend_always_inline void i_zval_ptr_dtor(zval *zval_ptr ZEND_FILE_LINE_DC TSRMLS_DC)
 {
     if (!Z_DELREF_P(zval_ptr)) {
@@ -246,8 +247,8 @@ static zend_always_inline void i_zval_ptr_dtor(zval *zval_ptr ZEND_FILE_LINE_DC 
         GC_ZVAL_CHECK_POSSIBLE_ROOT(zval_ptr);
     }
 }
-
 ```
+
 Note that `Z_DELREF_P(zval_ptr)` is really just a helper that does nothing more than `--(zval_ptr->refcount)`.
 
 There are a few interesting things in here. The first branch happens when the refcount hits zero (meaning there are no variables pointing to it). Once it does, it removes the value from the garbage collector, runs a destructor function, and frees (deletes) it.
@@ -273,8 +274,8 @@ function foo() {
     $a['b'] = &$b;
     $b['a'] = &$a;
 }
-
 ```
+
 Internally we have two values created (`a` and `b`). But each value has two pointers to it. One for the variable, and one for the array index.
 
 If we were to `var_dump($a)`, we'd see:
@@ -290,8 +291,8 @@ array(1) {
     }
   }
 }
-
 ```
+
 The reason is that we now have what's known as a [Circular Reference](http://en.wikipedia.org/wiki/Circular_reference).
 
 The problem with it is that with Reference Counting alone, we can never collect that memory again (unless you manually unset one of the array keys).
@@ -320,18 +321,19 @@ Internally, the collector uses a "color code" system to identify states for spec
  * **Purple** - A normal variable, but has been marked as a "possible root", meaning that it may be part of a cycle that's no longer reachable
  * **Grey** - In process variable, nothing special
  * **White** - In process variable, but can be freed.
+
 They are nothing more than bit flags, but the color system is "easier" to understand.
 
 So when we "collect cycles" (via a few mechanisms, but [`gc_collect_cycles()`](http://php.net/manual/en/function.gc-collect-cycles.php) as well), we are going to iterate over these roots.
 
 The internal [`gc_collect_cycles()`](http://lxr.php.net/xref/PHP_5_6/Zend/zend_gc.c#gc_collect_cycles) function does a bunch of things. But there are three lines of critical importance:
 
-```php
+```c
 gc_mark_roots(TSRMLS_C);
 gc_scan_roots(TSRMLS_C);
 gc_collect_roots(TSRMLS_C);
-
 ```
+
 It's a ["mark and sweep"](http://www.brpreiss.com/books/opus5/html/page424.html) algorithm.
 
 So we start off with our table:
@@ -377,6 +379,7 @@ Here, you see that we have 4 values being tracked. Two are on the root buffer (a
     ![Collect The Roots](http://2.bp.blogspot.com/-pdmWyHPYJXE/VH5RfA0Fm7I/AAAAAAAAPXM/gSuI1FMkAyM/s320/gc_collect_roots.png)
     
     As you can see, values 1 and 2 are gone.
+
 Notice what happened there. We did a depth-first search through every value in the graph. But not only that, we did three.
 
 You may spot something that could be fixed. You could say, why not combine the scan and collect phases into one pass?
@@ -403,42 +406,42 @@ So that's how we collect roots. Let's talk about how we find them.
 
 Well if you remember back to the `zval_ptr_dtor` call, there was a call to `GC_ZVAL_CHECK_POSSIBLE_ROOT` at the end. That macro proxies to [`gc_zval_check_possible_root()`](http://lxr.php.net/xref/PHP_5_6/Zend/zend_gc.h#gc_zval_check_possible_root):
 
-```php
+```c
 static zend_always_inline void gc_zval_check_possible_root(zval *z TSRMLS_DC)
 {
     if (z->type == IS_ARRAY || z->type == IS_OBJECT) {
         gc_zval_possible_root(z TSRMLS_CC);
     }
 }
-
 ```
+
 So basically, if the type is complex (can have child variables), then say that it's a possible root (meaning that it may be the source of a cycle). So it runs a [root algorithm](http://lxr.php.net/xref/PHP_5_6/Zend/zend_gc.c#130).
 
 A lot is going on here, but basically it boils down to a few basic steps:
 
  1. Check to see if it's already a root
     
-    ```php
+    ```c
     if (GC_ZVAL_GET_COLOR(zv) != GC_PURPLE) {
-    
     ```
+
     So this if statement basically says "if this value is already a root, skip it".
  2. If it's not a root, make it one.
     
     To make it a root, first we set the color to Purple:
     
-    ```php
+    ```c
     GC_ZVAL_SET_PURPLE(zv);
-    
     ```
+
     This is just really house-keeping, and doesn't really effect anything.
     
     Then, we need to check to see if we've already stored this in the list of possible roots:
     
-    ```php
+    ```c
     if (!GC_ZVAL_ADDRESS(zv)) {
-    
     ```
+
     This again is house-keeping. In practice, we can ignore this part since it should never get out of sync with the Purple flag. This is here as protection.
     
     The next bit is where interesting things start happening:
@@ -447,75 +450,75 @@ A lot is going on here, but basically it boils down to a few basic steps:
     
     I'll explain inline:
     
-    ```php
+    ```c
     gc_root_buffer *newRoot = GC_G(unused);
     
     if (newRoot) {
         GC_G(unused) = newRoot->prev;
-    
     ```
+
     If we get back a "unused memory block" from the buffer, that means that we've already added and removed an item from the GC buffer. So since we have a free slot, we can just add it straight away.
     
-    ```php
+    ```c
     } else if (GC_G(first_unused) != GC_G(last_unused)) {
         newRoot = GC_G(first_unused);
         GC_G(first_unused)++;
-    
     ```
+
     We have free space in the buffer that we haven't used, so add it there.
     
-    ```php
+    ```c
     } else {
-    
     ```
+
     This happens when our root buffer is full. By default, the root buffer is allocated to be [10,000 values](http://lxr.php.net/xref/PHP_5_6/Zend/zend_gc.c#GC_ROOT_BUFFER_MAX_ENTRIES).
     
-    ```php
+    ```c
         if (!GC_G(gc_enabled)) {
             GC_ZVAL_SET_BLACK(zv);
             return;
-    
     ```
+
     Well, if GC isn't enabled, then why bother at all...
     
     ```php
         }
         zv->refcount__gc++;
-    
     ```
+
     Remember we decremented the refcount earlier. We need to increment it here before the run, since the run will try to decrement it again.
     
-    ```php
+    ```c
         gc_collect_cycles(TSRMLS_C);
-    
     ```
+
     Collect the cycles to try to open up space.
     
-    ```php
+    ```c
         zv->refcount__gc--;
-    
     ```
+
     Restore the refcount to what it was.
     
-    ```php
+    ```c
         newRoot = GC_G(unused);
         if (!newRoot) {
             return;
-    
     ```
+
     So this means that our root buffer is full. Meaning that we've already got 10,000 values that we're tracking as part of possible cycles. So since we have no more room, rather than re-allocating, we just return.
     
-    ```php
+    ```c
         }
         GC_ZVAL_SET_PURPLE(zv);
         GC_G(unused) = newRoot->prev;
     }
-    
     ```
+
     This means we've found a spot, so we're going to add it.
  3. Do some house-keeping
     
-    ```php
+    ```c
     newRoot->next = GC_G(roots).next;
     newRoot->prev = &GC_G(roots);
     GC_G(roots).next->prev = newRoot;
@@ -529,8 +532,8 @@ A lot is going on here, but basically it boils down to a few basic steps:
     GC_BENCH_INC(zval_buffered);
     GC_BENCH_INC(root_buf_length);
     GC_BENCH_PEAK(root_buf_peak, root_buf_length);
-    
     ```
+
     The rest of this is just some house-keeping. Nothing really important happens here for our concerns, this is just the actual mechanics for adding the value to the root buffer.
 Did you notice the problem?
 
@@ -549,8 +552,8 @@ It can happen if you unset a variable:
 ```php
 $a = $obj;
 unset($a);
-
 ```
+
 Or if you call a function:
 
 ```php
@@ -558,8 +561,8 @@ function foo(StdClass $foo) {
 }
 
 foo($obj)
-
 ```
+
 When the object is passed in, its refcount goes up. When it leaves the function, it goes down and hence gets added to the list of possible roots.
 
 So objects are added to the root buffer **all the time**. This is quite quick under normal situations and has little to no performance impact.
@@ -581,8 +584,8 @@ $array = [];
 for ($i = 0; $i < 10000; $i++) {
     $array[] = new StdClass;
 }
-
 ```
+
 Would not result in any objects on the root buffer. Because the individual objects aren't decremented (only the array is).
 
 You'd need to pass every object to a function individually:
@@ -591,8 +594,8 @@ You'd need to pass every object to a function individually:
 foreach ($array as $value) {
     doSomething($value);
 }
-
 ```
+
 This happens. A lot. But with 10k objects in a single execution (at the same time), it's not exceptionally common. And it's not happening in most web requests.
 
 ## The Take Away
@@ -613,7 +616,7 @@ This also shows that some improvement to the garbage collector can be done. Rath
     
     Before trying the next run, you check to see if the counter is an even power of 2. If it is, run the collector. Otherwise, skip the run.
     
-    ```php
+    ```c
     if (0 == (GC_G(collect_counter) & (GC_G(collect_counter) - 1))) {
         // only run on even-power-of-two calls, 0, 2, 4, 8, 16, etc
         zv->refcount__gc++;
@@ -629,20 +632,24 @@ This also shows that some improvement to the garbage collector can be done. Rath
     }
     // reset counter to 0
     GC_G(collect_counter) = 0;
-    
     ```
+
     This works nicely, since it will still keep trying to collect, but it will do it less and less frequently if it's shown to not be effective.
     
     And if a collection is ever successful, it'll run again next time it gets full (maximizes usefulness).
+
  * Increase the buffer size on failed collect run
     
     Here, we'd re-allocate the buffer from 10k to 20k if the run failed.
     
     This can get EXTREMELY expensive for large numbers of objects, since it increases the runtime of the collector operation.
+
  * Run the collector on a probability basis
     
     Define a config option for how often to run the collector. Similar to session garbage collection. Then if the buffer fills, only run the collector with that probability.
+
  * Another idea?
+ 
 But that's what really happened.
 
 

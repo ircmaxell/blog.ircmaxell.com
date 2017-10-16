@@ -5,6 +5,7 @@ permalink: todays-programming-with-anthony-video
 date: 2013-01-16
 comments: true
 categories:
+- Video
 tags:
 - Design Patterns
 - Iterators

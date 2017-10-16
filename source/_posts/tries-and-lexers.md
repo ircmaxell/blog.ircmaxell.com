@@ -5,6 +5,7 @@ permalink: tries-and-lexers
 date: 2015-05-15
 comments: true
 categories:
+- Architecture
 tags:
 - Data Structures
 - Javascript
@@ -33,8 +34,8 @@ Basically, it's the process of turning an arbitrary string into a stream of stru
 
 ```php
 result = 5 + 13;
-
 ```
+
 Could be lexed into the following tokens:
 
 ```php
@@ -46,8 +47,8 @@ Could be lexed into the following tokens:
 [T_PLUS, "+"]
 [T_NUMBER, "13"]
 [T_SEMICOLON, ";"]
-
 ```
+
 Simple parsers can skip this step and simply parse directly off the input stream. But as parsers get more complicated, it becomes far easier to have a stand-alone lexer to convert the input stream into a token stream. Lexer generators exist for C (PHP internally uses [re2c](http://re2c.org/)), but I wasn't aware of any for PHP. So I decided to write one.
 
 But how? C lexers operate efficiently because characters are integers (and hence can efficiently index into memory). PHP can't do that easily (not without function calls at least). So what other solution can exist?
@@ -67,8 +68,8 @@ class Trie {
     public $data = [];
     public $value = false;
 }
-
 ```
+
 Now that we have the data structure, we need to fill it with our expected tokens. Let's say we have three tokens for simplicity sake.
 
 ```php
@@ -77,8 +78,8 @@ $tokens = [
     "ape" => "T_APE",
     "cape" => "T_CAPE",
 ];
-
 ```
+
 To populate the data structure, we just need to iterate over each character of each token, and build the tree:
 
 ```php
@@ -99,8 +100,8 @@ foreach ($tokens as $name => $value) {
     // Finally, set the value on the final node
     $node->value = $value;
 }
-
 ```
+
 It may not be clear how that works, or the structure it produces. So let's take a closer look at a `var_dump($root)`:
 
 ```php
@@ -140,8 +141,8 @@ object(Trie)#1 (2) {
     ["value"]=>
     bool(false)
 }
-
 ```
+
 That output may be a bit hard to read, so let's look at the trie in-action directly:
 
 ```php
@@ -149,8 +150,8 @@ That output may be a bit hard to read, so let's look at the trie in-action direc
 var_dump($root->data['a']->data['p']->data['e']->value); // T_APE
 // "ap" is not a valid token, so we expect false
 var_dump($root->data['a']->data['p']->value); // bool(false)
-
 ```
+
 So as you can see, it's a bit unwieldy, but it works.
 
 Now all we need to do is automate the scanning of an input string:
@@ -197,8 +198,8 @@ function lex($string, Trie $root) {
     }
     return $tokens;
 }
-
 ```
+
 And boom. We're done.
 
 Now all we need to do is generate the Trie with our production data, and we have a fully functional lexer.
@@ -228,8 +229,8 @@ The problem that I ran into was that JavaScript has a non-trivial amount of toke
 /[1-9][0-9]*\.[0-9]+[eE][0-9]+/
 /0\.[0-9]+[eE][+-][0-9]+/
 /[1-9][0-9]*\.[0-9]+[eE][+-][0-9]+/
-
 ```
+
 The regular expressions aren't *that* hard to compile. Actually, the ones here are quite easy. The basic concept is the same as compiling a normal string into the trie. The difference is that instead of each step creating a single node for the next step to use, it can create an array of them. The actual parsing is a bit tedious, so I won't include that here for now, but suffice it to say that it generates a lot of data.
 
 And by a lot, I mean gigabytes. The JavaScript lexer took over 5 minutes to generate using regular expressions. It wound up consuming about 2.5GB of RAM.
@@ -238,8 +239,8 @@ Once it was generated, it was quite fast. It could lex a large string (jQuery so
 
 ```php
 (\G(?:(\<\=)|(\>\=)|(\=\=\=)|(\!\=\=)|(\=\=)|(\!\=)|(\+\+)|(\-\-)|(\>\>\>\=)|(\>\>\=)|(\<\<\=)|(\>\>\>)|(\>\>)|(\<\<)|(&&)|(\|\|)|(\+\=)|(\-\=)|(\*\=)|(%\=)|(&\=)|(\|\=)|(\^\=)|(/\=)|([\r\n\x{2028}\x{2029}])|([\x09\x0b\x0c\x20\xa0\p{Z}]+)|(/\*[\s\S]*?\*/)|(//[\s\S]*?[\r\n\x{2028}\x{2029}])|((?:0[xX][0-9a-fA-F]+|\.[0-9]+(?:[eE][-+]?[0-9]+)?|(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[eE][-+]?[0-9]+)?)(?![\\pLu\\pLl\\pLt\\pLm\\pLo\\pNl$_]|\\\\u[a-fA-F0-9]{4}))|((?:[\pLu\pLl\pLt\pLm\pLo\pNl$_]|\\u[a-fA-F0-9]{4})(?:[\pLu\pLl\pLt\pLm\pLo\pNl$_]|\\u[a-fA-F0-9]{4}|[\pMn\pMc]|[\pNd]|[\x{005f}\x{203F}\x{2040}\x{2054}\x{fe33}\x{fe34}\x{fe4d}\x{fe4e}\x{fe4f}\x{ff3f}]|[\x{200c}\x{200d}])*)|("(?:[^\\"\r\n\x{2028}\x{2029}]|\\(?:['"\\bfnrtv]|[\r\n\x{2028}\x{2029}]|0(?![0-9])|x[a-fA-F0-9]{2}|u[a-fA-F0-9]{4}))*"|'(?:[^\\'\r\n\x{2028}\x{2029}]|\\(?:['"\\bfnrtv][^\\\r\n\x{2028}\x{2029}]|[\r\n\x{2028}\x{2029}]|0(?![0-9])|x[a-fA-F0-9]{2}|u[a-fA-F0-9]{4}))*')|(/(?:[^\r\n\x{2028}\x{2029}*\\/\[]|\\[^\r\n\x{2028}\x{2029}]|\[(?:[^\r\n\x{2028}\x{2029}\]\\]|\\[^\r\n\x{2028}\x{2029}])+\])(?:[^\r\n\x{2028}\x{2029}\\/\[]|\\[^\r\n\x{2028}\x{2029}]|\[(?:[^\r\n\x{2028}\x{2029}\]\\]|\\[^\r\n\x{2028}\x{2029}])+\])*/(?:[\pLu\pLl\pLt\pLm\pLo\pNl$_]|\\u[a-fA-F0-9]{4}|[\pMn\pMc]|[\pNd]|[\x{005f}\x{203F}\x{2040}\x{2054}\x{fe33}\x{fe34}\x{fe4d}\x{fe4e}\x{fe4f}\x{ff3f}]|[\x{200c}\x{200d}])*)|(\{|\}|\(|\)|\[|\]|\.|;|,|\<|\>|\+|\-|\*|%|&|\||\^|\!|~|\?|\:|\=|/)))ux
-
 ```
+
 That regex will completely tokenize JavaScript (each match is precisely one token, with the capture group that matched identifying the regex). And no, I didn't hand-write this, I generated it.
 
 ## So now I had a problem
@@ -291,8 +292,8 @@ class S4 {
     public function load() {}
 }
 /*snip*/
-
 ```
+
 The benefit here, is that the building phase happens at compile time. The drawback, is that it's still a ton of memory.
 
 Generating the JavaScript lexer took 250,000 classes, 2.5GB of memory for PHP to compile the file, and another 2GB of memory to instantiate the objects.

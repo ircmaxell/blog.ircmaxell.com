@@ -5,6 +5,7 @@ permalink: whats-in-type
 date: 2014-10-24
 comments: true
 categories:
+- PHP
 tags:
 - Change
 - Inconsistencies
@@ -26,21 +27,9 @@ Strength describes what happens when you try to mutate a type. Can you change a 
 
 Looking at some popular languages:
 
-<table><thead><tr><th>Language</th>
-  <th>Explicitness</th>
-  <th>Strength</th></tr></thead><tbody><tr><td>PHP</td>
-  <td>Static + Dynamic</td>
-  <td>Weak</td></tr><tr><td>Python</td>
-  <td>Dynamic</td>
-  <td>Strong</td></tr><tr><td>C</td>
-  <td>Static</td>
-  <td>Strong</td></tr><tr><td>Java</td>
-  <td>Static</td>
-  <td>Strong</td></tr><tr><td>JavaScript</td>
-  <td>Dynamic</td>
-  <td>Weak</td></tr><tr><td>Ruby</td>
-  <td>Dynamic</td>
-  <td>Weak</td></tr></tbody></table>By definition, all Static languages are going to be Strongly typed. But there are even gradations within that. For example, in C, if you pass an integer to a function expecting a float, it'll happily cast it for you (as long as it's not a pointer). But in Java, that same functionality will be a compiler error.
+<table><thead><tr><th>Language</th><th>Explicitness</th><th>Strength</th></tr></thead><tbody><tr><td>PHP</td><td>Static + Dynamic</td><td>Weak</td></tr><tr><td>Python</td><td>Dynamic</td><td>Strong</td></tr><tr><td>C</td><td>Static</td><td>Strong</td></tr><tr><td>Java</td><td>Static</td><td>Strong</td></tr><tr><td>JavaScript</td><td>Dynamic</td><td>Weak</td></tr><tr><td>Ruby</td><td>Dynamic</td><td>Weak</td></tr></tbody></table>
+
+By definition, all Static languages are going to be Strongly typed. But there are even gradations within that. For example, in C, if you pass an integer to a function expecting a float, it'll happily cast it for you (as long as it's not a pointer). But in Java, that same functionality will be a compiler error.
 
 Notice that both JavaScript and PHP are both Dynamic and Weak. But also note that PHP is also Static. Static and Weak? I just said that was not possible by definition. This is curious.
 
@@ -60,8 +49,8 @@ This doesn't mean that there are no bugs. It just means there are no *type* bugs
 function foo(int length_in_feet) {...}
 int length_in_meters = 10;
 foo(length_in_meters);
-
 ```
+
 From a type standpoint, that's 100% valid code. And no static analyzer will ever tell you it's wrong. But it's quite obviously wrong.
 
 When we move from Static to Dynamic typing (while retaining Strong), an interesting thing happens. Once we know the type (via explicit cast, or other operation), we can rely on it. That means that compilation is a fair bit easier. Sure, we can't statically analyze as well, but it's easier on the programmer. And since you know that once the variable is created its type won't change, it's a bit easier to work with than weak languages.
@@ -90,8 +79,8 @@ For objects, it follows a Strict+Weak model. Which is really weird, because the 
 function foo(Bar $bar) {
     $bar = 10;
 }
-
 ```
+
 We strictly hinted on `Bar`, but then the variable changed types. That means when we analyze PHP, we need to keep in mind that the types can change on a line by line basis. So talking about the type of a variable is more talking about how the type propagates over time through a program.
 
 For everything else except objects, we have a fully weak system. Excluding the weird `resource` type, PHP will always *try* to do a sane conversion for you. Meaning:
@@ -100,8 +89,8 @@ For everything else except objects, we have a fully weak system. Excluding the w
 function foo($a) {
     return $a + 1;
 }
-
 ```
+
 When we call that function, we don't know what the result will be. But we can say for sure that it will be a numeric type (float or integer). Now, the interesting thing is what happens when we pass in something that's non-numeric. What if `$a` was a string? What if it was an array? What about a boolean?
 
 Well, PHP will use the context that you're using the type in to determine what type it should be (re-read that line, this is important, and we're going to come back to this again).
@@ -136,8 +125,8 @@ Imagine for a second that we had methods on scalar types. What would the followi
 
 ```php
 $foo->length()
-
 ```
+
 Does that take the string length? Does it take the array length? Does it give you something else entirely?
 
 On the surface, that seems like a moot point. That's the point of polymorphism, after all.
@@ -149,24 +138,24 @@ Ok, so that's not a big deal. If you want a string length, you just make sure yo
 ```php
 $str = (string) $foo;
 $str->length();
-
 ```
+
 Or even better, if we had strict scalar type declarations:
 
 ```php
 function my_strlen(string $str) {
     return $str->length();
 }
-
 ```
+
 Boom! We have predictability. We have sanity! We know our code works on strings, so we know the length method works! Awesome!
 
 But how would you call that code? If you wanted safety, you'd almost *have* to just use a cast:
 
 ```php
 my_strlen((string) $foo)
-
 ```
+
 But now we're back to the beginning. We have lost all the benefits of strong typing. It's the same type juggling all over again, but this time we're pushing the juggling requirement onto the caller of our code. Weird.
 
 The cast is the least safe alternative that we could do. At least the implicit context-based cast will raise errors (or notices really) if the cast doesn't make sense (like passing `"apple"` to a function expecting an integer). The explicit cast means that you can be hiding far worse bugs...
@@ -177,8 +166,8 @@ There's currently a [proposal to add Safe Casts](https://wiki.php.net/rfc/safe_c
 
 ```php
 my_strlen(to_string($foo));
-
 ```
+
 That's a lot better, since an unsafe value results in an error...
 
 If strict scalar type declarations (hints) are going to happen, a safe-cast mechanism would make it much safer.

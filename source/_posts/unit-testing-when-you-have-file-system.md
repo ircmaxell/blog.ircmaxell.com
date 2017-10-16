@@ -5,6 +5,7 @@ permalink: unit-testing-when-you-have-file-system
 date: 2011-03-29
 comments: true
 categories:
+- Testing
 tags:
 - Best Practice
 - CryptLib
@@ -31,7 +32,6 @@ protected function loadFiles($directory, $namespace, $callback) {
       }
    }
 }
-
 ```
 
 
@@ -44,7 +44,6 @@ Enter [vfsStream](http://code.google.com/p/bovigo/wiki/vfsStream).  It's actual
 ```php
 $ pear channel-discover pear.php-tools.net
 $ pear install pat/vfsStream
-
 ```
 
 
@@ -57,7 +56,6 @@ CryptLibTest/Core/AbstractFactory/
 CryptLibTest/Core/AbstractFactory/test.php
 CryptLibTest/Core/AbstractFactory/Some234Foo234Bar98Name.php
 CryptLibTest/Core/AbstractFactory/Invalid.csv
-
 ```
 
 
@@ -74,7 +72,6 @@ vfsStream::newFile('test.php')->at($af);
 vfsStream::newFile('Some234Foo234Bar98Name.php')->at($af);
 vfsStream::newFile('Invalid.csv')->at($af);
 vfsStream::newFile('badlocation.php')->at($core);
-
 ```
 
 
@@ -97,7 +94,6 @@ public function testLoadFiles() {
     );
     $this->assertEquals($expect, $result);
 }
-
 ```
 
 

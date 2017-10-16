@@ -5,26 +5,27 @@ permalink: the-grass-is-always-browner
 date: 2012-07-30
 comments: true
 categories:
+- Other
 tags:
 - Learning
 - Philosophy
 ---
 
-As you can probably tell, the title of this post is based off the common saying "`The Grass Is Always Greener On The Other Side.`" I've always been amazed by this saying, because while we can find countless cases of it being true, we can also find countless cases of it being completely and utterly false. Take smart-phones for instance. People are quite dogmatic about which they choose, and they believe that the grass is definitely not greener. This is something that's bothered me for a while. But yesterday, I think I've made a cognitive leap towards understanding why it works for some things and not others...<!--more-->
+As you can probably tell, the title of this post is based off the common saying *"The Grass Is Always Greener On The Other Side."* I've always been amazed by this saying, because while we can find countless cases of it being true, we can also find countless cases of it being completely and utterly false. Take smart-phones for instance. People are quite dogmatic about which they choose, and they believe that the grass is definitely not greener. This is something that's bothered me for a while. But yesterday, I think I've made a cognitive leap towards understanding why it works for some things and not others...<!--more-->
 
 
 ## The Surface
 
 
-On the surface, the saying is speaking literally about grass on your lawn (if you're lucky enough to have one). That your neighbors grass will always appear greener than your own. Or speaking more generally, that which you don't have will always seem more appealing than that which you do have. It's applicable in a large number of situations. For example, if you're having problems at your job with management, sometimes it's worth reminding yourself that `the grass is always greener`, and you'd likely have a similar (or different) problem somewhere else...
+On the surface, the saying is speaking literally about grass on your lawn (if you're lucky enough to have one). That your neighbors grass will always appear greener than your own. Or speaking more generally, that which you don't have will always seem more appealing than that which you do have. It's applicable in a large number of situations. For example, if you're having problems at your job with management, sometimes it's worth reminding yourself that *the grass is always greener*, and you'd likely have a similar (or different) problem somewhere else...
 
 But if we dig into the saying a bit more, can we gain any insight? The saying is literally talking about maintaining a lawn. Something that takes a lot of effort and skill to do well. Something that takes a lot of hard work to do well. At a more basic level, we can say that it's difficult to achieve. But just saying that it's difficult is not enough. It's a cognizant form of difficult. It's not just manually difficult, but also mentally difficult, because making the decision on not only what to do, but how to do it is quite challenging. That's why everyone's lawn is different. Because it takes mental effort to achieve.
 ## The Reverse
 
 
-In the book `[Predictably Irrational](http://www.amazon.com/Predictably-Irrational-Hidden-Forces-Decisions/dp/006135323X)` by Dan Ariely (which is an excellent read), he introduces almost the exact opposite behavior, and proves that it happens through several experiments. Stated simply, we humans tend to over-value things that are already ours. We see it all the time in action in certain reality TV shows such as `Pawn Stars`. When someone brings an item in to sell, even if it has no emotional value, people usually think that it's worth more than the open market would agree with. In fact, that usually makes for good entertainment.
+In the book *[Predictably Irrational](http://www.amazon.com/Predictably-Irrational-Hidden-Forces-Decisions/dp/006135323X)* by Dan Ariely (which is an excellent read), he introduces almost the exact opposite behavior, and proves that it happens through several experiments. Stated simply, we humans tend to over-value things that are already ours. We see it all the time in action in certain reality TV shows such as *Pawn Stars*. When someone brings an item in to sell, even if it has no emotional value, people usually think that it's worth more than the open market would agree with. In fact, that usually makes for good entertainment.
 
-We also see it every day. When someone buys a new car, they don't all of a sudden wish they had a different one (assuming the same value). They feel good about their purchase, and become biased towards believing that it's worth more than it may really be. So much so, that they might even look down on other cars that friends purchase (again, assuming similar value), because they "`should have made the same choice`". Additionally, the choice of religion tends to fall into this category. Where we tend to overvalue our current religion, and undervalue any alternative one.
+We also see it every day. When someone buys a new car, they don't all of a sudden wish they had a different one (assuming the same value). They feel good about their purchase, and become biased towards believing that it's worth more than it may really be. So much so, that they might even look down on other cars that friends purchase (again, assuming similar value), because they "*should have made the same choice*". Additionally, the choice of religion tends to fall into this category. Where we tend to overvalue our current religion, and undervalue any alternative one.
 ## The Dilemma
 
 
@@ -32,7 +33,7 @@ So we appear to have two contradictory theories. One says that people want diffe
 ## The Cost Factor
 
 
-The reason that I think these two opposing forces can exist in the same room, is that it depends on the relative cost of either situation which `judgement rules `are applied. In the situations that the grass is greener approach applies, the cost is usually high. Not cost in the sense of money, but the cost in risk, effort and mental difficulty. Finding a new place to live, switching jobs and advancing a career are all examples of situations where the grass is definitely greener and the relative cost of switching is very high. Therefore, we tend to undervalue our current position, and overvalue the position of others.
+The reason that I think these two opposing forces can exist in the same room, is that it depends on the relative cost of either situation which *judgement rules* are applied. In the situations that the grass is greener approach applies, the cost is usually high. Not cost in the sense of money, but the cost in risk, effort and mental difficulty. Finding a new place to live, switching jobs and advancing a career are all examples of situations where the grass is definitely greener and the relative cost of switching is very high. Therefore, we tend to undervalue our current position, and overvalue the position of others.
 
 On the other side of the field, we have situations like material possessions and political allegiances. These situations are typically governed by the opposite rules. These types of situations are usually low cost. We can easily change back and forth with reasonably low risk, effort or mental difficulty (in the sense of deciding to change has a reasonably small ripple effect). Even though the cost of switching is comparatively low, we still tend to overvalue our own position and undervalue the position of others.
 
@@ -60,6 +61,6 @@ The point here is that either way we sit, we're biased by our choices. The bias 
 ## Disclaimer
 
 
-I have not tested this theory at all. It was something that just "`clicked`" yesterday. I could be totally wrong. But it felt compelling enough to share...
+I have not tested this theory at all. It was something that just "*clicked*" yesterday. I could be totally wrong. But it felt compelling enough to share...
 
 What do you think? Respond in a comment, on Twitter or on your own blog!
