@@ -48,7 +48,7 @@ Some of the items we identify as "code smells" are legitimate  sources of proble
 
 - **Global Variables In Modularized Code**
     
-    Specifically inside of modular code, global variables tend to be sources of bugs and difficult to understand complexity. The problem isn't the global variable itself, but that the nature of modular code is that you don't control the life-cycle or access patters of the code. The code is being used by another system and will be called in all sorts of weird ways. By having global state it makes it far harder for interacting code to know when a chance will clash in other areas of the system.
+    Specifically inside of modular code, global variables tend to be sources of bugs and difficult to understand complexity. The problem isn't the global variable itself, but that the nature of modular code is that you don't control the life-cycle or access patterns of the code. The code is being used by another system and will be called in all sorts of weird ways. By having global state it makes it far harder for interacting code to know when a chance will clash in other areas of the system.
 
     For example, imagine a logging class that used a global variable for "prefix". One part of the code sets the prefix to A, and another to B later in the execution. Because it's a true global variable, those clashes will cause weird side-effects.
 
