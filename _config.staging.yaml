@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: ircmaxell's Blog
-subtitle: Musings about software engineering and web application security
-description: A blog about PHP, Security, Performance and general web application development.
+title: ircmaxell's Blog (BETA)
+subtitle: "BETA: A staging site for blog.ircmaxell.com"
+description: "BETA: A staging site for blog.ircmaxell.com"
 author: Anthony Ferrara
 language: en
 timezone: America/New_York
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://blog.ircmaxell.com
+url: https://beta.blog.ircmaxell.com
 root: /
 permalink: :year/:month/:title.html
 permalink_defaults:
