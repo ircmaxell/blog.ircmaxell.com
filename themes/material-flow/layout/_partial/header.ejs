@@ -8,7 +8,11 @@
 				<ul class='h-list'>
 					<% (theme.menu||[]).forEach(function(value){ %>
 						<li>
-							<a class='flat-box nav-<%=value.slug%>' href='<%=url_for(value.url)%>'>
+						  <% if (value.new_window) { %>
+									<a href="<%= url_for(value.url) %>" class='flat-box nav-<%=value.slug%>' rel="noopener nofollow" target="_blank">
+							<% } else { %>
+									<a class='flat-box nav-<%=value.slug%>' href='<%=url_for(value.url)%>'>
+							<% } %>
 								<%=value.name%>
 							</a>
 						</li>
@@ -48,9 +52,14 @@
 <aside class="menu-phone">
 	<nav>
 		<% (theme.menu||[]).forEach(function(value, key) {
-					if (value.url && value.slug && value.name) { %>
+					if (value.url && value.slug && value.name) { 
+						if (value.new_window) { %>
+			<a href="<%= url_for(value.url) %>" class="nav-<%= value.slug %> nav" rel="noopener nofollow" target="_blank">
+						<% } else { %>
 			<a href="<%= url_for(value.url) %>" class="nav-<%= value.slug %> nav">
+						<% } %>
 				<%= value.name %>
+			}
 			</a>
 		<% } }); %>
 	</nav>

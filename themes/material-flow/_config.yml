@@ -29,6 +29,7 @@ menu:
   - name: GitHub
     slug: github
     url: https://github.com/ircmaxell
+    new_window: true
 
 
 # widgets
