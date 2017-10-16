@@ -1,3 +1,22 @@
-<% (theme.widgets||[]).forEach(function(name){ %>
-  <%- partial('../_widget/'+name) %>
+<% 
+  var i = 0;
+  (theme.widgets||[]).forEach(function(name){ %>
+  <%- partial('../_widget/'+name)  %>
+  <% 
+    if (i++ === 0) { %>
+      <section class="m_widget ad">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-format="fluid"
+             data-ad-layout-key="-8i+1w-dq+e9+ft"
+             data-ad-client="ca-pub-8322654260452484"
+             data-ad-slot="4698393880"><div class="noads content">If you're using an adblocker, please consider supporting this site via <a href="https://paypal.me/ircmaxell">PayPal</a></div></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </section>
+    <% }
+
+  %>
 <% }) %>

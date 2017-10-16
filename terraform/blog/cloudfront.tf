@@ -1,12 +1,4 @@
 
-# resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
-#   comment = "Cloudfront"
-# }
-
-
-
-
-
 data "aws_acm_certificate" "blog_certificate" {
   domain   = "${var.domain}"
   statuses = ["ISSUED"]
@@ -46,7 +38,6 @@ resource "aws_cloudfront_distribution" "blog" {
 
     forwarded_values {
       query_string = false
-
       cookies {
         forward = "none"
       }
@@ -57,6 +48,32 @@ resource "aws_cloudfront_distribution" "blog" {
     default_ttl            = 3600
     max_ttl                = 86400
     compress               = true
+  }
+
+  cache_behavior {
+    path_pattern = "/feeds/posts/default"
+    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = "${var.env}.${var.domain}.origin"
+
+    forwarded_values {
+      query_string = true
+      query_string_cache_keys = ["alt"]
+      cookies {
+        forward = "none"
+      }
+    }
+
+    viewer_protocol_policy = "redirect-to-https"
+    min_ttl                = 0
+    default_ttl            = 3600
+    max_ttl                = 86400
+    compress               = true
+
+    lambda_function_association {
+      event_type = "origin-request"
+      lambda_arn = "${aws_lambda_function.rss_lambda.arn}:2"
+    }
   }
 
   restrictions {
