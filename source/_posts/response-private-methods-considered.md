@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Response: Private Methods Considered Harmful
+title: "Response: Private Methods Considered Harmful"
 permalink: response-private-methods-considered
 date: 2012-12-11
 comments: true

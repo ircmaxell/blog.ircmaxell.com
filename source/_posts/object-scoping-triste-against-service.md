@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Object Scoping: A Triste Against Service Containers
+title: "Object Scoping: A Triste Against Service Containers"
 permalink: object-scoping-triste-against-service
 date: 2012-08-22
 comments: true

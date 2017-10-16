@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Security Issue: Combining Bcrypt With Other Hash Functions
+title: "Security Issue: Combining Bcrypt With Other Hash Functions"
 permalink: security-issue-combining-bcrypt-with
 date: 2015-03-12
 comments: true
@@ -220,7 +220,7 @@ You are 100% safe if you do one of the following:
  * Use straight `bcrypt` (don't pre-hash)
  * Use hex output from the pre-hash
  * Base64 encode the raw output of a pre-hash
- 
+
 If you are using raw output, encode it first, and you're safe.
 
 ## The Underlying Problem

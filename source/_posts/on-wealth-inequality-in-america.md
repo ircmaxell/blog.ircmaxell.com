@@ -16,6 +16,8 @@ tags:
 
 There's been a viral video that's been circulating the internet recently called [Wealth Inequality In America](https://www.youtube.com/watch?feature=player_embedded&v=QPKKQnijnsM). It's actually been published for quite some time, but it's crossed my plane of vision a few times in the past few days. While I don't believe that the content is wrong (in fact, it is actually quite right), I believe that the point the video makes and how it makes it are both misleading. The video tends to imply some nefarious plot to keep the poor down. But in reality, all it is showing is the natural tendency for any system of sufficient complexity to trend towards having a power-law distribution. 
 
+<!--more-->
+
 Want to see something shocking? Let's run the same analysis against the top 50,000 websites on the internet, comparing the number of visitors each gets (as provided by [Quantcast](http://www.quantcast.com/top-sites/US)). When we run the numbers, we get some really interesting data points. In total, there were about 12 billion site-vistiors (since each visitor can be counted multiple times by different sites, that makes sense). Let's take a look at a graph of this data:
 [![](http://1.bp.blogspot.com/-bHzTtNi4o4g/UTiyYUF7kII/AAAAAAAAFNI/dm-XvMG6CFw/s320/websites_graph.png)](http://1.bp.blogspot.com/-bHzTtNi4o4g/UTiyYUF7kII/AAAAAAAAFNI/dm-XvMG6CFw/s1600/websites_graph.png)
 

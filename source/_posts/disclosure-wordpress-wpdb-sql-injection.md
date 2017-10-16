@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Disclosure: WordPress WPDB SQL Injection Vulnerability
+title: "Disclosure: WordPress WPDB SQL Injection Vulnerability"
 permalink: disclosure-wordpress-wpdb-sql-injection
 date: 2013-07-16
 comments: true
@@ -17,12 +17,13 @@ tags:
 At the current point in time there exists a very significant SQL Injection vulnerability in the WordPress code base. I want to make it abundantly clear that this does not affect anyone using WordPress "off the shelf". It only is exploitable if you use certain WordPress code outside of a WordPress install. So this is not a very "attackable" vulnerability. Or to put it in other terms, this is a high level vulnerability which has a very low threat level. It is also worth noting that it has not been fixed by WordPress (even 90 days after disclosure).<!--more-->
 ## Vulnerability Scope
 
-
 I really want to stress here that the problem here is not that WordPress is insecure. Installed instances are immune to this particular vulnerability due to specifics of the implementation. 
 
-The reason that I am treating this like an actual vulnerability is that I firmly believe that open source projects need to lead by example. That's the big issue that needs to be fixed here... And the vulnerability here is something that is extremely well known and the rest of the industry has moved past...## The Vulnerability
+The reason that I am treating this like an actual vulnerability is that I firmly believe that open source projects need to lead by example. That's the big issue that needs to be fixed here... And the vulnerability here is something that is extremely well known and the rest of the industry has moved past...
 
-<span style="text-align: justify;">So let me show the proof-of-concept code here:</span>
+## The Vulnerability
+
+So let me show the proof-of-concept code here:
 
 ```php
 // Fill in credentials here:
@@ -53,9 +54,7 @@ $stmt = $db->prepare(
 );
 
 var_dump($db->query($stmt));
-
 ```
-
 
 When this code is installed with a specifically configured MySQL server (expecting GBK character set by default), that SQL Injection will work.
 
@@ -64,9 +63,8 @@ So basically any time the character set is not explicitly set by the user and th
 
 But let me make it clear again, this is an extremely narrow case that likely directly affects literally 0 applications on the internet. The point of this disclosure is not that people are affected. It's that this should never even be possible in 2013...## The Vulnerable Code
 
-
-
 To see why this works, let's take a look at the [WPDB class](https://github.com/WordPress/WordPress/blob/2ac8311b74063e43ca5a1c886ad706e98b6a0910/wp-includes/wp-db.php). 
+
 ```php
 function escape( $data ) {
     if ( is_array( $data ) ) {
@@ -82,22 +80,20 @@ function escape( $data ) {
 
     return $data;
 }
-
 ```
 
-
 So looking at that, escape just proxies to `_weak_escape()`... And what's `_weak_escape()` you ask?
+
 ```php
 function _weak_escape( $string ) {
     return addslashes( $string );
 }
-
 ```
-
 
 Yeah. So... If you're not aware of the issue here, I HIGHLY recommend reading [this post on addslashes](http://shiflett.org/blog/2006/jan/addslashes-versus-mysql-real-escape-string) by Chris Shiftlett from 2006...
 
 But it gets better! There's a prepare method that simulates prepared statements! Let's look at how that works...
+
 ```php
 function prepare( $query, $args ) {
     if ( is_null( $query ) )
@@ -108,11 +104,12 @@ function prepare( $query, $args ) {
     array_walk( $args, array( $this, 'escape_by_ref' ) );
     return @vsprintf( $query, $args );
 }
-
 ```
 
 
-So it calls `escape_by_ref`... Surely that does something sane...?```php
+So it calls `escape_by_ref`... Surely that does something sane...?
+
+```php
 function escape_by_ref( &$string ) {
     if ( ! is_float( $string ) )
         $string = $this->_real_escape( $string );
@@ -120,7 +117,9 @@ function escape_by_ref( &$string ) {
 ```
 
 
-Ok, so now there's a `_real_escape` function? I wonder what that does?```php
+Ok, so now there's a `_real_escape` function? I wonder what that does?
+
+```php
 function _real_escape( $string ) {
     if ( $this->dbh && $this->real_escape )
         return mysql_real_escape_string( $string, $this->dbh );
@@ -133,6 +132,7 @@ function _real_escape( $string ) {
 Oh cool! There's `mysql_real_escape_string()`! But wait, there's a conditional... It's checking for a connection (and if there isn't one yet, it's insecurely escaping). Then it's checking if the `real_escape` property is true. I wonder how that's set:
 
 In the `set_charset() `function, it checks a few parts. First, it checks to see if the database supports collations. Then it checks to see if it supports charsets. Then it checks to see if we're explicitly setting a charset. Only then will it switch from `addslashes() `to `mysql_real_escape_string()`:
+
 ```php
 if ( $this->has_cap( 'collation' ) && ! empty( $charset ) ) {
     if ( function_exists( 'mysql_set_charset' ) && $this->has_cap( 'set_charset' ) ) {
@@ -167,6 +167,7 @@ So basically, nothing has happened of significance. Which is why I chose to disc
 
 
 Note: I realize that it might not wind up being a 5 line patch, that there may be some circumstances that warrant more changes. So far I have seen nothing to indicate that this is the case (no evidence of actual issues that need to be solved with the original concept).
+
 ## Security Is A Responsibility
 
 

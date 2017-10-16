@@ -14,6 +14,8 @@ tags:
 
 Well, 2012 is wrapping up. What a year it has been! Here's a partial recap of some of the things that happened to me and that I did this year:
 
+<!--more-->
+
 ## Top 5 Blog Posts (By Page View):
 
  1. [PHP Sucks, But I Like It](http://blog.ircmaxell.com/2012/04/php-sucks-but-i-like-it.html)

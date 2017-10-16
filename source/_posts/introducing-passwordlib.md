@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introducing: PasswordLib
+title: "Introducing: PasswordLib"
 permalink: introducing-passwordlib
 date: 2012-04-14
 comments: true

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Stack Machines: Compilers
+title: "Stack Machines: Compilers"
 permalink: stack-machines-compilers
 date: 2014-12-18
 comments: true

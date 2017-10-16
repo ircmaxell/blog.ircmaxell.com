@@ -1,6 +1,6 @@
 ---
 layout: post
-title: In Response To: Building Secured Web Applications Using PHP - The Basics
+title: "In Response To: Building Secured Web Applications Using PHP - The Basics"
 permalink: in-response-to-building-secured-web
 date: 2011-06-24
 comments: true

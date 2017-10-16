@@ -15,6 +15,8 @@ tags:
 
 Well, I know it's been a while since my last post here. I've been keeping busy (but also working on some cool stuff for you all, when the time is right). I figured that it was worth while pointing out a few upcoming talks that I'm going to be giving and conferences that I'll be attending.
 
+<!--more-->
+
 ## PHP North West
 
 I'll be a regular attendee at the [PHP North West 2012](http://conference.phpnw.org.uk/phpnw12/) conference in Manchester, UK on October 5th through the 7th. While I'm doing any scheduled talks, I've got a few lightning talks prepared for the unconference track. I'll also be participating in the Hackathon on Friday night leading a PHP Core project hack. So come find me and say hi!
