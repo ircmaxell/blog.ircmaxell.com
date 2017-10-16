@@ -5,7 +5,7 @@ DEST=$2
 
 aws s3 sync "$DIR" "s3://$DEST" --delete
 
-FILELIST=$(find "$DIR" -name "index.xm")
+FILELIST=$(find "$DIR" -name "index.xml")
 
 if [ -z "$FILELIST" ]; then
   # No files to upload
