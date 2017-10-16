@@ -5,7 +5,12 @@ DEST=$2
 
 aws s3 sync "$DIR" "s3://$DEST" --delete
 
-FILELIST=$(find "$DIR" -name "index.xml")
+FILELIST=$(find "$DIR" -name "index.xm")
+
+if [ -z "$FILELIST" ]; then
+  # No files to upload
+  exit 0;
+fi
 
 while read -r line; do
   LOCALDIR=$(dirname "$line")
