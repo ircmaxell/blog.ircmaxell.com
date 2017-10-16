@@ -30,9 +30,9 @@ jobs:
       - run: 
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              cp _config.prod.yaml _config.yaml
+              cp _config.prod.yml _config.yml
             else 
-              cp _config.staging.yaml _config.yaml
+              cp _config.staging.yml _config.yml
             fi
       - run: yarn run hexo generate
       - store_artifacts:
