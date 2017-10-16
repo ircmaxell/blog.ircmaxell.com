@@ -5,6 +5,7 @@ permalink: n-tier-architecture-introduction
 date: 2012-08-01
 comments: true
 categories:
+- Architecture
 tags:
 - Architecture
 - Email Response
@@ -14,7 +15,9 @@ tags:
 - Programming
 ---
 
-If you've been following me for a while, you've likely heard me use the term "`N-Tier Architecture`" before. Today's question comes from [Arno](https://twitter.com/me_arno). He basically asked "What is this N-Tier Architecture thing you keep talking about?"... So, to answer his question, a N-Tier Architecture is one that uses more than one tier. Of course there's more to it than that...<!--more-->
+If you've been following me for a while, you've likely heard me use the term *"N-Tier Architecture"* before. Today's question comes from [Arno](https://twitter.com/me_arno). He basically asked *"What is this N-Tier Architecture thing you keep talking about?"*... So, to answer his question, a N-Tier Architecture is one that uses more than one tier. Of course there's more to it than that...
+
+<!--more-->
 
 
 ## What Is A Tier?
@@ -23,14 +26,21 @@ If you've been following me for a while, you've likely heard me use the term "`N
 The first thing that we must talk about, is what makes up a tier. The fact of the matter is that the answer depends on who you're talking to, and what context you're talking in. Some people consider a tier to be a process boundary. If your application talks to another process to work, it would then be multi-tier. Others (including myself) consider tier to be separated by more of a conceptual boundary. Being split into separate processes is not enough (after all, you can do that by forking).
 
 So if there's a conceptual boundary, what goes into the separation of tiers? The answer is that there are a number of ways to separate them. I typically consider tiers to be parts of an application that are separated by a protocol based API. Note that I didn't say network based. You can have tiers that use FIFO files to communicate. But they are communicating through other means than just shared memory or signals.
+
 ## Common Setups
 
 
-Almost all web based applications use at least two tiers. One for the "application server" (which in this case could be PHP) and one for the database server (MySQL). If we were to diagram the application, it might look something like this:[![](http://1.bp.blogspot.com/-RIAum2bO1do/UBcx29gEEDI/AAAAAAAABDc/525TeDe0aq4/s320/2_tier.png)](http://1.bp.blogspot.com/-RIAum2bO1do/UBcx29gEEDI/AAAAAAAABDc/525TeDe0aq4/s1600/2_tier.png)
+Almost all web based applications use at least two tiers. One for the "application server" (which in this case could be PHP) and one for the database server (MySQL). If we were to diagram the application, it might look something like this:
 
-You've likely realized that we're missing a piece here: the web server. In the common LAMP setup, using mod_php to run PHP, it is a two tier application (since you can't easily separate the Apache server from the PHP server). But if you use FPM or FastCGI, you can further separate it out into another tier:[![](http://2.bp.blogspot.com/-DJZ98jQdLoE/UBcyetqbr_I/AAAAAAAABDk/ms0iq3RzhUY/s320/3_tier.png)](http://2.bp.blogspot.com/-DJZ98jQdLoE/UBcyetqbr_I/AAAAAAAABDk/ms0iq3RzhUY/s1600/3_tier.png)
+[![](http://1.bp.blogspot.com/-RIAum2bO1do/UBcx29gEEDI/AAAAAAAABDc/525TeDe0aq4/s320/2_tier.png)](http://1.bp.blogspot.com/-RIAum2bO1do/UBcx29gEEDI/AAAAAAAABDc/525TeDe0aq4/s1600/2_tier.png)
 
-This is the level that was very common until the past few years (it is still very common, but there are other architectures that are starting to pick up steam). One of the more popular is to separate out a presentation layer from the business logic layer. The business logic then becomes nothing more than a set of Restful APIs. There are several advantages to this form of architecture, in that you can have multiple front-ends that share the same business logic. For example:[![](http://1.bp.blogspot.com/-qmSXPaZ3kuY/UBc0dbj4FkI/AAAAAAAABDs/oXnEwLnFRfw/s320/4_tier.png)](http://1.bp.blogspot.com/-qmSXPaZ3kuY/UBc0dbj4FkI/AAAAAAAABDs/oXnEwLnFRfw/s1600/4_tier.png)
+You've likely realized that we're missing a piece here: the web server. In the common LAMP setup, using mod_php to run PHP, it is a two tier application (since you can't easily separate the Apache server from the PHP server). But if you use FPM or FastCGI, you can further separate it out into another tier:
+
+[![](http://2.bp.blogspot.com/-DJZ98jQdLoE/UBcyetqbr_I/AAAAAAAABDk/ms0iq3RzhUY/s320/3_tier.png)](http://2.bp.blogspot.com/-DJZ98jQdLoE/UBcyetqbr_I/AAAAAAAABDk/ms0iq3RzhUY/s1600/3_tier.png)
+
+This is the level that was very common until the past few years (it is still very common, but there are other architectures that are starting to pick up steam). One of the more popular is to separate out a presentation layer from the business logic layer. The business logic then becomes nothing more than a set of Restful APIs. There are several advantages to this form of architecture, in that you can have multiple front-ends that share the same business logic. For example:
+
+[![](http://1.bp.blogspot.com/-qmSXPaZ3kuY/UBc0dbj4FkI/AAAAAAAABDs/oXnEwLnFRfw/s320/4_tier.png)](http://1.bp.blogspot.com/-qmSXPaZ3kuY/UBc0dbj4FkI/AAAAAAAABDs/oXnEwLnFRfw/s1600/4_tier.png)
 
 ## Why Use Tiers?
 
@@ -42,10 +52,12 @@ Furthermore, creating tiers allows you to scale an application easier because yo
 Additionally, as long as the tiers are communicating over HTTP, you can leverage reverse proxies at each tier to cache the results the tier generates. Thereby creating an application that can scale much easier than a traditional application without having to wire cache into the application itself (or making it easier to cache the results). This lets you scale the front-end easier, because it's not really doing any data processing. So it basically becomes a dumb front-end, dispatching data tasks further back. So therefore, it is usually much easier to scale out, because you have less inter-tier communication and data sharing requirements.
 
 Finally, it allows for far greater security to be applied. Since each tier can be put behind a separate network firewall, you can distinctly separate the core data store from the rest of the application. That means that if a user compromises the front-end, it doesn't buy them much. They would need to compromise each tier separately (which is much harder). It's worth noting that any SQL injection vulnerability in the API tier would be exposed to the front-end, so it's not perfect. But it can help significantly.
+
 ## A Real Example
 
+Here's a real example of a live application that I've built. It's fairly complicated, so I'll explain it afterwards, but let's look at the diagram first:
 
-Here's a real example of a live application that I've built. It's fairly complicated, so I'll explain it afterwards, but let's look at the diagram first:[![](http://3.bp.blogspot.com/-_BKuO95QLFo/UBc50P8rLYI/AAAAAAAABD8/X9gqxIQU4S0/s320/live_architecture.png)](http://3.bp.blogspot.com/-_BKuO95QLFo/UBc50P8rLYI/AAAAAAAABD8/X9gqxIQU4S0/s1600/live_architecture.png)
+[![](http://3.bp.blogspot.com/-_BKuO95QLFo/UBc50P8rLYI/AAAAAAAABD8/X9gqxIQU4S0/s320/live_architecture.png)](http://3.bp.blogspot.com/-_BKuO95QLFo/UBc50P8rLYI/AAAAAAAABD8/X9gqxIQU4S0/s1600/live_architecture.png)
 
 So, there's a lot going on there. In reality, it's not nearly as complicated as it seems. So let's start with the two right-most ends. The JavaScript end should be fairly straight-forward. In the browser, there's a JavaScript client that talks back to the central API server through a cache (the cache is operating on fetch records, and is intelligently purged as write requests are passed back). The top PHP client should also be pretty straight forward, in that it calls the API server and renders static HTML (which then include the JavaScript application for subsequent requests).
 
@@ -68,4 +80,4 @@ Additionally, there's another significant downside in that it's a lot more syste
 
 While every application won't benefit from the complications that an N-Tier application will bring, those that can will benefit significantly. Of course there's a lot more to the picture than I've gone over here, but you could write a doctoral thesis on the generic problem. But if you need an application that's highly scalable, easily extendable, needs to integrate with several existing systems or requires communication between different technologies, consider an API based N-Tier Architecture.
 
-Do you have a question that you want me to try to answer? Something about how PHP works internally? Something about OO Design? Something related to PHP? Shoot me an email at` ircmaxell **[at]** php **[dot]** net`, and I'll see if I can answer it!
+Do you have a question that you want me to try to answer? Something about how PHP works internally? Something about OO Design? Something related to PHP? Shoot me an email at *ircmaxell **[at]** php **[dot]** net*, and I'll see if I can answer it!

@@ -5,6 +5,7 @@ permalink: promise-for-clean-code
 date: 2013-01-18
 comments: true
 categories:
+- Programming
 tags:
 - Dependency Injection
 - Design Patterns

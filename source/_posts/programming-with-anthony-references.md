@@ -5,6 +5,7 @@ permalink: programming-with-anthony-references
 date: 2012-12-05
 comments: true
 categories:
+- Video
 tags:
 - Learning
 - PHP
@@ -16,7 +17,7 @@ tags:
 ---
 
 The third video to my Programming With Anthony series is up! In this video, I talk about variables in PHP and how they work under the hood. I explain the difference between variable references and object references, along with the semantics of each. Give it a watch!
-
+<!--more-->
 
 This is the culmination of my trial at these YouTube videos. I have done a high-level one (focusing on abstract concepts), a mid-level one (focusing on the theory behind a concept) and a low-level one (focusing on implementation details). So my question to you all, is where would you like to see this go? Would you like more high-level concept videos? Or would you like more hands-on theory? Or would you like deeper dives into more technical areas?
 

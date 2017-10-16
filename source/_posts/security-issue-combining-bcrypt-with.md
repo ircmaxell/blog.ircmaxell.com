@@ -5,6 +5,7 @@ permalink: security-issue-combining-bcrypt-with
 date: 2015-03-12
 comments: true
 categories:
+- Security
 tags:
 - BCrypt
 - Best Practice
@@ -20,13 +21,13 @@ The other day, I was directed at an interesting [question on StackOverflow](http
 
 To start off, I looked at PHP's implementation of [`crypt()`](http://lxr.php.net/xref/PHP_TRUNK/ext/standard/crypt.c#154). The function we're interested in is called `php_crypt()`, and has the following signature:
 
-```php
+```c
 PHPAPI zend_string *php_crypt(const char *password, const int pass_len, const char *salt, int salt_len)
-
 ```
+
 Now, check out the branch that does bcrypt:
 
-```php
+```c
 } else if (
         salt[0] == '$' &&
         salt[1] == '2' &&
@@ -45,13 +46,13 @@ Now, check out the branch that does bcrypt:
         return result;
     }
 }
-
 ```
+
 Notice anything? The `password` variable is a `char\*`. So `php_crypt_blowfish_rn()` doesn't know the length of the input password. Interesting. So I wonder how it knows the length? Well, at this point I have an idea, but I'm also scared by it...
 
 So digging through `php_crypt_blowfish_rn()`, I notice that the only place the passsword (now called `key`) is sent is the function [`BF_set_key()`](http://lxr.php.net/xref/PHP_TRUNK/ext/standard/crypt_blowfish.c#BF_set_key). There's a bunch of comments about sign safety and mode switches, but the bulk of it boils down to this pair of nested loops (comments stripped out):
 
-```php
+```c
 const char *ptr = key;
 /* ...snip... */
 for (i = 0; i < BF_N + 2; i++) {
@@ -73,21 +74,21 @@ for (i = 0; i < BF_N + 2; i++) {
     expanded[i] = tmp[bug];
     initial[i] = BF_init_state.P[i] ^ tmp[bug];
 }
-
 ```
+
 If you're not familiar with C, `\*` dereferences a pointer (returns the value it points to). So if we define `char \*abc = "abc"`, then `\*abc` would be `'a'` (well, technically, the numeric value of the codepoint of `'a'`). So then you can increment the pointer `abc++` and then `\*abc` would equal `'b`'. This is the standard way that "strings" work in C.
 
 The loops basically iterate 72 times (`BF_N` is 16) and "eats" one byte of the string each iteration.
 
 The key point here is the following line of code:
 
-```php
+```c
 if (!*ptr)
     ptr = key;
 else
     ptr++;
-
 ```
+
 Basically, if `\*ptr` is ever `0`, then reset it to the start of the string. This is how strings shorter than 72 characters are represented (since a "c-string" always ends with a null byte).
 
 Think about that for a second. That means that `"test\0abc"` would be treated as `"test\0test\0test\0test\0test\0test\0test\0test\0test\0test\0test\0test\0test\0test\0te"`. In fact, every string that starts with `"test\0"` will be treated the same.
@@ -110,14 +111,14 @@ Some people think bcrypt isn't enough, and instead choose to "pre-hash" password
 
 ```php
 password_hash(hash('sha256', $password, true), PASSWORD_DEFAULT)
-
 ```
+
 Additionally, some people want to use a "pepper", so they pre-hash using a HMAC with a private key:
 
 ```php
 password_hash(hash_hmac('sha256', $password, $key, true), PASSWORD_DEFAULT)
-
 ```
+
 The problem here is the last argument to the two hash functions: `true`. They force raw output. This is normally how cryptographic functions are combined (using raw output rather than encoded output). And given that you can lose entropy from a sha512 by truncating it from 128 characters to 72, using raw output preserves some entropy.
 
 But this means that the output can contain null bytes. In fact, it means that on average 1 out of every 256 passwords (or `0.39%`) will have a leading null byte. So we only need to try approximately 177 passwords to get a 50% chance of finding a hash with a leading null byte. And we only need to try approximately 177 users to get a 50% chance of finding a user with a leading null byte. So trying 31329 permutations of users and passwords gives us a 25% chance of finding one that will work. That's in the realm of possibility for online attacks (via distributed means).
@@ -142,8 +143,8 @@ while (count($found) < 2) {
 }
 
 var_dump($i, $found);
-
 ```
+
 I picked a random key. Then I made a "random" looking password (encoding the iteration count). Then I let it run. This is a stupid simple generator to generate these collisions (not even efficient). When I ran it, I got the following output:
 
 ```php
@@ -154,8 +155,8 @@ array(2) {
   [1]=>
   string(20) "NTIyNTIyNTIyNTIyNTIy"
 }
-
 ```
+
 Which means for that key, we found 2 colliding passwords in 523 attempts. The attempt number will change with different keys.
 
 So let's try that out:
@@ -164,14 +165,14 @@ So let's try that out:
 $hash = password_hash(hash_hmac("sha256", $found[0], $key, true), PASSWORD_BCRYPT);
 
 var_dump(password_verify(hash_hmac("sha256", $found[1], $key, true), $hash));
-
 ```
+
 And we get:
 
 ```php
 bool(true)
-
 ```
+
 Amazing. Different passwords validate to the same hash.
 
 ## Detecting Problematic Hashes
@@ -180,8 +181,8 @@ Offline, there's a simple check to see if a given hash was created with a leadin
 
 ```php
 password_verify("\0", $hash)
-
 ```
+
 Testing our hash from above:
 
 > $2y$10$2ECy/U3F/NSvAjMcuBeI6uMDmJlI8t8ux0pXOAoajpv2hSH0veOMi
@@ -196,8 +197,8 @@ But even if none of the hashes were created with leading null bytes, it doesn't 
 a\0bc
 a\0cd
 a\0ef
-
 ```
+
 Will all collide as well. So you have a `0.39%` chance of colliding at the second character for each given first character. So of all the hashes that start with `a`, a given hash has a `0.39%` chance of having a null byte as the second character. Meaning that there's significantly less work to find this collision than to find a full-hash collision.
 
 The problem goes all the way down the line.
@@ -219,6 +220,7 @@ You are 100% safe if you do one of the following:
  * Use straight `bcrypt` (don't pre-hash)
  * Use hex output from the pre-hash
  * Base64 encode the raw output of a pre-hash
+ 
 If you are using raw output, encode it first, and you're safe.
 
 ## The Underlying Problem

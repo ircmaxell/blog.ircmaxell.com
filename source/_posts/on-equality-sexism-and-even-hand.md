@@ -5,6 +5,7 @@ permalink: on-equality-sexism-and-even-hand
 date: 2013-02-26
 comments: true
 categories:
+- Meta
 tags:
 - Community
 - PHP
@@ -14,6 +15,7 @@ tags:
 
 Over the past 3 or 4 days there's been a huge upturn on Twitter and in the community bashing [Web and PHP Magazine](http://webandphp.com/) for giving away T-Shirts (and tweeting a photo) with a double-entendre at PHPUK. A lot of banter going back and forth from those like [Cal Evans](http://blog.calevans.com/2013/02/22/sexism-and-php/) who went so far as to pledge never to go to another conference sponsored by the magazine, to [Stefan Koopmanschap](http://www.leftontheweb.com/message/On_SexismRacismAnyotherism_and_the_PHP_Community) who basically thinks it's no big deal. (note: these are my interpretations from their posts). I think the whole thing has grown WAY out of proportion...
 <!--more-->
+
 Here's the offending image that kicked it all off:
 
 [![](http://3.bp.blogspot.com/-murubtA0GAw/USvxN-BtNBI/AAAAAAAAFLg/SbDk-W2gcX0/s1600/web-and-php-img.png)](http://3.bp.blogspot.com/-murubtA0GAw/USvxN-BtNBI/AAAAAAAAFLg/SbDk-W2gcX0/s1600/web-and-php-img.png)
@@ -32,32 +34,32 @@ To demonstrate my point: I am \*`honestly`\* offended by [help vampires](http://
 I am offended, partially because I feel it shows a complete lack of respect for me and my time. What do I do when I am offended in these cases? Do I flip out and name names? No. I find a way out of the situation, and I move to a better one. That's it. If you're offended or uncomfortable with something, then leave. That's normal.
 
 Before you get all upset and start accusing me of thinking that [SmutOnRails](http://martinfowler.com/bliki/SmutOnRails.html) was ok, stop and think about it rationally for a second.
-> **<span style="font-size: x-large;">OFFENDING SOMEONE IS NOT THE SAME AS BEING OFFENSIVE...</span>**
 
 
+## OFFENDING SOMEONE IS NOT THE SAME AS BEING OFFENSIVE...
 
 Being offensive is where the majority of a community would be offended (even the non-vocal ones) **and** it was intentionally designed to offend or put down people. Just because you were offended doesn't mean that something was offensive.
 
 We should ABSOLUTELY put rules in place to prevent intentional discrimination or offensive content. But we shouldn't put rules on trying to prevent things that people will find offensive. 
 
 
-Don't get me wrong, I don't think it's a good thing at all if people are offended or slighted or whatever at conferences. I do think effort needs to be made to make it more welcoming and easier for everyone to get along. However, I don't think rules against anything that may offend people will help (the opposite actually). I also don't think that getting up in arms over something minor like a double-entendre on a T-Shirt does anyone any good. All it does is `dilute `the real problems...
+Don't get me wrong, I don't think it's a good thing at all if people are offended or slighted or whatever at conferences. I do think effort needs to be made to make it more welcoming and easier for everyone to get along. However, I don't think rules against anything that may offend people will help (the opposite actually). I also don't think that getting up in arms over something minor like a double-entendre on a T-Shirt does anyone any good. All it does is *dilute* the real problems...
 
 There's a perfect parallel in the US: Freedom of Speech. In the US, you are free to talk about just about anything you want. You can share your opinions irrespective of if others will find them offensive. However, what's not legal is hate speech and harassment. It's often a subjective and fine line between them (and it is very context sensitive), but the point is that there is a distinction between something that offends someone else, and being deliberately offensive / harassing.
 
 
 Now, it's a touchy subject in that women have a hard enough time getting into tech without having to put up with a T-Shirt like that, right? Well, what about a T-Shirt like this:
+
 [![](http://1.bp.blogspot.com/-nqBrbFnCmyI/USv2alwsxcI/AAAAAAAAFLw/dMyqNMPPm80/s1600/php-shirt-img.jpg)](http://1.bp.blogspot.com/-nqBrbFnCmyI/USv2alwsxcI/AAAAAAAAFLw/dMyqNMPPm80/s1600/php-shirt-img.jpg)
 
 Is this a problem? Well, what about the fact that the writing on the t-shirt tends to draw a person's eye to the wearer's chest? Should we tell all vendors that they are not allowed to have logos or sayings on the chest of their shirts because it will make it tough for women (because their chest will be stared at by all those men wanting to read the shirt)?
-**COME ON**, be real. Women have a tough time getting into technology for one reason: That we treat them differently (and by we, I include `everyone`, including women). Sure, there are assholes out there that try to put women down, and make it harder for them (for whatever reason). But guess what? There are also assholes out there that try to put PHP developers down because it's not Ruby or whatever language of fancy (names aside)...
+**COME ON**, be real. Women have a tough time getting into technology for one reason: That we treat them differently (and by we, I include *everyone*, including women). Sure, there are assholes out there that try to put women down, and make it harder for them (for whatever reason). But guess what? There are also assholes out there that try to put PHP developers down because it's not Ruby or whatever language of fancy (names aside)...
 
 Now I'm not trying to trivialize what women go through in this industry. Instead, what I'm trying to point out is that women are **not** special. They do **not** need to be protected. They do **not** need to be singled out. That's sexism. Even having a group (such as PHP Women) actually partially deepens the gap by forcing a divide between men and women in the industry.
 
-Unfortunately it's a double-edged sword. Targeting women (for encouragement or discouragement, both are just as guilty) implies that they need help. It implies that it's a tough world out there and they need hand holding to get through it. It re-enforces the concept that they couldn't do it themselves without a team of help. But on the other hand, it `is` a tough world out there. Having a group that can provide support is necessary to make it easier for women to get into tech.
-> **<span style="font-size: x-large;">BULLSHIT.</span>**
+Unfortunately it's a double-edged sword. Targeting women (for encouragement or discouragement, both are just as guilty) implies that they need help. It implies that it's a tough world out there and they need hand holding to get through it. It re-enforces the concept that they couldn't do it themselves without a team of help. But on the other hand, it *is* a tough world out there. Having a group that can provide support is necessary to make it easier for women to get into tech.
 
-
+## BULLSHIT
 
 Female developers are the same as male developers. They are developers. The second that you think they need to be protected is the same second that they become different enough to need protection (because you made it so). People in glass houses shouldn't throw stones...
 

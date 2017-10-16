@@ -5,6 +5,7 @@ permalink: phps-source-code-for-php-developers_28
 date: 2012-03-28
 comments: true
 categories:
+- PHP
 tags:
 - PHP
 - PHP Source Code For PHP Developers Series

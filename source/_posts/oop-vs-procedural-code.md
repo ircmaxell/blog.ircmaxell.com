@@ -5,6 +5,7 @@ permalink: oop-vs-procedural-code
 date: 2012-07-11
 comments: true
 categories:
+- Programming
 tags:
 - Architecture
 - Best Practice
@@ -17,15 +18,14 @@ tags:
 ---
 
 This morning I was asked a question that took me by surprise: "Your examples for PasswordLib are in OOP style, how do I write it in procedural style"... This took me by surprise, because the examples actually are in a procedural style. So I felt that I should write a post about the real differences between OOP and Procedural coding styles. Hint: whether you use classes and objects or not has very little to do with the answer...<!--more-->
+
 ## Procedural Programming
 
-
 Wikipedia defines [procedural programming](http://en.wikipedia.org/wiki/Procedural_programming) as:
-> **Procedural programming**<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;"> can sometimes be used as a synonym for </span>[imperative programming](http://en.wikipedia.org/wiki/Imperative_programming)<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;"> (specifying the steps the program must take to reach the desired state), but can also refer (as in this article) to a </span>[programming paradigm](http://en.wikipedia.org/wiki/Programming_paradigm)<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;">, derived from </span>[structured programming](http://en.wikipedia.org/wiki/Structured_programming)<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;">, based upon the concept of the </span>`procedure call`<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;">.</span>
 
-<span style="background-color: white;">That's a decent definition, but let's see if we can improve upon it. I'm going to assert here that procedural programming is really just the act of specifying a set of ordered steps needed to implement the requested functionality. How those steps are implemented is a detail that's not related to the paradigm. The important thing is that it's imperative in how it works. Let's look at a few examples:</span>
-<span style="background-color: white;">
-</span>
+> **Procedural programming** can sometimes be used as a synonym for [imperative programming](http://en.wikipedia.org/wiki/Imperative_programming) (specifying the steps the program must take to reach the desired state), but can also refer (as in this article) to a [programming paradigm](http://en.wikipedia.org/wiki/Programming_paradigm), derived [structured programming](http://en.wikipedia.org/wiki/Structured_programming), based upon the concept of the `procedure call`.
+
+That's a decent definition, but let's see if we can improve upon it. I'm going to assert here that procedural programming is really just the act of specifying a set of ordered steps needed to implement the requested functionality. How those steps are implemented is a detail that's not related to the paradigm. The important thing is that it's imperative in how it works. Let's look at a few examples:
 
 Obviously procedural:
 
@@ -76,7 +76,8 @@ Note that all three of those examples use the exact same code structure. The onl
 
 
 Wikipedia defines object oriented programming as:
-> **Object-oriented programming**<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;"> (</span>**OOP**<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;">) is a </span>[programming paradigm](http://en.wikipedia.org/wiki/Programming_paradigm)<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;"> using "</span>[objects](http://en.wikipedia.org/wiki/Object_(computer_science))<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;">" – </span>[data structures](http://en.wikipedia.org/wiki/Data_structure)<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;"> consisting of </span>[data fields](http://en.wikipedia.org/wiki/Field_(computer_science))<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;"> and </span>[methods](http://en.wikipedia.org/wiki/Method_(computer_science))<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;"> together with their interactions – to design applications and computer programs. Programming techniques may include features such as </span>[data abstraction](http://en.wikipedia.org/wiki/Data_abstraction)<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;">, </span>[encapsulation](http://en.wikipedia.org/wiki/Encapsulation_(object-oriented_programming))<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;">, </span>[messaging](http://en.wikipedia.org/wiki/Message_passing)<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;">, </span>[modularity](http://en.wikipedia.org/wiki/Module_(programming))<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;">, </span>[polymorphism](http://en.wikipedia.org/wiki/Polymorphism_in_object-oriented_programming)<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;">, and </span>[inheritance](http://en.wikipedia.org/wiki/Inheritance_(computer_science))<span style="font-family: sans-serif; font-size: 13px; line-height: 19px; text-align: -webkit-auto;">. </span>
+
+> **Object-oriented programming** (**OOP**) is a [programming paradigm](http://en.wikipedia.org/wiki/Programming_paradigm) using "[objects](http://en.wikipedia.org/wiki/Object_(computer_science))" – [data structures](http://en.wikipedia.org/wiki/Data_structure) consisting of [data fields](http://en.wikipedia.org/wiki/Field_(computer_science)) and [methods](http://en.wikipedia.org/wiki/Method_(computer_science)) together with their interactions – to design applications and computer programs. Programming techniques may include features such as [data abstraction](http://en.wikipedia.org/wiki/Data_abstraction), [encapsulation](http://en.wikipedia.org/wiki/Encapsulation_(object-oriented_programming)), [messaging](http://en.wikipedia.org/wiki/Message_passing), [modularity](http://en.wikipedia.org/wiki/Module_(programming)), [polymorphism](http://en.wikipedia.org/wiki/Polymorphism_in_object-oriented_programming), and [inheritance](http://en.wikipedia.org/wiki/Inheritance_(computer_science)). 
 
 
 Again, that's a decent definition. But I only agree with the second part. The first sentence says that you must use object data structures to write OOP. That's blatantly wrong. You can completely implement data abstraction, encapsulation, messaging, modularity, polymorphism and (to a limited extent) inheritance without using an object structure. What I'd argue makes code OOP is a few things. First, it must abstract the data concepts into modular units. Second, it must have some way to polymorphically execute code. Finally, it must at least partially encapsulate that code and functionality. Let's look at a few examples before continuing further:
@@ -130,17 +131,13 @@ function hook_trigger($eventName, $data = null) {
 
 As you can see, both follow the [Mediator Pattern](http://sourcemaking.com/design_patterns/mediator). Both are object oriented, because they both are designed to de-couple caller from sender. Both provide state, and are modular. The difference here, is that one is implemented using a traditional object (and is hence reusable, a very good advantage) and the other is not reusable since it depends on a global variable. I used the term "hook" here for a very important reason. It's the name of the event system that [Drupal](http://drupal.org/) uses.
 
-
 Drupal in a lot of ways is very object oriented. Their module system, their hook system, their form system, etc are all object oriented. But none of them use objects for that. They use functions and dynamic dispatch. This leads to some really awkward tradeoffs, so I'm not suggesting that it's a good thing, just that it's a proof that you don't need classes to write OOP.
 
 ## Why does it matter?
 
-
 It matters for a very simple reason. A lot of developers think that just because they use classes, they are writing OOP. And others think that because they use functions, they are using procedural programming. And that's not true. Procedural vs OOP is an approach to writing code, not how you write it. Are you focusing on "Steps" and an ordered way of writing a program? You're likely writing procedural code. But if you're focusing on state transformations and encapsulated abstractions, you're writing OOP.
 
-
 Classes are just a tool that make writing real OOP easier. They aren't a requirement or a indicator that you're writing OOP.
-
 
 Just My $0.02...
 
@@ -149,8 +146,8 @@ Just My $0.02...
 
 
 So, some of you are asking what database access would look like in OOP code. The reason that I didn't include an example is that it's all abstracted away. In reality, the way that I would do that query could be:
-```php
 
+```php
 $mapper = new PersonDataMapper(new MySQLi(...));
 $people = $mapper->getAll();
 ```

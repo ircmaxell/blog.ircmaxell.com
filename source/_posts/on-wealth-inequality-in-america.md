@@ -5,6 +5,7 @@ permalink: on-wealth-inequality-in-america
 date: 2013-03-07
 comments: true
 categories:
+- Other
 tags:
 - Economics
 - Internet

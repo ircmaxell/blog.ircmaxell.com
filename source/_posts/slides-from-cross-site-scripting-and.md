@@ -5,6 +5,7 @@ permalink: slides-from-cross-site-scripting-and
 date: 2011-07-01
 comments: true
 categories:
+- Slides
 tags:
 - PHP
 - Presentation
@@ -30,8 +31,6 @@ You can [download the slides here](http://www.ircmaxell.com/downloads/NYCPHP_XSS
 You can checkout the Bad Web Application that I built [over on GitHub](https://github.com/ircmaxell/XssBadWebApp).
 
 **_WARNING!  DO NOT USE THE BAD WEB APPLICATION ON A PUBLIC FACING SERVER!  DO NOT INSTALL IT ANYWHERE YOU CARE ABOUT!_**
-**_
-_**
 
 I'll try to do a post over the weekend as a walk through of the Bad Web Application.  For now, you can just take a look at the code and play around with it on your own.
 

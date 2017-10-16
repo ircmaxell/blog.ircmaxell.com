@@ -5,6 +5,7 @@ permalink: programming-with-anthony-encryption
 date: 2012-11-28
 comments: true
 categories:
+- Video
 tags:
 - Cryptography
 - PHP

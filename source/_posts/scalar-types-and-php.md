@@ -5,6 +5,7 @@ permalink: scalar-types-and-php
 date: 2015-02-11
 comments: true
 categories:
+- PHP
 tags:
 - Language-Design
 - PHP
@@ -15,7 +16,6 @@ tags:
 There's currently a proposal that's under vote to add [Scalar Typing to PHP](https://wiki.php.net/rfc/scalar_type_hints) (it has since been withdrawn). It's been a fairly controversial RFC, but at this point in time it's currently passing with 67.8% of votes. If you want a simplified breakdown of the proposal, check out [Pascal Martin's **excellent** post about it](http://blog.pascal-martin.fr/post/in-favor-of-rfc-scalar-type-hints.html). What I want to talk about is more of an opinion. Why I believe this is the correct approach to the problem.
 
 [I have now forked the original proposal and will be bringing it to a vote shortly.](https://wiki.php.net/rfc/scalar_type_hints_v5)<!--more-->
-
 
 ## Strict All The Way
 
@@ -31,8 +31,8 @@ Type checkers (static) aren't the end-all be-all of testing. They can't tell you
 function foo(string $abc): int {
     return $abc + 1;
 }
-
 ```
+
 There's a type error in here. You're taking a string (text) and using it in a numeric context. That may work for some inputs (like `"12"`), but will be weird for some (like `"10 apples"`) or down right wrong for others (like `"bird"`).
 
 So that code's behavior will change depending on the input. And it will change in subtle and hard to follow ways.
@@ -65,8 +65,8 @@ In other cases, a weak-based approach is going to lead to subtle problems. An ex
 
 ```php
 function password_hash(string $password, int $algorithm, array $options)
-
 ```
+
 Which you can call like `password_hash($password, true)` to get a bcrypt hash.
 
 In this case, everything looks fine, right?
@@ -79,8 +79,8 @@ But let's take a far better and more dangerous example:
 
 ```php
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, true);
-
 ```
+
 With weak type hints, you'd read that line and think "Cool, we're verifying hostnames". But no...
 
 That option takes an integer parameter:
@@ -136,8 +136,8 @@ switch ($_GET['action']):
         echo $value[0] . ', ' . $value[1];
         break;
 }
-
 ```
+
 Then
 
 ```php
@@ -158,8 +158,8 @@ function quadraticFormula(float $a, float $b, float $c): array {
         div(-1*$b - sqrt($b**2 - 4*$a*$c), 2*$a),
     ];
 }
-
 ```
+
 Without strict typing in functions.php, you'd be hard-pressed to find the bug. But it's there.
 
 The problem is that `div` is integer division. But `2\*$a` is a float (since `$a` is a float). So therefore there's a cast going on. In fact, it would truncate to the nearest integer. Which would be fine for large numbers (>10000 perhaps), but for small numbers would cause massive error.
@@ -172,16 +172,16 @@ But since we declared strict types, we were notified of the error right away. So
 function floatdiv(float $x, float $y): float {
     return $x / $y;
 }
-
 ```
+
 OR:
 
 ```php
 function div(numeric $x, numeric $y): numeric {
     return $x / $y;
 }
-
 ```
+
 So our strict type system prevented us from making a pretty significant error without realizing it.
 
 However, since `index.php` is in weak mode, we can still call into the math functions without having to cast. And without having the overhead of worrying about the types involved. Ideally you would want to validate the input (please do), but even if you don't, things won't blow up.

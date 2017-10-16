@@ -5,6 +5,7 @@ permalink: stack-machines-compilers
 date: 2014-12-18
 comments: true
 categories:
+- Hobby
 tags:
 - Compiler
 - External-Post

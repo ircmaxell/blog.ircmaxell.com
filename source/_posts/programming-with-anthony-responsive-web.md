@@ -5,6 +5,7 @@ permalink: programming-with-anthony-responsive-web
 date: 2012-12-26
 comments: true
 categories:
+- Video
 tags:
 - Best Practice
 - Learning

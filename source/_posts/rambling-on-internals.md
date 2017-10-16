@@ -5,6 +5,7 @@ permalink: rambling-on-internals
 date: 2013-09-06
 comments: true
 categories:
+- PHP
 tags:
 - Open Source
 - PHP

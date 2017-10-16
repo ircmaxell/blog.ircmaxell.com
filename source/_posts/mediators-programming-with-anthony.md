@@ -5,6 +5,7 @@ permalink: mediators-programming-with-anthony
 date: 2013-01-23
 comments: true
 categories:
+- Video
 tags:
 - Design Patterns
 - Events

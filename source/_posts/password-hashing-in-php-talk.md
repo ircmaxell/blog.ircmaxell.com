@@ -5,6 +5,7 @@ permalink: password-hashing-in-php-talk
 date: 2012-10-11
 comments: true
 categories:
+- Slides
 tags:
 - Best Practice
 - Conference
@@ -17,6 +18,7 @@ tags:
 ---
 
 Last week, I was at [PHP North West](http://conference.phpnw.org.uk/phpnw12/). The conference was incredible to say the least. One of the best I've been to in a very long time. But to the point of this post, I did an unconference talk about password hashing in PHP. Since I had my camera with me, I also took video of it. So included in this post is both the slides from the talk, and the video of the talk. So, with no further adue:<!--more-->
+
 ## Slides:
 
 <iframe height="400" src="http://ircmaxell.github.com/password-hashing-mini-presentation/" width="535"></iframe>

@@ -5,6 +5,7 @@ permalink: slides-for-cryptography-presentation-at
 date: 2012-11-02
 comments: true
 categories:
+- Slides
 tags:
 - Best Practice
 - Conference

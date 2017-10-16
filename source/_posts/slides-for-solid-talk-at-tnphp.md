@@ -5,6 +5,7 @@ permalink: slides-for-solid-talk-at-tnphp
 date: 2012-11-03
 comments: true
 categories:
+- Slides
 tags:
 - Best Practice
 - Conference

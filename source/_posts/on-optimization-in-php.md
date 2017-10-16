@@ -5,6 +5,7 @@ permalink: on-optimization-in-php
 date: 2011-08-09
 comments: true
 categories:
+- Performance
 tags:
 - Best Practice
 - Language Agnostic

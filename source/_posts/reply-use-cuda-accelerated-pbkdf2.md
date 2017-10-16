@@ -5,6 +5,7 @@ permalink: reply-use-cuda-accelerated-pbkdf2
 date: 2012-06-13
 comments: true
 categories:
+- Security
 tags:
 - Language Agnostic
 - Password-Hashing
@@ -18,8 +19,7 @@ Yesterday, I read an article about using GPUs to accelerate password hashing: [N
 
 ## What Is A GPU Good At?
 
-
-The entire premise of the article is that `attackers are using GPUs to crack passwords, so let's beat them to the punch and use them ourselves`. Well, that is true (that attackers are using GPUs). But why are they using them? 
+The entire premise of the article is that *attackers are using GPUs to crack passwords, so let's beat them to the punch and use them ourselves*. Well, that is true (that attackers are using GPUs). But why are they using them? 
 
 Is it because they can execute logic faster than a CPU? No. In fact, without branch prediction or a lot of the optimizations present in CPUs, they usually are slower than a CPU. 
 
@@ -29,7 +29,7 @@ Is it because they are cheaper than a CPU? No. The best GPUs are \*more expensiv
 
 So why are GPUs so good at it? The answer lies in how the GPU is designed. A normal CPU has one or more cores. Each core can only execute one instruction from one thread at a time (sort of, but the details are outside of the scope of this article). So a 4 core processor can only execute 4 threads at one point in time (one clock cycle for example). A GPU is similar in that it has multiple cores as well (1 to 4 is typical). 
 
-Where the GPU differs is in what each core does. The GPU shines when you need to perform the same instruction on a lot of data (threads) at the same time. Each core can typically execute a single instruction against thousands of pieces of data **at the same time **(in fact, some GPU core designs can execute upwards of 7,000 of these `"data threads"` at once). That's where the real gain is in a GPU. The ability to do the same thing at the same time to a lot of data.
+Where the GPU differs is in what each core does. The GPU shines when you need to perform the same instruction on a lot of data (threads) at the same time. Each core can typically execute a single instruction against thousands of pieces of data **at the same time** (in fact, some GPU core designs can execute upwards of 7,000 of these *"data threads"* at once). That's where the real gain is in a GPU. The ability to do the same thing at the same time to a lot of data.
 
 One way to visualize the difference is to picture assembling a car from parts. There are a set of instructions that take parts as input, and produce a slightly more assembled car at each step in the way. A CPU in this case would equate to a small shop with one person assembling the car. They can react quite quickly to changing requirements (such as compensating for incorrect parts). But they can only do one step at a time to one car.
 
@@ -48,7 +48,7 @@ But further, the article goes on to say:
 > Of course an attacker can get, let's say 100 CUDA or powerful ATI cards, but that would be prohibitively expensive and would provide such an attacker with only 100,000 attempts per second, not 230,000,000,000 attempts per second.
 
 
-And there's the real hand-wave. With 100 GPUs, we should be able to hit tens of billions of attempts per second, because so much of the work is done concurrently... And that can brute force all 6 character passwords (90 printable characters, **a-zA-Z0-9!@#$%^&\*()<>?,./;':"[]{}\|** - about 531 billion - in well under a minute). And that's a pure brute force, not even a dictionary attack. ## There Is A Benefit
+And there's the real hand-wave. With 100 GPUs, we should be able to hit tens of billions of attempts per second, because so much of the work is done concurrently... And that can brute force all 6 character passwords (90 printable characters, `a-zA-Z0-9!@#$%^&\*()<>?,./;':"[]{}\|` - about 531 billion - in well under a minute). And that's a pure brute force, not even a dictionary attack. ## There Is A Benefit
 
 
 There is a benefit to offloading password hashing to a GPU: That it frees up CPU time on your server. That's about the only tangible benefit to doing it. And at that point, instead of spending $500 per server to add the GPU, you'd likely be better off getting a separate authentication server that does nothing but hash passwords as a service to the rest of your stack. It all depends on the scale of site you're dealing with. If you're handing hundreds of logins per second, it's a huge problem. But hundreds of logins per second is a scale that few will ever deal with (imagine what the page views per second must be). Otherwise, forget it, and just use a solid algorithm...

@@ -5,6 +5,7 @@ permalink: simple-easy-risk-and-change
 date: 2015-11-02
 comments: true
 categories:
+- Programming
 tags:
 - Architecture
 - Best Practice
@@ -72,16 +73,16 @@ But what if instead of using this complex system, we just created a series of fu
 function makeFoo(): Foo {
     return new Foo();
 }
-
 ```
+
 Need a dependency? Then wire it up:
 
 ```php
 function makeBar(Foo $foo = null): Bar {
     return new Bar($foo ?: makeFoo());
 }
-
 ```
+
 Want to share instances? Then only call that function once!!! Simple. We were able to avoid a few thousand lines of code and an amazing amount of complexity by simply trusting each other.
 
 ## Focus on Simple

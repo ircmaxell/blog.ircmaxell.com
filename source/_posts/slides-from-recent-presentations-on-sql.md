@@ -5,6 +5,7 @@ permalink: slides-from-recent-presentations-on-sql
 date: 2011-06-19
 comments: true
 categories:
+- Slides
 tags:
 - PHP
 - Presentation

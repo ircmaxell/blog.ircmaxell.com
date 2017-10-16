@@ -5,6 +5,7 @@ permalink: prefix-trees-and-parsers
 date: 2015-05-18
 comments: true
 categories:
+- Programming
 tags:
 - Data Structures
 - Lexer
@@ -30,8 +31,8 @@ $routes = [
     "/user/{name}/{id:[0-9]+}" => "User::findByNameAndId",
     "/post/{name}" => "Post::findByName",
 ];
-
 ```
+
 I parsed these routes, and produced a series of tokens:
 
 ```php
@@ -42,8 +43,8 @@ $tokens = [
     T_SLASH => "/",
     T_ANY =>"[^/]",
 ];
-
 ```
+
 I also then generated a series of parser rules:
 
 ```php
@@ -52,8 +53,8 @@ $parserRules = [
     [[T_SLASH, T_USER, T_SLASH, T_ANY, T_SLASH, T_NUMBER], "User::findByNameAndId"],
     [[T_SLASH, T_POST, T_SLASH, T_ANY], "Post::findByName"],
 ];
-
 ```
+
 It should be easy to see how that works. It makes our parser behave exactly like our lexer. Which means we can re-use code! Yay!
 
 ```php
@@ -69,8 +70,8 @@ foreach ($parserRules as $rule) {
     }
     $node->value = $rule[1];
 }
-
 ```
+
 Now, we can parse easily:
 
 ```php
@@ -96,8 +97,8 @@ function parse(array $tokens, Trie $root) {
     }
     return $node->value;
 }
-
 ```
+
 And that's how we do that.
 
 So, we generate a lexer as before, and now with our generated parser, our router becomes:
@@ -107,8 +108,8 @@ public function route($url) {
     $tokens = lex($url, $this->lexerRoot);
     return parse($tokens, $this->parserRoot);
 }
-
 ```
+
 We still have the same loading problem as before, though to not as severe of a degree. Performance is pretty good, about 2-3x slower than preg_match.
 
 Using the 3 routes, this takes a few hundred kilobytes for the structures. Well within reason.
@@ -127,8 +128,8 @@ class Trie {
     public $value = false;
     public $default = false;
 }
-
 ```
+
 If the current character isn't in the `$data` array, then check to see if there's a default value. If there is, treat it like a match.
 
 This cut down the size of the data structure dramatically. Instead of generating 3gb of data, we only generated about 100mb.
@@ -144,8 +145,8 @@ class Radix {
     public $value = false;
     public $default = false;
 }
-
 ```
+
 But now we have this new "length" property. It stores the length of the *longest* subkey. Let's look at a simple example, "apple" and "ape".
 
 ```php
@@ -157,8 +158,8 @@ $root->data["ap"]->data["ple"] = new Radix;
 $root->data["ap"]->data["ple"]->value = "T_APPPLE";
 $root->data["ap"]->length = 3; // strlen("ple")
 $root->length = 2;
-
 ```
+
 In other words, we now have a tree using the longest common prefix for the children.
 
 Implementing this is a bit more tricky, since insertion requires checking of the prefix. So let's actually make that a method on the class:
@@ -206,8 +207,8 @@ protected function rebuildLength() {
         0
     );
 }
-
 ```
+
 Combined with our "default" case, we now can pack using FAR less objects.
 
 In terms of memory, this brings us down quite a bit. Instead of using 100mb, we're down to about 5mb.
@@ -274,8 +275,8 @@ function lex($string, Radix $root) {
     }
     return $tokens;
 }
-
 ```
+
 Pretty straight forward, but a few little gotcha's in there.
 
 Overall, pretty fast, but not nearly as fast as I think it could be. So I decided to go a step further.
@@ -339,8 +340,8 @@ lex2:
 emitToken:
     $tokens[] = $token;
     goto restart;
-
 ```
+
 This is pretty verbose, but you should get the idea. This is a pretty simple example of a [Finite State Machine](https://en.wikipedia.org/wiki/Finite-state_machine). Basically, at each state, we can do one of a few things: read more data or switch states. There's a little bit more this does (such as saving additional metadata), but the foundations are the same as any FSM.
 
 The cool thing is that this is **fast**. We cut our execution time from approximately 5x of preg_match, down to about even with it. But we're back to generating about 100mb of source code... Not great...
@@ -357,8 +358,8 @@ Wait a minute. Each rule cannot have a "/" in it (otherwise it would be parsed i
 
 ```php
 $tokens = explode("/", $url);
-
 ```
+
 Could this work?
 
 It would complicate our parser slightly, but in the end it shouldn't matter too much since we'd be saving a lot on the lexer.
@@ -371,8 +372,8 @@ $parserRules = [
     [["user", "[^/]+", "[0-9]+"], "User::findByNameAndId"],
     [["post", "[^/]+"], "Post::findByName"],
 ];
-
 ```
+
 Using our new minimal radix tree, the only thing left to work out is the regular expression match. Using the old way, we can treat it just like the Trie and generate valid children and circular references to implement +. Doing that yields us a parser that's fairly small, weighing in about 2mb for our large route file. This is small enough to be useful in production.
 
 Benchmarking the in-memory router, it turns out that it's about as fast as a preg_match based approach. So our router is about equal in speed to FastRoute once built. Building it takes about 50ms, so still not perfect there (but reasonable). But we have three more tricks up our sleeves that we can pull out.

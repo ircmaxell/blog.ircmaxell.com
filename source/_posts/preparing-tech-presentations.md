@@ -5,6 +5,7 @@ permalink: preparing-tech-presentations
 date: 2013-08-15
 comments: true
 categories:
+- Meta
 tags:
 - Community
 - Conference
@@ -37,6 +38,7 @@ Typically this is the easiest part of designing a talk. Often times, it takes le
 
 
 Once I'm happy with the take-home point, I work on thinking about a flow to the talk. I know the point I want to make, so I start building the conversation in my head around how to make it. This step is `really` informal, and is just a general sketch of an outline in my head. For example, in my `[Don't Be STUPID, Grasp SOLID](http://blog.ircmaxell.com/2012/05/dont-be-stupid-grasp-solid-slides.html)` talk, the flow might look something like this:
+
 > What Is An Object? ->
     
     What Is Polymorphism? ->
