@@ -14,7 +14,7 @@ jobs:
           command: |
             sudo apt-get -y -qq update
             sudo apt-get -y -qq install python-pip python-dev
-            sudo pip install awscli --upgrade --user
+            pip install awscli --upgrade --user
 
       # Download and cache dependencies
       - restore_cache:
@@ -43,7 +43,7 @@ jobs:
           name: Deploy to s3
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              .circleci/deploy.sh "./public" "in.bucket.blog.ircmaxell.com"
+              PATH=~/.local/bin:$PATH .circleci/deploy.sh "./public" "in.bucket.blog.ircmaxell.com"
             elif [ "${CIRCLE_BRANCH}" == "beta" ]; then
-              .circleci/deploy.sh "./public" "in.bucket.beta.blog.ircmaxell.com"
+              PATH=~/.local/bin:$PATH .circleci/deploy.sh "./public" "in.bucket.beta.blog.ircmaxell.com"
             fi
