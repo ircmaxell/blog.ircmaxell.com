@@ -49,4 +49,4 @@ social:
 - slug: twitter
   url: https://twitter.com/ircmaxell
 - slug: rss
-	url: /atom.xml
+	url: /rss.xml
