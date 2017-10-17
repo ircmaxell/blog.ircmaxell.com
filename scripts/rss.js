@@ -18,7 +18,7 @@ const tmplSource = pathFn.join(__dirname, '../themes/rss.xml');
 const tmpl = nunjucks.compile(fs.readFileSync(tmplSource), env);
 
 
-hexo.extend.generator.register('feed', function(locals) {
+hexo.extend.generator.register('localfeed', function(locals) {
   let config = this.config;
 
   let posts = locals.posts.sort('-date').filter(function(post) {
