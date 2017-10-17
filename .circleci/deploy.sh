@@ -5,7 +5,7 @@ DEST=$2
 
 aws s3 sync "$DIR" "s3://$DEST" --delete
 
-aws s3 cp "s3://$DEST" "s3://$DEST" --exclude '*.html' --exclude '*.xml' --exclude '*.svg' --exclude '*.json' --exclude '*fonts*' --exclude '*images*' --exclude 'robots.txt' --recursive --cache-control 'public, max-age=31536000' --metadata-directive REPLACE 
+aws s3 cp "s3://$DEST" "s3://$DEST" --exclude '*' --include '*.css' --include '*.js' --recursive --cache-control 'public, max-age=31536000' --metadata-directive REPLACE 
 
 FILELIST=$(find "$DIR" -name "index.xml")
 
