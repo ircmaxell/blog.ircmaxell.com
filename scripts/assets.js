@@ -41,11 +41,11 @@ const streamToString = (stream) => {
 
 
 hexo.extend.helper.register('js', function(path) {
-  return '<script type="text/javascript" src="' + buildCachePathJS(path) + '"></script>';
+  return '<script type="text/javascript" src="/' + buildCachePathJS(path) + '"></script>';
 });
 
 hexo.extend.helper.register('css', function(path) {
-  return '<link rel="stylesheet" href="' + buildCachePathCSS(path) + '"></link>';
+  return '<link rel="stylesheet" href="/' + buildCachePathCSS(path) + '"></link>';
 });
 
 hexo.extend.filter.register('after_generate', function() {
