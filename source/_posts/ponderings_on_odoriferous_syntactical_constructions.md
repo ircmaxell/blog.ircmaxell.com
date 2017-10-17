@@ -24,7 +24,7 @@ We have a habit of talking about "code smells" to indicate patterns and practice
 
 ## What is a smell?
 
-Before we get into code smells, let's talk for a brief second about the entomology  behind the term. In the real world, smells provide our brains with important data points about our environment. Our brain interprets smells into a few main categories (10 actually). Each of these categories gives us an important piece of information about our surroundings. When we smell a particular food source, we can get an idea if it's safe to eat or not.
+Before we get into code smells, let's talk for a brief second about the etymology  behind the term. In the real world, smells provide our brains with important data points about our environment. Our brain interprets smells into a few main categories (10 actually). Each of these categories gives us an important piece of information about our surroundings. When we smell a particular food source, we can get an idea if it's safe to eat or not.
 
 The really important thing to note is that the way our brain interprets scent is heuristical. Meaning that the vast majority of the time you smell something sharp or pungent it's something that you need to avoid because it likely is bad (or contains bad bacteria). I say it's heuristical because it's not always bad for you. It could be simply Limburger cheese.
 
