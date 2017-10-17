@@ -42,6 +42,6 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               .circleci/deploy.sh "./public" "in.bucket.blog.ircmaxell.com"
-            elif [ "${CIRCLE_BRANCH}" == "blog_v2" ]; then
+            elif [ "${CIRCLE_BRANCH}" == "beta" ]; then
               .circleci/deploy.sh "./public" "in.bucket.beta.blog.ircmaxell.com"
             fi
