@@ -8,4 +8,5 @@ module "blog" {
   source = "../blog"
   domain = "blog.ircmaxell.com"
   env = "prod"
+  default_ttl = 3600
 }

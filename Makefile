@@ -11,6 +11,9 @@ staging-terraform-apply:
 staging-terraform-state-pull:
 		cd terraform/staging; terraform state pull > terraform.tfstate
 
+staging-terraform-state-push:
+		cd terraform/staging; terraform state push terraform.tfstate
+
 prod-terraform-init:
 		cd terraform/prod; terraform init
 

@@ -8,4 +8,5 @@ module "blog" {
   source = "../blog"
   domain = "beta.blog.ircmaxell.com"
   env = "staging"
+  default_ttl = 60
 }

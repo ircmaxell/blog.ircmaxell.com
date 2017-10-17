@@ -66,13 +66,13 @@ resource "aws_cloudfront_distribution" "blog" {
 
     viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 0
-    default_ttl            = 3600
+    default_ttl            = "${var.default_ttl}"
     max_ttl                = 86400
     compress               = true
 
     lambda_function_association {
       event_type = "origin-request"
-      lambda_arn = "${aws_lambda_function.rss_lambda.arn}:2"
+      lambda_arn = "${aws_lambda_function.rss_lambda.arn}:1"
     }
   }
 

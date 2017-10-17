@@ -6,7 +6,7 @@ data "archive_file" "rss" {
 }
 
 resource "aws_iam_role" "iam_for_rss_lambda" {
-  name = "rss_lambda"
+  name = "rss_lambda_${var.env}"
 
   assume_role_policy = <<EOF
 {
@@ -30,7 +30,7 @@ EOF
 
 resource "aws_lambda_function" "rss_lambda" {
   filename         = "${data.archive_file.rss.output_path}"
-  function_name    = "rss"
+  function_name    = "rss_${var.env}"
   role             = "${aws_iam_role.iam_for_rss_lambda.arn}"
   handler          = "index.handler"
   source_code_hash = "${data.archive_file.rss.output_base64sha256}"
