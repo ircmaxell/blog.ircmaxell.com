@@ -47,4 +47,14 @@
       }
     </style>
   </noscript>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(e) {
+      if (ScrollReveal === undefined) {
+        // unhide due to things that block reveal such as SafeScript, etc
+        document.querySelectorAll('#ircmaxell-blog .reveal').forEach(function(el) {
+          el.style.visibility = 'visible';
+        })
+      }
+    });
+  </script>
 </head>

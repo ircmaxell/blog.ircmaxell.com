@@ -3,7 +3,7 @@
 DIR=$1
 DEST=$2
 
-aws s3 sync "$DIR" "s3://$DEST" --delete
+aws s3 sync "$DIR" "s3://$DEST"
 
 aws s3 cp "s3://$DEST" "s3://$DEST" --exclude '*' --include '*.css' --include '*.js' --recursive --cache-control 'public, max-age=31536000' --metadata-directive REPLACE 
 
