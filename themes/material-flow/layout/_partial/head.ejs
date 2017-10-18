@@ -35,26 +35,4 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
   <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
   <%- css('style.css') %>
-  <script>
-    function setLoadingBarProgress(num) {
-      document.getElementById('loading-bar').style.width=num+"%";
-    }
-  </script>
-  <noscript>
-    <style type="text/css">
-      #ircmaxell-blog .reveal {
-        visibility: visible;
-      }
-    </style>
-  </noscript>
-  <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function(e) {
-      if (ScrollReveal === undefined) {
-        // unhide due to things that block reveal such as SafeScript, etc
-        document.querySelectorAll('#ircmaxell-blog .reveal').forEach(function(el) {
-          el.style.visibility = 'visible';
-        })
-      }
-    });
-  </script>
 </head>

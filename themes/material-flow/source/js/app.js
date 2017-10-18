@@ -123,12 +123,6 @@ var customSearch;
 		Waves.attach('.waves-image');
 		Waves.init();
 	}
-	function setScrollReveal() {
-		var $reveal = $('.reveal');
-		if ($reveal.length === 0) return;
-		var sr = ScrollReveal({ distance: 0 });
-		sr.reveal('.reveal');
-	}
 	function setTocToggle() {
 		var $toc = $('.toc-wrapper');
 		if ($toc.length === 0) return;
@@ -177,7 +171,6 @@ var customSearch;
 		setHeaderMenuPhone();
 		setHeaderSearch();
 		setWaves();
-		setScrollReveal();
 		setTocToggle();
 		// getHitokoto();
 		// getPicture();
