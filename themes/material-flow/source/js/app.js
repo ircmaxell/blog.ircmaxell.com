@@ -165,22 +165,12 @@ var customSearch;
 	}
 
 	$(function () {
-		//set header
 		setHeader();
 		setHeaderMenu();
 		setHeaderMenuPhone();
 		setHeaderSearch();
 		setWaves();
 		setTocToggle();
-		// getHitokoto();
-		// getPicture();
-
-
-		$(".article .video-container").fitVids();
-
-		setTimeout(function () {
-			$('#loading-bar-wrapper').fadeOut(500);
-		}, 300);
 
 		if (SEARCH_SERVICE === 'google') {
 			customSearch = new GoogleCustomSearch({
