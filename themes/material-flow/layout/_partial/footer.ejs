@@ -5,7 +5,7 @@
       <% theme.social.forEach(function(value, key) {
            if (value.url && value.slug) { %>
         <a href="<%= value.url %>" class="social <%= value.slug %>"
-          target="_blank" rel="external">
+          target="_blank" rel="external noopener">
           <span class="icon icon-<%= value.slug %>"></span>
         </a>
       <% } }); %>
