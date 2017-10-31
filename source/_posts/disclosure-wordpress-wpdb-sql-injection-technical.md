@@ -28,7 +28,7 @@ Simply upgrade to 4.8.3 **and** update any plugins that override `$wpdb` (like H
 
 ## What Hosts Should Do
 
-Upgrade `wpdb.php` for clients. 
+Upgrade `wp-db.php` for clients. 
 
 There may be some firewall rules in the mean time that you could implement (such as blocking `%s` and other `sprintf()` values), but your mileage may vary.
 
