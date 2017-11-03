@@ -18,7 +18,7 @@ Today, a significant SQL-Injection vulnerability was fixed in WordPress 4.8.3. B
 
 The foundations of this vulnerability was reported via Hacker-One on September 20th, 2017.
 
-This post will detail the technical vulnerability as well as how to mitigate it. There is another post which deals with the [background and time-lines](disclosure-wordpress-wpdb-sql-injection-background.html). 
+This post will detail the technical vulnerability as well as how to mitigate it. There is another post which deals with the [background and time-lines](/2017/10/disclosure-wordpress-wpdb-sql-injection-background.html). 
 <!--more-->
 
 
