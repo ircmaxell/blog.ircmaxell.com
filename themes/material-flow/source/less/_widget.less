@@ -64,6 +64,33 @@
                 height: 0;
             }
         }
+        .social {
+            position: relative;
+            padding: @gap;
+            background:@qoute-background-color;
+            .enable-trans(.15s);
+            line-height: 1.2em;
+            &:empty{
+                padding:0;
+                height: 0;
+            }
+            padding-top: 0;
+            padding-bottom: 0;
+            dt {
+                font-weight: bold;
+                float: left;
+                clear: left;
+                width: 30%;
+                text-align: right;
+                &:after {
+                    content: ":";
+                }
+            }
+            dd {
+                margin: 0 0 0 35%;
+                padding: 0 0 0.5em 0;
+            }
+        }
     }
 }
 .m_widget.tagcloud{
