@@ -30,15 +30,15 @@ One of the ex-chiefs, a man with 30+ years of experience as a volunteer firefigh
 
 > When {name} crashed the engine, he beat himself up pretty hard over it. And so did the department.
 
-But I went over to him and shook his hand, and said "*Thank You*".
+> But I went over to him and shook his hand, and said "*Thank You*".
 
-He got upset and told me not to mock him for screwing up.
+> He got upset and told me not to mock him for screwing up.
 
-I said "*I wasn't mocking. Seriously, thank you for crashing the truck.*"
+> I said "*I wasn't mocking. Seriously, thank you for crashing the truck.*"
 
-"*You volunteered your time, which is infinitely more important than any piece of equipment. You made a mistake. It happens to everyone. That's not important. What's important is that you were there to make that mistake. And that's far more than most people ever do in their lives.*"
+> "*You volunteered your time, which is infinitely more important than any piece of equipment. You made a mistake. It happens to everyone. That's not important. What's important is that you were there to make that mistake. And that's far more than most people ever do in their lives.*"
 
-"*So thank you for crashing the truck.*"
+> "*So thank you for crashing the truck.*"
 
 At the time, it seemed like a silly story. Thanking someone for making your life difficult. Pfff. But as time went on, the lesson set in. And I saw the wisdom in that story.
 
