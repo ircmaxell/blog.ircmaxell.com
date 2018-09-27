@@ -19,12 +19,12 @@ tags:
 ---
 
 Many people teach design patterns as a fundamental step to Object Oriented Programming. They are so universally seen as important that almost every single conference that I have been to has had at least one talk about them. They are quite often used as interview questions to test a candidate's OOP knowledge. However, just like inheritance, they are not needed for OOP. And just like inheritance, they are a distraction rather than a foundation. Instead of focusing on patterns, I suggest focusing on learning about abstraction and communication. Why? Let's talk it out...<!--more-->
-## 
-Three Types Of Patterns
+
+## Three Types Of Patterns
 
 
 In traditional dealings with patterns, we are taught that there are three types of patterns:
- * `**Creational Patterns**` - These deal with object creation.
+ * **`Creational Patterns`** - These deal with object creation.
      * Abstract Factory
      * Builder
      * Factory Method
@@ -55,13 +55,14 @@ This model seems pretty handy, because if you run into a problem creating new ob
 Sounds great, right? It's almost like a menu. You look up the problem you're having, and it'll give you a few choices of patterns to use to solve the problem. What could be wrong with that?
 
 Well, let me first propose a different categorization system. Instead of breaking the patterns around "what" the problem is, let's try breaking it around "why" the problem is happening in the first place. So that leaves us with three basic types of patterns:
+
  * **`Shim Patterns`** - These patterns exist because the underlying programming language can't deal with a situation well. 
      * Flyweight
      * Iterator
      * Null Object
      * Object Pool
      * Prototype
- * `**Compositional Patterns**` - These patterns exist because you have a series of objects which need to be assembled together. (Used When Authoring)
+ * **`Compositional Patterns`** - These patterns exist because you have a series of objects which need to be assembled together. (Used When Authoring)
      * Adapter
      * Builder
      * Composite
@@ -71,7 +72,7 @@ Well, let me first propose a different categorization system. Instead of breakin
      * Mediator
      * Observer
      * Proxy
- * `**Decompositional Patterns**` - These patterns exist because you have a single object that you need to break apart into several objects. (Used When Refactoring)
+ * **`Decompositional Patterns`** - These patterns exist because you have a single object that you need to break apart into several objects. (Used When Refactoring)
      * Abstract Factory
      * Bridge
      * Chain Of Responsibility
@@ -98,8 +99,8 @@ Let's create a table to compare the two categorizations:
 </style>
 
 Before we go too much deeper, let's explore four specific patterns.
-## 
-Adapter, Facade, Bridge and Proxy
+
+## Adapter, Facade, Bridge and Proxy
 
 
 If you look at implementations of these 4 patterns, you likely wouldn't be able to tell them apart. Indeed, their UML is identical. They solve the same exact problem. The difference between them is not `how` they solve the problem, but `why` they are solving the problem. Let's explore the standard definitions of each (from [SourceMaking](http://sourcemaking.com/design_patterns)):
@@ -114,15 +115,14 @@ Notice that all 4 of these patterns are considered "Structural Patterns". But no
 I think it's worth stressing here that all 4 patterns do **exactly** the same thing. The difference between them is the reason that you apply it. It describes the causation, not the implementation.
 
 Now I'm all for documenting the reasons for writing code, but having 4 different patterns that do the same thing, because there are different reasons to do it? Really?
-## 
-Implementation Patterns
 
+## Implementation Patterns
 
 So let's de-duplicate the list. Let's throw out the Shim patterns, and then we'll pick one of each implementation to show how many `unique` patterns exist:
  * **`Adapter`** - This has a single class which makes one or more other classes behave as a single interface.
  * **`Composite`** - This abstracts a recursive structure.
  * **`Command`** - This abstracts determination of execution from actual execution
- * `**Mediator**` - This abstracts communication between several objects
+ * **`Mediator`** - This abstracts communication between several objects
  * **`Memento`** - This abstracts state representation from execution
  * **`Observer`** - This abstracts communication between two objects
 
@@ -134,7 +134,8 @@ There are a few weird things that pop up though. First off, Observer and Memento
 Continuing on, Mediator and Adapter determine how two different systems can communicate with each other. Finally, Composite and Command determine how a single system actually represent and execute data.
 
 So which pattern you need to choose really comes down to simple questions:
- * Are you dealing with multiple systems? * Do you need an object to control information flow?
+ * Are you dealing with multiple systems? 
+     * Do you need an object to control information flow?
          * Yes - `Mediator`
          * No - `Adapter`
  * Are you dealing with a single system?
@@ -148,34 +149,34 @@ So which pattern you need to choose really comes down to simple questions:
 
 
 Now there's obviously a fair bit of hand waving going on here. I expect that anyone who really grasps the difference between Memento and Observer to be screaming right now "that's not how it works!", And yes, I fully understand that. That's also completely missing the point. Stay with me here.
-## 
-How hard are these problems?
+
+## How hard are these problems?
 
 
 So let's look at the individual problems we've described. And then lets look at the proposed solutions.
 
 The Mediator pattern is intended to have a single object control information flow between several objects. But how? Well, that's up to the implementation to decide depending on business requirements. So what does the pattern actually give us? Well, it suggests having a single object be the "messenger", routing messages between objects... That sounds less like a design pattern, and more like a way to abstract method calls. It sounds like an adapter with some logic under the hood (the fact that Mediators are typically dynamic, where Adapters are typically static can be abstracted away for this argument).
 
-So really, we've abstracted literally a dozen "patterns" down to a single responsibility: `An individual object which controls information flow and messaging between systems`...
+So really, we've abstracted literally a dozen "patterns" down to a single responsibility: *An individual object which controls information flow and messaging between systems*...
 
 We can distill the other patterns down just the same.
 
 At the base level, we're left with 3 responsibilities:
  * **`Controlling Information Flow Between Multiple Systems`**
- * `**Controlling Information Flow Within An Individual System**`
+ * **`Controlling Information Flow Within An Individual System`**
  * **`Controlling Information Flow Between Individual Objects`**
 
 Sounds great so far.
-## 
-Abstraction Is Everywhere
+
+## Abstraction Is Everywhere
 
 
 I've often said that abstraction is a hierarchy with a single "action" (or statement) at the bottom, and an entire platform at the top. In order, it would look something like this (from the bottom up):
- 1. `**Statement**` - The atomic unit of abstraction
+ 1. **`Statement`** - The atomic unit of abstraction
  2. **`Routine`** - A collection of related statements
- 3. `**Class**` - A collection of related routines
+ 3. **`Class`** - A collection of related routines
  4. **`Package`** - A collection of related classes
- 5. `**Library**` - A collection of related packages
+ 5. **`Library`** - A collection of related packages
  6. **`Platform`** - A collection of related libraries
 
 
@@ -186,9 +187,8 @@ So let's apply those patterns to these layers. We have one responsibility which 
 But why do we need to distinguish between the layers of abstraction? Shouldn't a pattern work on pretty much any level? Shouldn't we be able to decouple two libraries by using an library between them? 
 
 In practice, yes we can. And in practice, we do quite often do exactly that.
-## 
-The Problem With Patterns
 
+## The Problem With Patterns
 
 Look at the first list on this page. That list had 22 patterns in it. We have just reduced that list to a single responsibility: Abstracting Communication Between "Components". 
 
@@ -199,9 +199,8 @@ So why does the community latch on to them so hard? Well, many people argue that
 Well, we've already discussed how there are really only a few unique implementations. So using a specific pattern in describing code describes `why` code was written, not `what` it does or `how` it does it (specifically).
 
 And `why` is a whole lot less important to me than \*`how`\* and `what`. And since the pattern only casually answers either of those (it only saves me a few seconds), I don't think the cognitive overhead lives up to its promise.
-## 
-Beyond Design Patterns
 
+## Beyond Design Patterns
 
 Instead of focusing on design patterns, I would suggest focusing on understanding how communication between objects and components happens. How does an object "decide" what to do? How does it communicate that intention to other objects. 
 
