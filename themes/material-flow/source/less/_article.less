@@ -10,6 +10,22 @@
     p > code {
         background: darken(@background-color, 3%);
     }
+
+    table {
+        width: 100%;
+        border-spacing: 0px;
+        th {
+            padding: 3px;
+        }
+        tr td {
+            border-top: 1px solid @material-light-grey;
+            text-align: center;
+            padding: 2px;
+        }
+        tr:nth-child(even) {
+            background-color:lighten(@material-blue, 42%);
+        }
+    }
 }
 
 .article {

@@ -28,12 +28,12 @@ prod-terraform-state-pull:
 
 
 dev:
-	  hexo server
+	  	yarn run hexo server
 
 deploy-staging:
 		cp _config.staging.yaml _config.yaml
-		hexo deploy
+		yarn run hexo deploy
 
 deploy-prod:
 		cp _config.prod.yaml _config.yaml
-		hexo deploy
+		yarn run hexo deploy
