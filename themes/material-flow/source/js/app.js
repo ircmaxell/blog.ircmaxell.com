@@ -7,7 +7,7 @@ var customSearch;
 	function scrolltoElement(elem, correction) {
 		correction = correction || scrollCorrection;
 		var $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
-		$('html, body').animate({ 'scrollTop': $elem.offset().top - correction }, 400);
+		$('html, body').animate({ 'scrollTop': $elem.offset().top - correction, 'scrollLeft': 0 }, 400);
 	};
 
 	function setHeader() {
@@ -171,6 +171,7 @@ var customSearch;
 		setHeaderSearch();
 		setWaves();
 		setTocToggle();
+		$('table').wrap('<div class="table-wrap"></div');
 
 		if (SEARCH_SERVICE === 'google') {
 			customSearch = new GoogleCustomSearch({
