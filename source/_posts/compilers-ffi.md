@@ -40,7 +40,7 @@ Let's start by talking about the 3 main categories of how programs are executed.
 
     The prime advantage of AOT compilation is that it can generate very efficient code. The (prime) downside is that it can take a long time to compile code.
 
- * **Just In Time (JIT)**: JIT is a relatively recently popularized method to get the best of both worlds (VM and AOT). Lua, Java, JavaScript, Python (via PyPy), HHVM, PHP-8, and many others use a JIT compiler.
+ * **Just In Time (JIT)**: JIT is a relatively recently popularized method to get the best of both worlds (VM and AOT). Lua, Java, JavaScript, Python (via PyPy), HHVM, PHP 8, and many others use a JIT compiler.
 
     A JIT is basically just a combination of a VM and an AOT compiler. Instead of compiling the full program at once, it instead runs the code on a Virtual Machine for a while. It does this for two reasons: to figure out which parts of the code are "hot" (and hence most useful to be in machine code), and to collect some runtime information about the code (what types are commonly used, etc). Then, it pauses execution for a moment to compile just that small bit of code to machine code before resuming execution. A JIT runtime will bounce back and forth between interpreted code and native compiled code.
 
@@ -54,7 +54,7 @@ I just used the word "Compiler" a lot (along with a ton of other words), but eac
 
  * *Compiler*: The meaning of "Compiler" changes depending on what you're talking about:
 
-    When you're talking about building language runtimes (aka: compilers), a Compiler is a program that translates code from one language into another with different semantics (there's a conversion step, it isn't just a representation). It could be from PHP to Opcode, it could be from C to an Intermediary Representation. It could be from Assembly to Machine Code, it could be from a regular expression to machine code. Yes, PHP-7.0 includes a compiler to compile from PHP source code to Opcodes.
+    When you're talking about building language runtimes (aka: compilers), a Compiler is a program that translates code from one language into another with different semantics (there's a conversion step, it isn't just a representation). It could be from PHP to Opcode, it could be from C to an Intermediary Representation. It could be from Assembly to Machine Code, it could be from a regular expression to machine code. Yes, PHP 7.0 includes a compiler to compile from PHP source code to Opcodes.
 
     When you're talking about using language runtimes (aka: compilers), a Compiler is usually implied to be a specific set of programs that convert the original source code into machine code. It's worth noting that a "Compiler" (like gcc for example) is normally made up of several smaller compilers that chain together to transform the source code.
 
@@ -132,9 +132,9 @@ A few years later, I picked the idea back up and instead of building a single mo
 
 The biggest challenge I faced to making a useful, low level compiler was the availability (or lack) of a suitable backend. [libjit](https://www.gnu.org/software/libjit/doc/libjit.html) (which JitFu used) was good and fast, but it couldn't generate binaries. I could have written a c extension binding to [LLVM](https://llvm.org/) (which is what HHVM used, among many many others), but that's a TON of work and I didn't feel like going down those paths. So on the shelf the projects went.
 
-## Enter PHP-7.4 and FFI
+## Enter PHP 7.4 and FFI
 
-No. PHP-7.4 is not out yet. It won't be out for likely at least 6 months. But a few months ago, a little RFC was accepted to incorporate an [FFI Extension](https://wiki.php.net/rfc/ffi) into PHP. I decided to start playing around with it to see how it worked.
+No. PHP 7.4 is not out yet. It won't be out for likely at least 6 months. But a few months ago, a little RFC was accepted to incorporate an [FFI Extension](https://wiki.php.net/rfc/ffi) into PHP. I decided to start playing around with it to see how it worked.
 
 After a bit of playing, I remembered my old compiler projects. And I started wondering how hard it would be to pull libjit in to PHP. But then I remembered the fact it couldn't generate executable files. And so I started searching to see what else was out there. I stumbled upon [libgccjit](https://gcc.gnu.org/onlinedocs/gcc-7.2.0/jit/index.html). And then the rabbit hole went down and down and down.
 
@@ -234,7 +234,7 @@ This means that I can (in theory right now) eventually compile the compiler itse
 
 I started building PHP-Compiler on top of libgccjit, and the initial results are more than promising. A [simple set of benchmarks](https://github.com/ircmaxell/php-compiler/tree/master/benchmarks) taken from PHP's own benchmark suite show that while there's a LOT of overhead right now, the compiled code can **really** shine.
 
-The following benchmarks compare PHP-Compiler to PHP-7.4 with and without OpCache (Zend Optimizer), PHP-8's experimental JIT (enabled and disabled).
+The following benchmarks compare PHP-Compiler to PHP 7.4 with and without OpCache (Zend Optimizer), PHP 8's experimental JIT (enabled and disabled).
 
 | Test Name          |            7.4 (s)| 7.4.NO.OPCACHE (s)|          8.JIT (s)|        8.NOJIT (s)| bin/jit.php (s) | bin/compile.php (s) | compiled time (s) |
 |--------------------|-------------------|-------------------|-------------------|-------------------|-----------------|---------------------|-------------------|
@@ -376,7 +376,7 @@ In native PHP, that would take approximately 2.5 seconds to run 1 million times.
 | libgccjit | 0.036949872970581 |         0.34037208557129 |
 |      llvm | 0.000712156295776 |         0.26515483856201 |
 
-So with that contrived example we can see a 10x performance boost over native PHP-7.4.
+So with that contrived example we can see a 10x performance boost over native PHP 7.4.
 
 You can see this example, as well as the compiled code via [the examples folder of php-compiler-toolkit](https://github.com/ircmaxell/php-compiler-toolkit/tree/master/examples/03-iterated-function-calls)
 
@@ -479,7 +479,7 @@ So in the end, the overhead is light for dev mode, and non-existant for producti
 
 ## How do I run any of this?
 
-First, install PHP-7.4 with the FFI extension enabled. There are no releases yet as far as I'm aware (and it'll be quite some time until there is).
+First, install PHP 7.4 with the FFI extension enabled. There are no releases yet as far as I'm aware (and it'll be quite some time until there is).
 
 ### Running FFIMe:
 
