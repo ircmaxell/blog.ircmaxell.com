@@ -46,7 +46,7 @@ Let's start by talking about the 3 main categories of how programs are executed.
 
     The prime advantage of JIT compilation is that it balances the fast deployment cycle of a VM with the potential for AOT-like performance for some use-cases. But it is also insanely complicated since you're building 2 full compilers, and an interface between them.
 
-Another way of saying this, is that an Interpreter runs code, where as an AOT compiler generates machine code which then the Computer runs. And a JIT compiler runs the code but every once in a while translates some of the running code into machine code, and then executes it.
+Another way of saying this, is that an Interpreter runs code, whereas an AOT compiler generates machine code which then the Computer runs. And a JIT compiler runs the code but every once in a while translates some of the running code into machine code, and then executes it.
 
 ### Some more definitions
 
@@ -82,7 +82,7 @@ Yes, it's confusing...
 
     The difference, is that assembly instructions are *very* low level and there are relatively few of them, where PHP's VM OpCode instructions have more logic built in. An example of this is the `incq` assembly instruction expects its argument to be an integer. PHP's `POST_INC` instruction on the other hand contains all of the logic necessary to convert the argument to an integer first. There's a LOT more logic in the PHP VM which is what makes PHP (and any interpreted language) possible, and which is why interpreted languages often use one.
 
- * *Parser*: A parser is very similar to a compiler but it doesn't translate the source code, it just changes the representation. This can be from text (the source code that write) into an internal data structure (such as a tree or a graph). 
+ * *Parser*: A parser is very similar to a compiler but it doesn't translate the source code, it just changes the representation. This can be from text (the source code that you write) into an internal data structure (such as a tree or a graph). 
 
  * *[Abstract Syntax Tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree)*: An AST is an internal data structure that represents the source code of a program as a tree. So instead of `$a = $b + $c;` you get something like `Assign($a, Add($b, $c))`. The key property that makes it a tree is that every node has exactly one parent. PHP internally parses from the source file into an AST before compiling to Opcodes. 
 
@@ -162,7 +162,7 @@ Basically, it takes a path to a [Shared Object File](https://stackoverflow.com/q
 
 If you take a peak at that file, you'll see a BUNCH of code (nearly 5000 lines). Included are all numeric `#define`s from the C headers as class constants, all `ENUM`s as class constants, all functions, and wrapper classes around all of the underlying C types. It also includes all other headers recursively (hence why the above header has some seemingly unrelated file functions).
 
-Usage is pretty straight forward (ignore what the library is doing, just focus on the types and the call, and compare to the equivalent C code):
+Usage is pretty straightforward (ignore what the library is doing, just focus on the types and the call, and compare to the equivalent C code):
 
 ```php
 $lib = new libgccjit\libgccjit;
