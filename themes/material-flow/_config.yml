@@ -30,6 +30,10 @@ menu:
     slug: github
     url: https://github.com/ircmaxell
     new_window: true
+  - name: Resume
+    slug: Resume
+    url: https://github.com/ircmaxell/resume
+    new_window: true
 
 
 # widgets
