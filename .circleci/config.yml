@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:lts-jessie
+      - image: circleci/node:lts-stretch
     working_directory: ~/tmp
 
     steps:
@@ -12,9 +12,6 @@ jobs:
           name: Install dependencies
           working_directory: /
           command: |
-            sudo chmod 646 /etc/apt/sources.list
-            sudo cat /dev/null > /etc/apt/sources.list
-            echo "deb http://archive.debian.org/debian/ jessie main" | sudo tee -a /etc/apt/sources.list
             sudo apt-get -y -qq update
             sudo apt-get -y -qq install python-pip python-dev
             pip install awscli --upgrade --user
