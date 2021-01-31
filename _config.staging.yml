@@ -16,6 +16,9 @@ url: https://beta.blog.ircmaxell.com
 root: /
 permalink: :year/:month/:title.html
 permalink_defaults:
+pretty_urls:
+  trailing_index: false
+  trailing_html: true
 
 # Directory
 source_dir: source

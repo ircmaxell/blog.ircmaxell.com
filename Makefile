@@ -27,13 +27,22 @@ prod-terraform-state-pull:
 		cd terraform/prod; terraform state pull > terraform.tfstate
 
 
+clean:
+		yarn run hexo clean
+
 dev:
-	  	yarn run hexo server
+		cp _config.staging.yml _config.yml
+		yarn run hexo server
 
-deploy-staging:
-		cp _config.staging.yaml _config.yaml
-		yarn run hexo deploy
+dev-prod:
+		cp _config.prod.yml _config.yml
+		yarn run hexo server
 
-deploy-prod:
-		cp _config.prod.yaml _config.yaml
-		yarn run hexo deploy
+gen:
+		cp _config.staging.yml _config.yml
+		yarn run hexo generate
+
+gen-prod:
+		cp _config.prod.yml _config.yml
+		yarn run hexo generage
+
