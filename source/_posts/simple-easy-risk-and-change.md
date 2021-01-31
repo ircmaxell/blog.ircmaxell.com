@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Simple, Easy, Risk and Change
-permalink: simple-easy-risk-and-change
+permalink: 2015/11/simple-easy-risk-and-change.html
 date: 2015-11-02
 comments: true
 categories:

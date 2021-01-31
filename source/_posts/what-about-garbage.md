@@ -1,7 +1,7 @@
 ---
 layout: post
 title: What About Garbage?
-permalink: what-about-garbage
+permalink: 2014/12/what-about-garbage.html
 date: 2014-12-03
 comments: true
 categories:

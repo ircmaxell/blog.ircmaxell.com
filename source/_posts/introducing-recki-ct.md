@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Introducing Recki-CT
-permalink: introducing-recki-ct
+permalink: 2014/08/introducing-recki-ct.html
 date: 2014-08-29
 comments: true
 categories:

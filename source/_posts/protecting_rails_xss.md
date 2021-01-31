@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Protecting Against XSS In RAILS - JavaScript Contexts
-permalink: protecting-rails-xss
+permalink: 2018/06/protecting-rails-xss.html
 date: 2018-06-21
 comments: true
 categories:

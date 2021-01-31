@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Educate, Don't Mediate
-permalink: educate-dont-mediate
+permalink: 2014/10/educate-dont-mediate.html
 date: 2014-10-20
 comments: true
 categories:

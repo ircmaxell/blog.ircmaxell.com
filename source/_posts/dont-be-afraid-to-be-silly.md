@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Don't Be Afraid To Be Silly
-permalink: dont-be-afraid-to-be-silly
+permalink: 2013/01/dont-be-afraid-to-be-silly.html
 date: 2013-01-07
 comments: true
 categories:

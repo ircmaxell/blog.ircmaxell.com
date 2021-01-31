@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Mediators - Programming With Anthony
-permalink: mediators-programming-with-anthony
+permalink: 2013/01/mediators-programming-with-anthony.html
 date: 2013-01-23
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Upcoming Presentations - Fall 2012
-permalink: upcoming-presentations-fall-2012
+permalink: 2012/10/upcoming-presentations-fall-2012.html
 date: 2012-10-01
 comments: true
 categories:

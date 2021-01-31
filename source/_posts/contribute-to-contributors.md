@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Contribute to Contributors
-permalink: contribute-to-contributors
+permalink: 2012/12/contribute-to-contributors.html
 date: 2012-12-14
 comments: true
 categories:

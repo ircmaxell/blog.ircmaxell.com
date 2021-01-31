@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Dependency Injection - Programming With Anthony
-permalink: dependency-injection-programming-with
+permalink: 2013/01/dependency-injection-programming-with.html
 date: 2013-01-09
 comments: true
 categories:

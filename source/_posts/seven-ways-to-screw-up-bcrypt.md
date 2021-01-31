@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Seven Ways To Screw Up BCrypt
-permalink: seven-ways-to-screw-up-bcrypt
+permalink: 2012/12/seven-ways-to-screw-up-bcrypt.html
 date: 2012-12-17
 comments: true
 categories:

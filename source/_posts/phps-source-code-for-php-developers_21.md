@@ -1,7 +1,7 @@
 ---
 layout: post
 title: PHP's Source Code For PHP Developers - Part 3 - Variables
-permalink: phps-source-code-for-php-developers_21
+permalink: 2012/03/phps-source-code-for-php-developers_21.html
 date: 2012-03-21
 comments: true
 categories:

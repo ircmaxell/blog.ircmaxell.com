@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Password Storage talk at PHP Benelux 13
-permalink: password-storage-talk-at-php-benelux-13
+permalink: 2013/01/password-storage-talk-at-php-benelux-13.html
 date: 2013-01-25
 comments: true
 categories:

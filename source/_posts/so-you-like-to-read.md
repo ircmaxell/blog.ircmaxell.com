@@ -1,7 +1,7 @@
 ---
 layout: post
 title: So, You Like To Read?
-permalink: so-you-like-to-read
+permalink: 2012/07/so-you-like-to-read.html
 date: 2012-07-13
 comments: true
 categories:

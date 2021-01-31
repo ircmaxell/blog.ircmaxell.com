@@ -1,7 +1,7 @@
 ---
 layout: post
 title: PHP's Source Code For PHP Developers - Part 1 - The Structure
-permalink: phps-source-code-for-php-developers
+permalink: 2012/03/phps-source-code-for-php-developers.html
 date: 2012-03-12
 comments: true
 categories:

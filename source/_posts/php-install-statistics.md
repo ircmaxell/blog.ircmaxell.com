@@ -1,7 +1,7 @@
 ---
 layout: post
 title: PHP Install Statistics
-permalink: php-install-statistics
+permalink: 2014/12/php-install-statistics.html
 date: 2014-12-30
 comments: true
 categories:

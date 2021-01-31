@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Promise for Clean Code
-permalink: promise-for-clean-code
+permalink: 2013/01/promise-for-clean-code.html
 date: 2013-01-18
 comments: true
 categories:

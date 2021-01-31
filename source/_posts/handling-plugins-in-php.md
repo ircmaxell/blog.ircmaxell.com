@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Handling Plugins In PHP
-permalink: handling-plugins-in-php
+permalink: 2012/03/handling-plugins-in-php.html
 date: 2012-03-09
 comments: true
 categories:

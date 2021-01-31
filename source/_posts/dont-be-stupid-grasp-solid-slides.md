@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Don't Be Stupid, Grasp Solid - Slides
-permalink: dont-be-stupid-grasp-solid-slides
+permalink: 2012/05/dont-be-stupid-grasp-solid-slides.html
 date: 2012-05-22
 comments: true
 categories:

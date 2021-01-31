@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Alternatives To MVC
-permalink: alternatives-to-mvc
+permalink: 2014/11/alternatives-to-mvc.html
 date: 2014-11-24
 comments: true
 categories:

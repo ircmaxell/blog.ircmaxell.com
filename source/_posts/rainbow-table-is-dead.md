@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Rainbow Table Is Dead
-permalink: rainbow-table-is-dead
+permalink: 2011/08/rainbow-table-is-dead.html
 date: 2011-08-16
 comments: true
 categories:

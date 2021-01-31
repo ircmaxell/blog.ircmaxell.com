@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Programming With Anthony - Prepared Statements
-permalink: programming-with-anthony-prepared
+permalink: 2012/12/programming-with-anthony-prepared.html
 date: 2012-12-12
 comments: true
 categories:

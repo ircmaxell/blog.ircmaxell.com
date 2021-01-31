@@ -1,7 +1,7 @@
 ---
 layout: post
 title: To Comment Or Not To Comment - A Tale Of Two Stories
-permalink: to-comment-or-not-to-comment-tale-of
+permalink: 2012/06/to-comment-or-not-to-comment-tale-of.html
 date: 2012-06-05
 comments: true
 categories:

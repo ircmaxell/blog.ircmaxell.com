@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Application Architecture - The Case For Layers
-permalink: application-architecture-case-for
+permalink: 2012/06/application-architecture-case-for.html
 date: 2012-06-07
 comments: true
 categories:

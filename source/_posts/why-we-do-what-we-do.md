@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Why We Do What We Do
-permalink: why-we-do-what-we-do
+permalink: 2013/07/why-we-do-what-we-do.html
 date: 2013-07-24
 comments: true
 categories:

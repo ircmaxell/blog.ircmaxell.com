@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Google Glass - A First Impression
-permalink: google-glass-first-impression
+permalink: 2013/06/google-glass-first-impression.html
 date: 2013-06-16
 comments: true
 categories:

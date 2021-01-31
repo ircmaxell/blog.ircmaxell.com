@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Beyond Design Patterns
-permalink: beyond-design-patterns
+permalink: 2013/09/beyond-design-patterns.html
 date: 2013-09-18
 comments: true
 categories:

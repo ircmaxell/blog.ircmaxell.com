@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Rambling On Internals
-permalink: rambling-on-internals
+permalink: 2013/09/rambling-on-internals.html
 date: 2013-09-06
 comments: true
 categories:

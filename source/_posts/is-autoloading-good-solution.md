@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Is Autoloading A Good Solution?
-permalink: is-autoloading-good-solution
+permalink: 2012/07/is-autoloading-good-solution.html
 date: 2012-07-20
 comments: true
 categories:

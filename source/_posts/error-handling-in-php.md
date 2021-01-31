@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Error Handling in PHP
-permalink: error-handling-in-php
+permalink: 2011/08/error-handling-in-php.html
 date: 2011-08-04
 comments: true
 categories:

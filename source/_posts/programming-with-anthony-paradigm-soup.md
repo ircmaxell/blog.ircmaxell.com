@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Programming With Anthony - Paradigm Soup
-permalink: programming-with-anthony-paradigm-soup
+permalink: 2012/11/programming-with-anthony-paradigm-soup.html
 date: 2012-11-21
 comments: true
 categories:

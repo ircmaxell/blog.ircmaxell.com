@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Open Standards - The Better Way
-permalink: open-standards-better-way
+permalink: 2012/05/open-standards-better-way.html
 date: 2012-05-23
 comments: true
 categories:

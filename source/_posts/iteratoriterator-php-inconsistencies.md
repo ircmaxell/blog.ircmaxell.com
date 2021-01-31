@@ -1,7 +1,7 @@
 ---
 layout: post
 title: IteratorIterator - PHP Inconsistencies And WTFs
-permalink: iteratoriterator-php-inconsistencies
+permalink: 2011/10/iteratoriterator-php-inconsistencies.html
 date: 2011-10-31
 comments: true
 categories:

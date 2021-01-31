@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The True Power Of Open Source
-permalink: the-true-power-of-open-source
+permalink: 2012/11/the-true-power-of-open-source.html
 date: 2012-11-30
 comments: true
 categories:

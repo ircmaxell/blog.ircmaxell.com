@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Becoming A Better Developer
-permalink: becoming-better-developer
+permalink: 2011/11/becoming-better-developer.html
 date: 2011-11-07
 comments: true
 categories:

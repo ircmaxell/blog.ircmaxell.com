@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Don't Listen To Me!
-permalink: dont-listen-to-me
+permalink: 2012/08/dont-listen-to-me.html
 date: 2012-08-10
 comments: true
 categories:

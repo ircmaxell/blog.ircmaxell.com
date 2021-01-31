@@ -1,7 +1,7 @@
 ---
 layout: post
 title: FUD and Flames And Trolls, Oh My!
-permalink: fud-and-flames-and-trolls-oh-my
+permalink: 2014/10/fud-and-flames-and-trolls-oh-my.html
 date: 2014-10-13
 comments: true
 categories:

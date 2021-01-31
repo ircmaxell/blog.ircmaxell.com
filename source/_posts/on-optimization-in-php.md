@@ -1,7 +1,7 @@
 ---
 layout: post
 title: On Optimization in PHP
-permalink: on-optimization-in-php
+permalink: 2011/08/on-optimization-in-php.html
 date: 2011-08-09
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A Point On MVC And Architecture
-permalink: a-point-on-mvc-and-architecture
+permalink: 2014/12/a-point-on-mvc-and-architecture.html
 date: 2014-12-02
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Musings And Inspirations
-permalink: musings-and-inspirations
+permalink: 2013/02/musings-and-inspirations.html
 date: 2013-02-27
 comments: true
 categories:

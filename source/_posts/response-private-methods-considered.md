@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Response: Private Methods Considered Harmful"
-permalink: response-private-methods-considered
+permalink: 2012/12/response-private-methods-considered.html
 date: 2012-12-11
 comments: true
 categories:

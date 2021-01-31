@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Random Number Generation In PHP
-permalink: random-number-generation-in-php
+permalink: 2011/07/random-number-generation-in-php.html
 date: 2011-07-18
 comments: true
 categories:

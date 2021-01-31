@@ -1,7 +1,7 @@
 ---
 layout: post
 title: What Generators Can Do For You
-permalink: what-generators-can-do-for-you
+permalink: 2012/07/what-generators-can-do-for-you.html
 date: 2012-07-23
 comments: true
 categories:

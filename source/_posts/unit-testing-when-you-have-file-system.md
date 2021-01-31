@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Unit Testing When You Have File-System Interaction
-permalink: unit-testing-when-you-have-file-system
+permalink: 2011/03/unit-testing-when-you-have-file-system.html
 date: 2011-03-29
 comments: true
 categories:

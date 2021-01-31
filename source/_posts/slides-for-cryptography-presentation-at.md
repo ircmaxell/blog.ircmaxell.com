@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Slides for Cryptography Presentation at TNPHP
-permalink: slides-for-cryptography-presentation-at
+permalink: 2012/11/slides-for-cryptography-presentation-at.html
 date: 2012-11-02
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Upcoming Talks - Spring 2013
-permalink: upcoming-talks-spring-2013
+permalink: 2013/03/upcoming-talks-spring-2013.html
 date: 2013-03-21
 comments: true
 categories:

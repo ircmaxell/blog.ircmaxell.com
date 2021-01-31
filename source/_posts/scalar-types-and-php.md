@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Scalar Types and PHP
-permalink: scalar-types-and-php
+permalink: 2015/02/scalar-types-and-php.html
 date: 2015-02-11
 comments: true
 categories:

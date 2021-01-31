@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 2014 - A Year In Review
-permalink: 2014-year-in-review
+permalink: 2014/12/2014-year-in-review.html
 date: 2014-12-31
 comments: true
 categories:

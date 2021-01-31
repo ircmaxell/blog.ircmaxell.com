@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Anatomy Of A Great Conference
-permalink: the-anatomy-of-great-conference
+permalink: 2012/08/the-anatomy-of-great-conference.html
 date: 2012-08-13
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A Beginner's Guide To MVC For The Web
-permalink: a-beginners-guide-to-mvc-for-web
+permalink: 2014/11/a-beginners-guide-to-mvc-for-web.html
 date: 2014-11-21
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: On PSR-0 Being Included In PHP's Core
-permalink: on-psr-0-being-included-in-phps-core
+permalink: 2011/11/on-psr-0-being-included-in-phps-core.html
 date: 2011-11-03
 comments: true
 categories:

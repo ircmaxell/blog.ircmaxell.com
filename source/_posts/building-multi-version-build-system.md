@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Building A Multi-Version Build System
-permalink: building-multi-version-build-system
+permalink: 2012/07/building-multi-version-build-system.html
 date: 2012-07-09
 comments: true
 categories:

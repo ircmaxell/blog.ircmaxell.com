@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Power of Technical Debt
-permalink: power-of-technical-debt
+permalink: 2012/03/power-of-technical-debt.html
 date: 2012-03-28
 comments: true
 categories:

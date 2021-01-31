@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Thoughts On Space Shuttle Code Process
-permalink: thoughts-on-space-shuttle-code-process
+permalink: 2012/08/thoughts-on-space-shuttle-code-process.html
 date: 2012-08-08
 comments: true
 categories:

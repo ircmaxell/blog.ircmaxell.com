@@ -1,7 +1,7 @@
 ---
 layout: post
 title: OOP vs Procedural Code
-permalink: oop-vs-procedural-code
+permalink: 2012/07/oop-vs-procedural-code.html
 date: 2012-07-11
 comments: true
 categories:

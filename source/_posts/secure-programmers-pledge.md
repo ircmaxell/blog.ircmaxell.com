@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Secure Programmer's Pledge
-permalink: secure-programmers-pledge
+permalink: 2012/07/secure-programmers-pledge.html
 date: 2012-07-16
 comments: true
 categories:

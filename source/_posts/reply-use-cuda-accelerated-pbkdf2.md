@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Reply: Use Cuda Accelerated PBKDF2"
-permalink: reply-use-cuda-accelerated-pbkdf2
+permalink: 2012/06/reply-use-cuda-accelerated-pbkdf2.html
 date: 2012-06-13
 comments: true
 categories:

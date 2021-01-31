@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How Not To Hire Me
-permalink: how-not-to-hire-me
+permalink: 2011/07/how-not-to-hire-me.html
 date: 2011-07-28
 comments: true
 categories:

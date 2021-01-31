@@ -1,7 +1,7 @@
 ---
 layout: post
 title: When Rocks Falter
-permalink: when-rocks-faulter
+permalink: 2014/10/when-rocks-faulter.html
 date: 2014-10-22
 comments: true
 categories:

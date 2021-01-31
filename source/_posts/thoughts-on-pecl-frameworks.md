@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Thoughts On PECL Frameworks
-permalink: thoughts-on-pecl-frameworks
+permalink: 2012/08/thoughts-on-pecl-frameworks.html
 date: 2012-08-27
 comments: true
 categories:

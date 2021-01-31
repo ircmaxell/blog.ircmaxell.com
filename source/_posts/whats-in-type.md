@@ -1,7 +1,7 @@
 ---
 layout: post
 title: What's In A Type
-permalink: whats-in-type
+permalink: 2014/10/whats-in-type.html
 date: 2014-10-24
 comments: true
 categories:

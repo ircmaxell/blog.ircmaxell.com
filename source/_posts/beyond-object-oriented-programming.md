@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Beyond Object Oriented Programming
-permalink: beyond-object-oriented-programming
+permalink: 2013/11/beyond-object-oriented-programming.html
 date: 2013-11-11
 comments: true
 categories:

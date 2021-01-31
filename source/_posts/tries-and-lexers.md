@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Tries and Lexers
-permalink: tries-and-lexers
+permalink: 2015/05/tries-and-lexers.html
 date: 2015-05-15
 comments: true
 categories:

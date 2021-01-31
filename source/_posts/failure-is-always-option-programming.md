@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Failure Is Always An Option - Programming With Anthony
-permalink: failure-is-always-option-programming
+permalink: 2013/03/failure-is-always-option-programming.html
 date: 2013-03-29
 comments: true
 categories:

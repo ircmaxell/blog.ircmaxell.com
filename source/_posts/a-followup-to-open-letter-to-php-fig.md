@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A Followup To An Open Letter To PHP-FIG
-permalink: a-followup-to-open-letter-to-php-fig
+permalink: 2014/10/a-followup-to-open-letter-to-php-fig.html
 date: 2014-10-17
 comments: true
 categories:

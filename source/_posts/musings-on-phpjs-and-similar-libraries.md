@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Musings On PHP.JS (And Similar Libraries)
-permalink: musings-on-phpjs-and-similar-libraries
+permalink: 2011/04/musings-on-phpjs-and-similar-libraries.html
 date: 2011-04-05
 comments: true
 categories:

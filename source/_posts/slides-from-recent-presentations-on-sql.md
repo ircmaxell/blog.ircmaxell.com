@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Slides From Recent Presentations on SQL Injection
-permalink: slides-from-recent-presentations-on-sql
+permalink: 2011/06/slides-from-recent-presentations-on-sql.html
 date: 2011-06-19
 comments: true
 categories:

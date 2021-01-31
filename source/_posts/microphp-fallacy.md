@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The MicroPHP Fallacy
-permalink: microphp-fallacy
+permalink: 2012/01/microphp-fallacy.html
 date: 2012-01-04
 comments: true
 categories:

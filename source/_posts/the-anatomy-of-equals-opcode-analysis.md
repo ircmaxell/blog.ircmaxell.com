@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Anatomy Of Equals - Opcode Analysis
-permalink: the-anatomy-of-equals-opcode-analysis
+permalink: 2012/07/the-anatomy-of-equals-opcode-analysis.html
 date: 2012-07-18
 comments: true
 categories:

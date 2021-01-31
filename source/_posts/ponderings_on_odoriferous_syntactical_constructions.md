@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Ponderings on Odoriferous Syntactical Constructifications
-permalink: ponderings-on-odoriferous-syntactical
+permalink: 2017/07/ponderings-on-odoriferous-syntactical.html
 date: 2017-07-31
 comments: true
 categories:

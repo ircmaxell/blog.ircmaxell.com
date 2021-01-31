@@ -1,7 +1,7 @@
 ---
 layout: post
 title: PHP's Source Code For PHP Developers - Part 4 - Arrays
-permalink: phps-source-code-for-php-developers_28
+permalink: 2012/03/phps-source-code-for-php-developers_28.html
 date: 2012-03-28
 comments: true
 categories:

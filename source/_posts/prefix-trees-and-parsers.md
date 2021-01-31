@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Prefix Trees and Parsers
-permalink: prefix-trees-and-parsers
+permalink: 2015/05/prefix-trees-and-parsers.html
 date: 2015-05-18
 comments: true
 categories:

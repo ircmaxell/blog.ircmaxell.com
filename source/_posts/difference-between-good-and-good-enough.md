@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Difference Between Good And Good Enough
-permalink: difference-between-good-and-good-enough
+permalink: 2011/03/difference-between-good-and-good-enough.html
 date: 2011-03-18
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 2012 - What A Year
-permalink: 2012-what-a-year
+permalink: 2012/12/2012-what-a-year.html
 date: 2012-12-30
 comments: true
 categories:

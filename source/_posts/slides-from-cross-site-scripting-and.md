@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Slides From "Cross Site Scripting and PHP Security" at NYPHP on 6-30-2011
-permalink: slides-from-cross-site-scripting-and
+permalink: 2011/07/slides-from-cross-site-scripting-and.html
 date: 2011-07-01
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Properly Salting Passwords, The Case Against Pepper
-permalink: properly-salting-passwords-case-against
+permalink: 2012/04/properly-salting-passwords-case-against.html
 date: 2012-04-17
 comments: true
 categories:

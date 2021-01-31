@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Parameter Type Casting in PHP
-permalink: parameter-type-casting-in-php
+permalink: 2012/03/parameter-type-casting-in-php.html
 date: 2012-03-05
 comments: true
 categories:

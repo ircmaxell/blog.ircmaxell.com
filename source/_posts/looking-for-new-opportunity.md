@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Looking For A New Opportunity
-permalink: looking-for-new-opportunity
+permalink: 2013/12/looking-for-new-opportunity.html
 date: 2013-12-11
 comments: true
 categories:

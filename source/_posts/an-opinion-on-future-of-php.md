@@ -1,7 +1,7 @@
 ---
 layout: post
 title: An Opinion On The Future Of PHP
-permalink: an-opinion-on-future-of-php
+permalink: 2014/03/an-opinion-on-future-of-php.html
 date: 2014-03-10
 comments: true
 categories:

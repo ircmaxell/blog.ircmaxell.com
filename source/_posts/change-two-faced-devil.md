@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Change: A Two Faced Devil"
-permalink: change-two-faced-devil
+permalink: 2012/11/change-two-faced-devil.html
 date: 2012-11-14
 comments: true
 categories:

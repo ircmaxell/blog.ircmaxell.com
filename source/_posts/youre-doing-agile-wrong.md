@@ -1,7 +1,7 @@
 ---
 layout: post
 title: You're Doing Agile Wrong
-permalink: youre-doing-agile-wrong
+permalink: 2014/10/youre-doing-agile-wrong.html
 date: 2014-10-27
 comments: true
 categories:

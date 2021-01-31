@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Anatomy of an Attack: How I Hacked StackOverflow"
-permalink: anatomy-of-attack-how-i-hacked
+permalink: 2012/11/anatomy-of-attack-how-i-hacked.html
 date: 2012-11-12
 comments: true
 categories:

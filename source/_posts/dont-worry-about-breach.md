@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Don't Worry About BREACH
-permalink: dont-worry-about-breach
+permalink: 2013/08/dont-worry-about-breach.html
 date: 2013-08-08
 comments: true
 categories:

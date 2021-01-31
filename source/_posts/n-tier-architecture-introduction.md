@@ -1,7 +1,7 @@
 ---
 layout: post
 title: N-Tier Architecture - An Introduction
-permalink: n-tier-architecture-introduction
+permalink: 2012/08/n-tier-architecture-introduction.html
 date: 2012-08-01
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Programming With Anthony - Encryption
-permalink: programming-with-anthony-encryption
+permalink: 2012/11/programming-with-anthony-encryption.html
 date: 2012-11-28
 comments: true
 categories:

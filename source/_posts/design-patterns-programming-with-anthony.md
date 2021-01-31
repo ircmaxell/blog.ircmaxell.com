@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Design Patterns - Programming With Anthony
-permalink: design-patterns-programming-with-anthony
+permalink: 2013/02/design-patterns-programming-with-anthony.html
 date: 2013-02-20
 comments: true
 categories:

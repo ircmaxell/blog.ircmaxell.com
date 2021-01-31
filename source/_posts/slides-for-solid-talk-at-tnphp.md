@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Slides for SOLID Talk at TNPHP
-permalink: slides-for-solid-talk-at-tnphp
+permalink: 2012/11/slides-for-solid-talk-at-tnphp.html
 date: 2012-11-03
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A PHP Compiler, aka The FFI Rabbit Hole
-permalink: compilers-ffi
+permalink: 2019/04/compilers-ffi.html
 date: 2019-04-22
 comments: true
 categories:

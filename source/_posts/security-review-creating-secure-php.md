@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Security Review: Creating a Secure PHP Login Script"
-permalink: security-review-creating-secure-php
+permalink: 2011/08/security-review-creating-secure-php.html
 date: 2011-08-01
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Garbage In, Gold Out
-permalink: garbage-in-gold-out
+permalink: 2012/08/garbage-in-gold-out.html
 date: 2012-08-06
 comments: true
 categories:

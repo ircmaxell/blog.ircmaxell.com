@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Talk - Don't Be Stupid, Grasp Solid - NYPHP
-permalink: talk-dont-be-stupid-grasp-solid-nyphp
+permalink: 2012/05/talk-dont-be-stupid-grasp-solid-nyphp.html
 date: 2012-05-10
 comments: true
 categories:

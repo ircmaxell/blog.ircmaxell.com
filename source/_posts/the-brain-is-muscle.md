@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Brain Is A Muscle
-permalink: the-brain-is-muscle
+permalink: 2012/12/the-brain-is-muscle.html
 date: 2012-12-24
 comments: true
 categories:

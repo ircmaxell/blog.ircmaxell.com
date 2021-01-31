@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "In Response To: Building Secured Web Applications Using PHP - The Basics"
-permalink: in-response-to-building-secured-web
+permalink: 2011/06/in-response-to-building-secured-web.html
 date: 2011-06-24
 comments: true
 categories:

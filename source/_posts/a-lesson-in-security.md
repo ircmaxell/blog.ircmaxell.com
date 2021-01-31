@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A Lesson In Security
-permalink: a-lesson-in-security
+permalink: 2014/10/a-lesson-in-security.html
 date: 2014-10-31
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: On Equality, Sexism and an Even Hand
-permalink: on-equality-sexism-and-even-hand
+permalink: 2013/02/on-equality-sexism-and-even-hand.html
 date: 2013-02-26
 comments: true
 categories:

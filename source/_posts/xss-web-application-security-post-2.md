@@ -1,7 +1,7 @@
 ---
 layout: post
 title: XSS - Web Application Security - Post 2
-permalink: xss-web-application-security-post-2
+permalink: 2011/04/xss-web-application-security-post-2.html
 date: 2011-04-01
 comments: true
 categories:

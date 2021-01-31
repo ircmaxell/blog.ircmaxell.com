@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How We Interview Developers
-permalink: how-we-interview-developers
+permalink: 2012/01/how-we-interview-developers.html
 date: 2012-01-06
 comments: true
 categories:

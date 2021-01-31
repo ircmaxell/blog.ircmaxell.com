@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Reinvent The Wheel!
-permalink: reinvent-wheel
+permalink: 2012/08/reinvent-wheel.html
 date: 2012-08-03
 comments: true
 categories:

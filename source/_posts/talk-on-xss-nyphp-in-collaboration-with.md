@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A Talk On XSS - NYPHP in collaboration with OWASP
-permalink: talk-on-xss-nyphp-in-collaboration-with
+permalink: 2011/06/talk-on-xss-nyphp-in-collaboration-with.html
 date: 2011-06-21
 comments: true
 categories:

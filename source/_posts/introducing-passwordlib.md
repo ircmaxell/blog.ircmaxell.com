@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Introducing: PasswordLib"
-permalink: introducing-passwordlib
+permalink: 2012/04/introducing-passwordlib.html
 date: 2012-04-14
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A Failure Of Process (Tools Are Not To Blame)
-permalink: failure-of-process-tools-are-not-to
+permalink: 2011/08/failure-of-process-tools-are-not-to.html
 date: 2011-08-24
 comments: true
 categories:

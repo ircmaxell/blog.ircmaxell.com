@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Taking Monads to OOP PHP
+permalink: 2013/07/taking-monads-to-oop-php.html
 date: 2013-07-12
 comments: true
 categories:

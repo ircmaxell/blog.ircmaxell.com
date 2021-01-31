@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Designing An API: Simplified Password Hashing"
-permalink: designing-api-simplified-password
+permalink: 2012/11/designing-api-simplified-password.html
 date: 2012-11-16
 comments: true
 categories:

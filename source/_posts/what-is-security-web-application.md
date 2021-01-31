@@ -1,7 +1,7 @@
 ---
 layout: post
 title: What Is Security - Web Application Security - Post 1
-permalink: what-is-security-web-application
+permalink: 2011/03/what-is-security-web-application.html
 date: 2011-03-25
 comments: true
 categories:

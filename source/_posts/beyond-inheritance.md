@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Beyond Inheritance
-permalink: beyond-inheritance
+permalink: 2013/11/beyond-inheritance.html
 date: 2013-11-04
 comments: true
 categories:

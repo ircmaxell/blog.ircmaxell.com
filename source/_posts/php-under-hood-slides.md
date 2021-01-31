@@ -1,7 +1,7 @@
 ---
 layout: post
 title: PHP, Under The Hood Slides
-permalink: php-under-hood-slides
+permalink: 2013/06/php-under-hood-slides.html
 date: 2013-06-07
 comments: true
 categories:

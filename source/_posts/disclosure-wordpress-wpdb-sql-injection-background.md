@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Disclosure: WordPress WPDB SQL Injection - Background"
-permalink: disclosure-wordpress-wpdb-sql-injection-background
+permalink: 2017/10/disclosure-wordpress-wpdb-sql-injection-background.html
 date: 2017-10-27
 comments: true
 categories:

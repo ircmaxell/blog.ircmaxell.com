@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Security Issue: Combining Bcrypt With Other Hash Functions"
-permalink: security-issue-combining-bcrypt-with
+permalink: 2015/03/security-issue-combining-bcrypt-with.html
 date: 2015-03-12
 comments: true
 categories:

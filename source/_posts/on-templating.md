@@ -1,7 +1,7 @@
 ---
 layout: post
 title: On Templating
-permalink: on-templating
+permalink: 2012/12/on-templating.html
 date: 2012-12-10
 comments: true
 categories:

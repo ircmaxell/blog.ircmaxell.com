@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Iterators - Programming With Anthony
-permalink: todays-programming-with-anthony-video
+permalink: 2013/01/todays-programming-with-anthony-video.html
 date: 2013-01-16
 comments: true
 categories:

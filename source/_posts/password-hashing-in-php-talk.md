@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Password Hashing in PHP Talk
-permalink: password-hashing-in-php-talk
+permalink: 2012/10/password-hashing-in-php-talk.html
 date: 2012-10-11
 comments: true
 categories:

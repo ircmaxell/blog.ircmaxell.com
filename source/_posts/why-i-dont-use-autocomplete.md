@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Why I Don’t Use Autocomplete
-permalink: why-i-dont-use-autocomplete
+permalink: 2011/07/why-i-dont-use-autocomplete.html
 date: 2011-07-26
 comments: true
 categories:

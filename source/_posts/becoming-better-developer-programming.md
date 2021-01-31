@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Becoming A Better Developer - Programming With Anthony
-permalink: becoming-better-developer-programming
+permalink: 2013/03/becoming-better-developer-programming.html
 date: 2013-03-27
 comments: true
 categories:

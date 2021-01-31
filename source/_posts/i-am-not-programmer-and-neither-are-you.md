@@ -1,7 +1,7 @@
 ---
 layout: post
 title: I am not a programmer. And neither are you!
-permalink: i-am-not-programmer-and-neither-are-you
+permalink: 2012/11/i-am-not-programmer-and-neither-are-you.html
 date: 2012-11-09
 comments: true
 categories:

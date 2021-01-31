@@ -1,7 +1,7 @@
 ---
 layout: post
 title: On PHP Version Requirements
-permalink: on-php-version-requirements
+permalink: 2014/12/on-php-version-requirements.html
 date: 2014-12-19
 comments: true
 categories:

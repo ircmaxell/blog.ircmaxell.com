@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Trust
+permalink: 2017/01/trust.html
 date: 2017-01-12
 comments: true
 categories:

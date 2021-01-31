@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Framework Fixation - An Anti Pattern
-permalink: framework-fixation-anti-pattern
+permalink: 2012/07/framework-fixation-anti-pattern.html
 date: 2012-07-27
 comments: true
 categories:

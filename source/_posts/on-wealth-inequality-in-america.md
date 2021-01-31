@@ -1,7 +1,7 @@
 ---
 layout: post
 title: On "Wealth Inequality In America"
-permalink: on-wealth-inequality-in-america
+permalink: 2013/03/on-wealth-inequality-in-america.html
 date: 2013-03-07
 comments: true
 categories:

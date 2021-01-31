@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Upcoming Appearances - Fall 2013
-permalink: upcoming-appearances-fall-2013
+permalink: 2013/08/upcoming-appearances-fall-2013.html
 date: 2013-08-09
 comments: true
 categories:

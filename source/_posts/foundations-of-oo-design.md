@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Foundations Of OO Design
-permalink: foundations-of-oo-design
+permalink: 2014/10/foundations-of-oo-design.html
 date: 2014-10-29
 comments: true
 categories:

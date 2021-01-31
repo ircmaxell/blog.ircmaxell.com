@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The True Problem With PHP
-permalink: true-problem-with-php
+permalink: 2012/07/true-problem-with-php.html
 date: 2012-07-06
 comments: true
 categories:

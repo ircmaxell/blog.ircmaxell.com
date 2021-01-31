@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Programming With Anthony - References
-permalink: programming-with-anthony-references
+permalink: 2012/12/programming-with-anthony-references.html
 date: 2012-12-05
 comments: true
 categories:

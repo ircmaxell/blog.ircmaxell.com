@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 2013 - Year In Review
-permalink: 2013-year-in-review
+permalink: 2013/12/2013-year-in-review.html
 date: 2013-12-31
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Programming With Anthony - Logic
-permalink: programming-with-anthony-logic
+permalink: 2012/12/programming-with-anthony-logic.html
 date: 2012-12-19
 comments: true
 categories:

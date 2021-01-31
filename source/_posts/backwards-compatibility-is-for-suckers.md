@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Backwards Compatibility Is For Suckers
-permalink: backwards-compatibility-is-for-suckers
+permalink: 2013/06/backwards-compatibility-is-for-suckers.html
 date: 2013-06-25
 comments: true
 categories:

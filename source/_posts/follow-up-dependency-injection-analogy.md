@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Follow-Up: Dependency Injection: An Analogy"
-permalink: follow-up-dependency-injection-analogy
+permalink: 2011/03/follow-up-dependency-injection-analogy.html
 date: 2011-03-22
 comments: true
 categories:

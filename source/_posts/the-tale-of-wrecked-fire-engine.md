@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Tale Of The Wrecked Fire Engine
-permalink: the-tale-of-wrecked-fire-engine
+permalink: 2014/05/the-tale-of-wrecked-fire-engine.html
 date: 2014-05-28
 comments: true
 categories:

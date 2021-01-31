@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Programming With Anthony - Responsive Web Design
-permalink: programming-with-anthony-responsive-web
+permalink: 2012/12/programming-with-anthony-responsive-web.html
 date: 2012-12-26
 comments: true
 categories:

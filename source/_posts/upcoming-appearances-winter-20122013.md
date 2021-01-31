@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Upcoming Appearances - Winter 2012/2013
-permalink: upcoming-appearances-winter-20122013
+permalink: 2012/12/upcoming-appearances-winter-20122013.html
 date: 2012-12-13
 comments: true
 categories:

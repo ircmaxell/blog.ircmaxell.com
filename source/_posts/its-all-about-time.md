@@ -1,7 +1,7 @@
 ---
 layout: post
 title: It's All About Time
-permalink: its-all-about-time
+permalink: 2014/11/its-all-about-time.html
 date: 2014-11-28
 comments: true
 categories:

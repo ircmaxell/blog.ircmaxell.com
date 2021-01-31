@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Dimensional Analysis
-permalink: dimensional-analysis
+permalink: 2015/03/dimensional-analysis.html
 date: 2015-03-16
 comments: true
 categories:

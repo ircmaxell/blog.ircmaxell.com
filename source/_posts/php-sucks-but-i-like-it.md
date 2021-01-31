@@ -1,7 +1,7 @@
 ---
 layout: post
 title: PHP Sucks! But I Like It!
-permalink: php-sucks-but-i-like-it
+permalink: 2012/04/php-sucks-but-i-like-it.html
 date: 2012-04-10
 comments: true
 categories:

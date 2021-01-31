@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A Tale Of Open Source
-permalink: tale-of-open-source
+permalink: 2012/07/tale-of-open-source.html
 date: 2012-07-04
 comments: true
 categories:

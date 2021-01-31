@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Thoughts On The Design Of APIs
-permalink: thoughts-on-design-of-apis
+permalink: 2015/03/thoughts-on-design-of-apis.html
 date: 2015-03-24
 comments: true
 categories:

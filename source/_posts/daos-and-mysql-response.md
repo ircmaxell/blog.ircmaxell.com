@@ -1,7 +1,7 @@
 ---
 layout: post
 title: DAOs and MySQL - A Response
-permalink: daos-and-mysql-response
+permalink: 2012/07/daos-and-mysql-response.html
 date: 2012-07-25
 comments: true
 categories:

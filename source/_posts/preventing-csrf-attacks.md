@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Preventing CSRF Attacks
-permalink: preventing-csrf-attacks
+permalink: 2013/02/preventing-csrf-attacks.html
 date: 2013-02-19
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Beyond Clean Code
-permalink: beyond-clean-code
+permalink: 2013/11/beyond-clean-code.html
 date: 2013-11-25
 comments: true
 categories:

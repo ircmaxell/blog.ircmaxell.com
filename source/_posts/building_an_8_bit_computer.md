@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Building an 8-bit Computer
-permalink: building-8-bit-computer
+permalink: 2017/02/building-8-bit-computer.html
 date: 2017-02-08
 comments: true
 categories:

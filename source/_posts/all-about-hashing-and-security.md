@@ -1,7 +1,7 @@
 ---
 layout: post
 title: All about hashing and security
-permalink: all-about-hashing-and-security
+permalink: 2011/03/all-about-hashing-and-security.html
 date: 2011-03-15
 comments: true
 categories:

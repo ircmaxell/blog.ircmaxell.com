@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Development By The Numbers - Slides
-permalink: development-by-numbers-slides
+permalink: 2013/05/development-by-numbers-slides.html
 date: 2013-05-21
 comments: true
 categories:

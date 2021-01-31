@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Grass Is Always ... Browner?
-permalink: the-grass-is-always-browner
+permalink: 2012/07/the-grass-is-always-browner.html
 date: 2012-07-30
 comments: true
 categories:

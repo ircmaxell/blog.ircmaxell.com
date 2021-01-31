@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Disclosure: WordPress WPDB SQL Injection Vulnerability"
-permalink: disclosure-wordpress-wpdb-sql-injection
+permalink: 2013/07/disclosure-wordpress-wpdb-sql-injection.html
 date: 2013-07-16
 comments: true
 categories:

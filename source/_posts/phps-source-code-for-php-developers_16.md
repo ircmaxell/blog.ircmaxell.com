@@ -1,7 +1,7 @@
 ---
 layout: post
 title: PHP's Source Code for PHP Developers - Part 2 - Function Definitions
-permalink: phps-source-code-for-php-developers_16
+permalink: 2012/03/phps-source-code-for-php-developers_16.html
 date: 2012-03-16
 comments: true
 categories:

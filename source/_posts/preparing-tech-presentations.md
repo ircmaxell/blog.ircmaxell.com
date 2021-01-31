@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Preparing Tech Presentations
-permalink: preparing-tech-presentations
+permalink: 2013/08/preparing-tech-presentations.html
 date: 2013-08-15
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: JavaScript Closures - Programming With Anthony
-permalink: javascript-closures-programming-with
+permalink: 2013/01/javascript-closures-programming-with.html
 date: 2013-01-02
 comments: true
 categories:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Our Failure As An Industry
-permalink: our-failure-as-industry
+permalink: 2013/05/our-failure-as-industry.html
 date: 2013-05-06
 comments: true
 categories:

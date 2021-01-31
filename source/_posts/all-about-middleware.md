@@ -1,7 +1,7 @@
 ---
 layout: post
 title: All About Middleware
-permalink: all-about-middleware
+permalink: 2016/05/all-about-middleware.html
 date: 2016-05-20
 comments: true
 categories:

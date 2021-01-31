@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Wiring a Home Network
-permalink: wiring-home-network
+permalink: 2021/02/wiring-home-network.html
 date: 2021-02-01
 comments: true
 categories:

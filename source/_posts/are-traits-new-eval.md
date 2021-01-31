@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Are Traits The New Eval?
-permalink: are-traits-new-eval
+permalink: 2011/07/are-traits-new-eval.html
 date: 2011-07-22
 comments: true
 categories:

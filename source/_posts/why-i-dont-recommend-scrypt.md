@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Why I Don't Recommend Scrypt
-permalink: why-i-dont-recommend-scrypt
+permalink: 2014/03/why-i-dont-recommend-scrypt.html
 date: 2014-03-12
 comments: true
 categories:
