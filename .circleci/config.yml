@@ -12,6 +12,8 @@ jobs:
           name: Install dependencies
           working_directory: /
           command: |
+            sudo cat /dev/null > /etc/apt/sources.list
+            echo "deb http://archive.debian.org/debian/ jessie main" | sudo tee -a /etc/apt/sources.list
             sudo apt-get -y -qq update
             sudo apt-get -y -qq install python-pip python-dev
             pip install awscli --upgrade --user
