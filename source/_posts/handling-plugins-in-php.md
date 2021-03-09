@@ -33,7 +33,7 @@ These patterns are designed to handle communication between disjoint objects.
 So a quick simple example would be:
 
 ```php
-class Subject implements SplSubject{
+class Subject implements SplSubject {
     protected $observers = array();
     public function attach(SplObserver $observer) {
         $this->observers[] = $observer;
@@ -60,7 +60,6 @@ class MyObserver implements SplObserver {
 $subject = new Subject;
 $subject->attach(new MyObserver);
 $subject->notify(); // prints "I was updated by Subject"
-
 ```
 
 Now, one key point to note here, is that every listener would need to bind to the object `instance `that it wants to track.  Another key point is that the Subject does not pass along any information about the cause of the update.
@@ -95,13 +94,16 @@ class Mediator {
         }
     }
 }
+
+```
+
+```php
 $mediator = new Mediator;
 $mediator->attach('load', function() { echo "Loading"; });
 $mediator->attach('stop', function() { echo "Stopping"; });
 $mediator->attach('stop', function() { echo "Stopped"; });
 $mediator->trigger('load'); // prints "Loading"
 $mediator->trigger('stop'); // prints "StoppingStopped"
-
 ```
 
 There are two important traits that make it a mediator.  The first important one is that the mediator is a separate object from either the source of the event, or the notification object.  It stands in the middle of them, controlling the information flow.  For that reason, Javascript events are not using the Mediator Pattern.  The second important trait is that the mediator is not just a relay (telling everyone about everything), but it makes decisions about who to route events to.
