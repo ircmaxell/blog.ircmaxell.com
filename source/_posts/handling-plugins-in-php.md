@@ -40,7 +40,7 @@ class Subject implements SplSubject {
     }
     public function detach(SplObserver $observer) {
         $key = array_search($observer, $this->observers) {
-        if ($key) {
+        if ($key !== false) {
             unset($this->observers[$key]);
         }
     }
@@ -139,7 +139,7 @@ class AlarmSystem {
 class PhoneCall implements CallHomeStrategy {
     public function sendMessage($message) {
         $this->dialPhone();
-        $this->readMessageAloud();
+        $this->readMessageAloud($message);
         $this->hangup();
     }
 }
